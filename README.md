@@ -23,6 +23,8 @@ Featured items: Princpal way of income, users can pay to have their items on the
 
 Chat: An easy and quick way of communication, essential in a trading web, the best way of reeching an agreement and negociate properly.
 
+Map localization: Helpfull way to locate nearby items.
+
 ## Developers
 Roberto Gallado Cava- r.gallardoc@alumnos.urjc.es. @RoberG
 
