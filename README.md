@@ -1,19 +1,28 @@
 # Tradium
 
-Tradium se trata sobre una página web de compraventa, donde cada usuario podrá subir productos, navegar entre todos los que hayan subido los otros usuarios, además de comprobar productos en su ciudad, localizar a vendedores cercanos y comprobar el historial de compraventa.
+Tradium is a new tradig web, where the user can upload products, search for items that other users upload, search for nearby commoditys, locate nearby sellers and check other sellers history.
 
 
-# Entidades
-Entidad de usuario, donde se guardan todas sus configuraciones, productos, historial de compraventa y datos.
+# Entities
+User's entity: Where all configurations, products, history in the web and personal data is storaged.
 
-Entidad artículo, con datos más específicos del producto, descripción, precio, etiquetas.
+Article:  More specific product data, it's price, details, labels, images.
 
-Listado de productos, de forma que se pueden ordenar por localización, precio, etiquetas, productos destacados.
+Product list: So any person can search nearby items, sorted by price, by location, or by labels.
 
-Chat, una forma sencilla y rápida de comunicación entre usuarios, con el objetivo de que se puedan poner de acuerdo y negociar
+Chat: An easy and quick way of communication, essential in a trading web, the best way of reeching an agreement and negociate properly.
+
+## Advanced funcionalitys
+Negociation Bot: Funcionality that helps with a agreements when you can not speak with the other person.
+
+BBDD: Where all the data is storaged.
+
+Personalized recommendations: So you can find relevant items based on older searchs.
+
+Featured items: Princpal way of income, users can pay to have their items on the front page, an easy way to obtain visibility.
 
 
-## Desarrolladores
+## Developers
 Roberto Gallado Cava
 
 Manuel Antonio Romero Venegas
