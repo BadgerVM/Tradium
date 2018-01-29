@@ -8,19 +8,20 @@ User's entity: Where all configurations, products, history in the web and person
 
 Article:  More specific product data, it's price, details, labels, images.
 
-Product list: So any person can search nearby items, sorted by price, by location, or by labels.
+Valoration: Different valorations of the users selling/buying.
 
-Chat: An easy and quick way of communication, essential in a trading web, the best way of reeching an agreement and negociate properly.
+Chat messages: Each conversation is saved in the DB so it can be revised everytime.
 
-## Advanced funcionalitys
+## Advanced funcionalities
 Negociation Bot: Funcionality that helps with a agreements when you can not speak with the other person.
 
-BBDD: Where all the data is storaged.
+SN sharing: An easy way to public your items in different Social networks
 
 Personalized recommendations: So you can find relevant items based on older searchs.
 
 Featured items: Princpal way of income, users can pay to have their items on the front page, an easy way to obtain visibility.
 
+Chat: An easy and quick way of communication, essential in a trading web, the best way of reeching an agreement and negociate properly.
 
 ## Developers
 Roberto Gallado Cava- r.gallardoc@alumnos.urjc.es. @RoberG
