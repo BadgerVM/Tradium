@@ -4,13 +4,15 @@ Tradium is a new tradig web, where the user can upload products, search for item
 
 
 # Entities
-User's entity: Where all configurations, products, history in the web and personal data is storaged.
+User: Where all configurations, products in the web and personal data is storaged.
 
 Article:  More specific product data, it's price, details, labels, images.
 
 Valoration: Different valorations of the users selling/buying.
 
 Chat messages: Each conversation is saved in the DB so it can be revised everytime.
+
+Users search history: Usefull way to provide recomended articles to the user.
 
 ## Advanced funcionalities
 Negociation Bot: Funcionality that helps with a agreements when you can not speak with the other person.
