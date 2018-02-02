@@ -3704,7 +3704,9 @@ SHAPE SHAPE SHAPE SHAPE SHAPE SHAPE SHAPE SHAPE SHAPE SHAPE
 	height: 22px;
 }
 
-
+.h-size3 {
+	max-height: 400px;
+}
 
 
 /*[ Background ]

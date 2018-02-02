@@ -2346,5 +2346,18 @@ input.num-product::-webkit-inner-spin-button {
     margin: 0; 
 }
 
+.card-profile-rating img {
+    display: inline-block;
+    width: 18px;
+    height: 18px;
+    margin-right: 8px;
+}
+
+.card-review-date {
+    font-size: 16px;
+    float: right;
+    color: #253238;
+    margin-top: 12px;
+}
 
 
