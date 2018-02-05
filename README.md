@@ -35,3 +35,7 @@ Manuel Antonio Romero Venegas- ma.romerov@alumnos.urjc.es @BadgerVM
 Daniel García Cisneros- d.garciaci@alumnos.urjc.es. @dgarciaci
 
 Ignacio Ruiz Ardisoni- i.ruiza@alumnos.urjc.es. @TaXiD
+
+## Navigation Diagram
+
+![alt text](https://github.com/RoberG/Tradium/blob/master/diagram.png)
