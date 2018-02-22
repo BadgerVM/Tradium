@@ -29,6 +29,10 @@ public class User {
 	@JsonView(BasicAtt.class)
 	private String name;
 	@JsonView(BasicAtt.class)
+	private String password;
+	@JsonView(BasicAtt.class)
+	private String email;
+	@JsonView(BasicAtt.class)
 	private String locationX;
 	@JsonView(BasicAtt.class)
 	private String locationY;
@@ -41,11 +45,22 @@ public class User {
 	
 	public User() {}
 
-	public User(String name, String locationX, String locationY) {
+	public User(String name, String password, String email, String locationX, String locationY) {
 		super();
 		this.name = name;
 		this.locationX = locationX;
 		this.locationY = locationY;
+		this.password=password;
+		this.email=email;
+	}
+	public User(String name, String password, String email) {
+		super();
+		this.name = name;
+		this.password=password;
+		this.email=email;
+		
+		this.locationX = "0000";
+		this.locationY = "0000";
 	}
 
 	public long getId() {
@@ -91,6 +106,26 @@ public class User {
 
 	public void setProducts(List<Product> products) {
 		this.products = products;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public void setId(long id) {
+		this.id = id;
 	}
 	
 	
