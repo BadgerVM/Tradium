@@ -3,13 +3,15 @@
 	<meta charset="UTF-8"/>
 </head>
 <body>
-	<form action="anuncio/nuevo" method="post">
+	<form action="product/new" method="post">
 		<p>Nombre: </p>
-		<input type='text' name='nombre'/>
+		<input type='text' name='name'/>
 		<p>Asunto:</p>
-		<input type='text' name='asunto'/>
+		<input type='text' name='description'/>
 		<p>Comentario:</p>
-		<textarea name='comentario' rows=5 cols=40></textarea>
+		<textarea name='tags' rows=5 cols=40></textarea>
+		<p>Price:</p>
+		<textarea name='price' rows=5 cols=40></textarea>
 
 		<input type='submit' value='Enviar'/>
 	</form>

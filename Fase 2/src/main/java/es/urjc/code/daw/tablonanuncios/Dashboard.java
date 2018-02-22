@@ -57,9 +57,9 @@ public class Dashboard {
 	}
 
 	@RequestMapping("/product/new")
-	public String nuevoAnuncio(Model model, Product anuncio) {
+	public String nuevoAnuncio(Model model, Product product) {
 
-		productRepository.save(anuncio);
+		productRepository.save(product);
 
 		return "anuncio_guardado";
 
