@@ -18,56 +18,61 @@ public class Dashboard {
 	//base de datos de la aplicación
 
 	@Autowired
-	private ProductRepository ProductRepository;
+	private ProductRepository productRepository;
 	
 	@Autowired
-	private UserRepository UserRepository;
+	private UserRepository userRepository;
 	
 	@Autowired
-	private ValorationRepository ValorationRepository;
+	private ValorationRepository valorationRepository;
 	
 
 	@PostConstruct
 	public void init() {
-		User u1 = new User("name", "location", "locationY");
-		User u2 = new User("name", "location", "locationY");
-		Product p1 = new Product("name", "desc", "tags", 90);
+		User u1 = new User("n1", "1123", "1232");
+		User u2 = new User("n2", "232", "31");
+		Product p1 = new Product("pr1", "barata barata", "asda", 90);
+		p1.setUser(u1);
 		Valoration v1 = new Valoration(u1, u2, 5);
 	
-		ProductRepository.save(p1);
+		userRepository.save(u1);
+		userRepository.save(u2);
+
+		productRepository.save(p1);
+		valorationRepository.save(v1);
 		
-		UserRepository.save(u1);
-		UserRepository.save(u2);
-		
-		ValorationRepository.save(v1);
-		
-		//repository.save(new Product("Juan", "Hola caracola", "XXXX"));
 	}
-/*
+	
+	@RequestMapping("/user")
+	public String user() {
+		return "seller";
+	}
+	
 	@RequestMapping("/")
 	public String tablon(Model model) {
 
-		model.addAttribute("anuncios", epository.findAll());
+		model.addAttribute("products", productRepository.findAll());
 
 		return "tablon";
 	}
 
-	@RequestMapping("/anuncio/nuevo")
+	@RequestMapping("/product/new")
 	public String nuevoAnuncio(Model model, Product anuncio) {
 
-		repository.save(anuncio);
+		productRepository.save(anuncio);
 
 		return "anuncio_guardado";
 
 	}
 
-	@RequestMapping("/anuncio/{id}")
+	@RequestMapping("/product/{id}")
 	public String verAnuncio(Model model, @PathVariable long id) {
 		
-		Product anuncio = repository.findOne(id);
+		Product product = productRepository.findOne(id);
 
-		model.addAttribute("anuncio", anuncio);
+		model.addAttribute("product", product);
 
-		return "ver_anuncio";
-	}*/
+		return "404";
+	}
+
 }
