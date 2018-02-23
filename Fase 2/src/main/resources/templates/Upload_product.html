@@ -57,7 +57,10 @@
 
 
 				<div class="topbar-child2">
-					<span class="topbar-email"> {{name.name}} </span>
+					<span class="topbar-email">{{#logged}} {{name.name}}
+						{{/logged}} {{^logged}} <a href="/login"
+						class="size2 m-text2 trans-0-4"> Log in </a> {{/logged}}
+					</span>
 				</div>
 			</div>
 

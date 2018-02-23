@@ -54,8 +54,13 @@
 						href="#" class="topbar-social-item fa fa-twitter"></a>
 				</div>
 
+				<div class="topbar-child2">
+					<span class="topbar-email">{{#logged}} {{name.name}}
+						{{/logged}} {{^logged}} <a href="/login"
+						class="size2 m-text2 trans-0-4"> Log in </a> {{/logged}}
+					</span>
+				</div>
 			</div>
-
 			<div class="wrap_header">
 				<!-- Logo -->
 				<a href="index" class="logo"> <img src="images/icons/logo.png"
@@ -210,7 +215,8 @@
 	<div style="margin-top: 15%; margin-bottom: 15%">
 		<section class="bg-title-page p-t-40 p-b-50 flex-col-c-m"
 			style="background-image: url(images/background_slim.jpg)">
-			<h2 class="l-textcustom t-center">You have successfully logged in</h2>
+			<h2 class="l-textcustom t-center">You have successfully logged
+				in</h2>
 			<!-- Button -->
 			<div class="w-size2 p-t-25">
 				<a href="index"
