@@ -109,7 +109,7 @@ public class Dashboard {
 	public String upload(Model model) {
 
 		model.addAttribute("products", productRepository.findAll());
-
+		model.addAttribute("name", userRepository.findByName("u1"));
 		return "subir";
 	}
 	
@@ -117,7 +117,7 @@ public class Dashboard {
 	public String index(Model model) {
 
 		model.addAttribute("products", productRepository.findAll());
-
+		model.addAttribute("name", userRepository.findByName("u1"));
 		return "index";
 	}
 	
@@ -127,7 +127,7 @@ public class Dashboard {
 		
 		 
 		model.addAttribute("products", productRepository.findAll());
-
+		model.addAttribute("name", userRepository.findByName("u1"));
 		return "tablon";
 	}
 	
@@ -135,7 +135,7 @@ public class Dashboard {
 
 	@RequestMapping("/login")
 	public String login(Model model) {
-		
+		model.addAttribute("name", userRepository.findByName("u1"));
 		return "login";
 	}
 	
@@ -149,13 +149,14 @@ public class Dashboard {
 	public String search(Model model) {
 
 		model.addAttribute("products", productRepository.findAll());
+		model.addAttribute("name", userRepository.findByName("u1"));
 
 		return "product";
 	}
 	
 	@RequestMapping("/about")
 	public String about(Model model) {
-
+		model.addAttribute("name", userRepository.findByName("u1"));
 
 		return "about";
 	}
@@ -163,7 +164,7 @@ public class Dashboard {
 	//HAY QUE ELIMINARLO EN ALGÚN MOMENTO
 	@RequestMapping("/product/new")
 	public String nuevoAnuncio(Model model, Product product) {
-
+		model.addAttribute("name", userRepository.findByName("u1"));
 		productRepository.save(product);
 
 		return "anuncio_guardado";
@@ -172,7 +173,7 @@ public class Dashboard {
 	
 	@RequestMapping("/contact")
 	public String contact() {
-
+		
 		return "contact";
 
 	}
@@ -210,6 +211,7 @@ public class Dashboard {
 		model.addAttribute("showPrevValorations", !valorations.isFirst());
 		model.addAttribute("nextPageValorations", valorations.getNumber()+1);
 		model.addAttribute("prevPageValorations", valorations.getNumber()-1);
+		model.addAttribute("name", userRepository.findByName("u1"));
 		
 		//model.addAttribute("products", productRepository.findByUser_Id(id));
 		return "seller";
