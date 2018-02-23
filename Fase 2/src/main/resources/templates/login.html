@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<title>404</title>
+	<title>Login</title>
 	<meta charset="ISO-8859-1">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 <!--===============================================================================================-->
-	<link rel="icon" type="image/png" href="images/icons/favicon.png"/>
+	<link rel="icon" type="/image/png" href="images/icons/favicon.png"/>
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="/vendor/bootstrap/css/bootstrap.min.css">
@@ -34,7 +34,7 @@
 </head>
 <body class="animsition">
 
-	<!-- Header -->
+		<!-- Header -->
 	<header class="header1">
 		<!-- Header desktop -->
 		<div class="container-menu-header">
@@ -96,7 +96,7 @@
 				<!-- Header Icon -->
 				<div class="header-icons">
                     
-                     <a href="subir.html" class="header-wrapicon1 dis-block" style="margin-right: 10px">
+                     <a href="Upload.html" class="header-wrapicon1 dis-block" style="margin-right: 10px">
 						<img  src="images/icons/up-arrow.svg" class="header-icon1" alt="Upload">
 					</a>
                     
@@ -190,7 +190,7 @@
                     				<!-- Header Icon -->
 				<div class="header-icons">
                     
-                     <a href="chats.html" class="header-wrapicon1 dis-block" style="margin-right: 10px">
+                     <a href="Upload.html" class="header-wrapicon1 dis-block" style="margin-right: 10px">
 						<img  src="images/icons/up-arrow.svg" class="header-icon1" alt="Upload">
 					</a>
                     
@@ -207,19 +207,23 @@
 			</nav>
 		</div>
 	</header>
+	
 	<!-- Title Page -->
     <div style="margin-top: 15%; margin-bottom: 15%">
-        <section class="bg-title-page p-t-40 p-b-50 flex-col-c-m" style="background-image: url(images/background%20slim.jpg);" >
-            <h2 class="l-textcustom t-center">
-                Oups, we don&#39t find the page that you are searching for.
-            </h2>
-            <!-- Button -->
-            <div class="w-size2 p-t-25">
-                <a href="index.html" class="flex-c-m size2 bg4 bo-rad-23 hov1 m-text3 trans-0-4">
-                    Come back
-                </a>
-            </div>
-        </section>
+        <section class="bg-title-page p-t-40 p-b-50 flex-col-c-m" style="background-image: url(/images/background_slim.jpg);" >
+            
+            <!-- Text input-->
+            	<form action="/login" method="post">
+            	
+            		<label>User Name:</label><br/>
+            		<input type="text" name="username" /> <br/> <br/>
+            		<label>Password:</label><br/>
+            		<input type="password" name="password" /><br /><br/>
+            	
+                    <input type="submit" value="Sign in" class="flex-c-m size2 bg4 bo-rad-23 hov1 m-text3 trans-0-4"/>             
+            	</form>
+            	<a href="register.html">  Create an account</a>
+         </section>
         
     </div>
 
@@ -228,7 +232,7 @@
 		
 
 
-	<!-- Footer -->
+		<!-- Footer -->
 	<footer class="bg6 p-t-45 p-b-43 p-l-45 p-r-45">
 		<div class="flex-w p-b-90">
 			<div class="w-size6 p-t-30 p-l-15 p-r-15 respon3">
@@ -269,14 +273,14 @@
 
 
 <!--===============================================================================================-->
-	<script type="text/javascript" src="vendor/jquery/jquery-3.2.1.min.js"></script>
+	<script type="text/javascript" src="/vendor/jquery/jquery-3.2.1.min.js"></script>
 <!--===============================================================================================-->
-	<script type="text/javascript" src="vendor/animsition/js/animsition.min.js"></script>
+	<script type="text/javascript" src="/vendor/animsition/js/animsition.min.js"></script>
 <!--===============================================================================================-->
-	<script type="text/javascript" src="vendor/bootstrap/js/popper.js"></script>
-	<script type="text/javascript" src="vendor/bootstrap/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="/vendor/bootstrap/js/popper.js"></script>
+	<script type="text/javascript" src="/vendor/bootstrap/js/bootstrap.min.js"></script>
 <!--===============================================================================================-->
-	<script type="text/javascript" src="vendor/select2/select2.min.js"></script>
+	<script type="text/javascript" src="/vendor/select2/select2.min.js"></script>
 	<script type="text/javascript">
 		$(".selection-1").select2({
 			minimumResultsForSearch: 20,

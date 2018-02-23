@@ -1,15 +1,18 @@
 package es.urjc.code.daw.tablonanuncios;
-
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import com.fasterxml.jackson.annotation.JsonView;
 
@@ -26,41 +29,57 @@ public class User {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;
 	
+
+	
+
+	
 	@JsonView(BasicAtt.class)
 	private String name;
+	
 	@JsonView(BasicAtt.class)
-	private String password;
+	private String passwordHash;
+	
 	@JsonView(BasicAtt.class)
 	private String email;
+		
 	@JsonView(BasicAtt.class)
 	private String locationX;
+	
 	@JsonView(BasicAtt.class)
 	private String locationY;
+	
 	@JsonView(BasicAtt.class)
 	private int medValoration;
+	
+	@JsonView(BasicAtt.class)
+	@ElementCollection(fetch = FetchType.EAGER)
+	 private List<String> roles;
 	
 	@Autowired
 	@OneToMany
 	private List<Product> products = new ArrayList<>();
 	
 	public User() {}
+	
 
-	public User(String name, String password, String email, String locationX, String locationY) {
+	
+	public User(String name, String password, String email, String locationX, String locationY, String roles) {
 		super();
 		this.name = name;
 		this.locationX = locationX;
 		this.locationY = locationY;
-		this.password=password;
+		this.passwordHash = new BCryptPasswordEncoder().encode(password);
 		this.email=email;
+		this.roles = new ArrayList<>(Arrays.asList(roles));
 	}
-	public User(String name, String password, String email) {
+	public User(String name, String password, String email, String roles ) {
 		super();
 		this.name = name;
-		this.password=password;
 		this.email=email;
-		
+		this.passwordHash = new BCryptPasswordEncoder().encode(password);
 		this.locationX = "0000";
 		this.locationY = "0000";
+		this.roles = new ArrayList<>(Arrays.asList(roles));
 	}
 
 	public long getId() {
@@ -108,13 +127,6 @@ public class User {
 		this.products = products;
 	}
 
-	public String getPassword() {
-		return password;
-	}
-
-	public void setPassword(String password) {
-		this.password = password;
-	}
 
 	public String getEmail() {
 		return email;
@@ -127,7 +139,34 @@ public class User {
 	public void setId(long id) {
 		this.id = id;
 	}
-	
-	
-	
+
+
+
+	public String getPasswordHash() {
+		return passwordHash;
+	}
+
+
+
+	public void setPasswordHash(String passwordHash) {
+		this.passwordHash = passwordHash;
+	}
+
+
+
+	public List<String> getRoles() {
+		return roles;
+	}
+
+
+
+	public void setRoles(List<String> roles) {
+		this.roles = roles;
+	}
+
+
+
 }
+	
+	
+	
