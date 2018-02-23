@@ -10,4 +10,4 @@ public interface ProductRepository extends JpaRepository<Product, Long> {
 	List <Product> findById (long id);
 	List <Product> findByUser_Id(long id);
 
-}
+}	
