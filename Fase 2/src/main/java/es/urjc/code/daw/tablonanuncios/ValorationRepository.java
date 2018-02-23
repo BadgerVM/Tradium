@@ -1,6 +1,5 @@
 package es.urjc.code.daw.tablonanuncios;
 
-import java.util.List;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;

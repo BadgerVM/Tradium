@@ -10,7 +10,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import com.fasterxml.jackson.annotation.JsonView;
 
-import es.urjc.code.daw.tablonanuncios.User.BasicAtt;
 
 @Entity
 public class Product {

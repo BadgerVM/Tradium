@@ -32,10 +32,11 @@ public class Dashboard {
 
 	@PostConstruct
     public void init() {
-        User u1 = new User("u1", "p1","b1@a.com", "USER");
-        User u2 = new User("u2", "p2","b2@a.com", "USER");
-        User u3 = new User("u3", "p3","b3@a.com", "USER");
-        User u4 = new User("u4", "p4","b4@a.com", "USER");
+        User u1 = new User("u1", "p1","b1@a.com", "USER");u1.setImage("\\images\\user_images\\user1.jpg");
+        User u2 = new User("u2", "p2","b2@a.com", "USER");u2.setImage("\\images\\user_images\\user2.jpg");
+        User u3 = new User("u3", "p3","b3@a.com", "USER");u3.setImage("\\images\\user_images\\user3.jpg");
+        User u4 = new User("u4", "p4","b4@a.com", "USER");u4.setImage("\\images\\user_images\\user4.png");
+        User u5 = new User("u5", "p5","b5@a.com", "USER");
 
         Product p1 = new Product("pr1", "barata barata1", "asda", 1);p1.setUser(u1);
         Product p2 = new Product("pr2", "barata barata2", "asda", 2);p2.setUser(u1);
@@ -63,12 +64,15 @@ public class Dashboard {
 		Valoration v2 = new Valoration(u1, u2, 3, "meh","21-March-2012");
 		Valoration v3 = new Valoration(u1, u4, 4, "nani");
 		Valoration v4 = new Valoration(u2, u1, 4, "good","1-April-2102");
+		Valoration v5 = new Valoration(u1, u3, 2, "bad");
+		Valoration v6 = new Valoration(u1, u5, 5, "perfect","24-October-2017");
 
 
         userRepository.save(u1);
         userRepository.save(u2);
         userRepository.save(u3);
         userRepository.save(u4);
+        userRepository.save(u5);
 
         productRepository.save(p1);
         productRepository.save(p2);
@@ -96,6 +100,8 @@ public class Dashboard {
         valorationRepository.save(v2);
         valorationRepository.save(v3);
         valorationRepository.save(v4);
+        valorationRepository.save(v5);
+        valorationRepository.save(v6);
 
     }
 	
@@ -179,7 +185,7 @@ public class Dashboard {
 	@RequestMapping("/user/new")
 	public String newUser(Model model, User user) {
 		userRepository.save(user);
-		return "seller";
+		return "redirect:../index";
 	}
 
 	
@@ -208,8 +214,5 @@ public class Dashboard {
 		//model.addAttribute("products", productRepository.findByUser_Id(id));
 		return "seller";
 	}
-
-	
-	
 
 }

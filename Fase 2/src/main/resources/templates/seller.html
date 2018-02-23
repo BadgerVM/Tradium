@@ -56,7 +56,7 @@
 			<div class="wrap_header">
 				<!-- Logo -->
 				<a href="index.html" class="logo">
-					<img src="images/icons/logo.png" alt="IMG-LOGO">
+					<img src="/images/icons/logo.png" alt="IMG-LOGO">
 				</a>
 
 				<!-- Menu -->
@@ -217,8 +217,8 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-md-2 p-b-10">
-					<div class="hov-img-zoom">
-						<img src="images/banner-08.jpg" alt="IMG-ABOUT">
+					<div class="wrap-pic-w">
+						<img src="{{user.image}}" alt="IMG-ABOUT">
 					</div>
 				</div>
 
@@ -246,7 +246,7 @@
 						<a class="nav-link active" data-toggle="tab" href="#productsForSale" role="tab">Products for sale</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link" data-toggle="tab" href="#valuations" role="tab">Valuations</a>
+						<a class="nav-link" data-toggle="tab" href="#valorations" role="tab">Valorations</a>
 					</li>
 				</ul>
 
@@ -302,20 +302,19 @@
 					
 					
 					
-					<div class="tab-pane fade" id="valuations" role="tabpanel">
+					<div class="tab-pane fade" id="valorations" role="tabpanel">
 					{{#valorations}}
 						<div class="row">
 							<div class="col-md-2 p-b-10 m-l-20">
-								<div class="hov-img-zoom">
-									<img src="images/banner-08.jpg" alt="IMG-ABOUT">
+								<div class="wrap-pic-w">
+									<img src="{{buyer.image}}" alt="IMG-ABOUT">
 								</div>
 							</div>
 
 							<div class="col-md-9 p-b-30">
-								<!--  <span class="card-review-date">05-sep-2017</span>-->
 								<span class="card-review-date">{{date}}</span>
 								<h3 class="m-text10 p-t-7 p-b-12">
-									{{buyer.name}}
+									<a href="/user/{{buyer.id}}">{{buyer.name}}</a>
 								</h3>
 								<div id=ratingUsuario" class="card-profile-rating">
 									<img src="images/icons/star_full.svg">

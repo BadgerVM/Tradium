@@ -52,6 +52,9 @@ public class User {
 	private int medValoration;
 	
 	@JsonView(BasicAtt.class)
+	private String image;
+	
+	@JsonView(BasicAtt.class)
 	@ElementCollection(fetch = FetchType.EAGER)
 	 private List<String> roles;
 	
@@ -71,8 +74,9 @@ public class User {
 		this.passwordHash = new BCryptPasswordEncoder().encode(password);
 		this.email=email;
 		this.roles = new ArrayList<>(Arrays.asList(roles));
+		this.image="\\images\\user_images\\user_default.png";
 	}
-	public User(String name, String password, String email, String roles ) {
+	public User(String name, String password, String email, String roles) {
 		super();
 		this.name = name;
 		this.email=email;
@@ -80,7 +84,10 @@ public class User {
 		this.locationX = "0000";
 		this.locationY = "0000";
 		this.roles = new ArrayList<>(Arrays.asList(roles));
+		this.image="\\images\\user_images\\user_default.png";
 	}
+	
+	
 
 	public long getId() {
 		return id;
@@ -162,6 +169,18 @@ public class User {
 
 	public void setRoles(List<String> roles) {
 		this.roles = roles;
+	}
+
+
+
+	public String getImage() {
+		return image;
+	}
+
+
+
+	public void setImage(String image) {
+		this.image = image;
 	}
 
 
