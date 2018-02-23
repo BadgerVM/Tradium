@@ -17,10 +17,11 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         
     	// Public pages
-        http.authorizeRequests().antMatchers("/Index").permitAll();
+        http.authorizeRequests().antMatchers("/index").permitAll();
         http.authorizeRequests().antMatchers("/login").permitAll();
         http.authorizeRequests().antMatchers("/product").permitAll();
         http.authorizeRequests().antMatchers("/about").permitAll();
+        http.authorizeRequests().antMatchers("/user/**").permitAll();
         
         http.authorizeRequests().antMatchers("/css/**").permitAll();
         http.authorizeRequests().antMatchers("/js/**").permitAll();
@@ -37,12 +38,13 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
         http.formLogin().loginPage("/login");
         http.formLogin().usernameParameter("username");
         http.formLogin().passwordParameter("password");
-        http.formLogin().defaultSuccessUrl("/index", true);
+        http.formLogin().defaultSuccessUrl("/index");
         http.formLogin().failureUrl("/login");
 
         // Logout
-        //http.logout().logoutUrl("/tablon");
+       // http.logout().logoutUrl("/login");
         http.logout().logoutSuccessUrl("/login");
+    
         
     }
     
@@ -63,3 +65,4 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     }
 
 }
+

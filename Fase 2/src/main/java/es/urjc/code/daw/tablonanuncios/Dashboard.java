@@ -105,21 +105,43 @@ public class Dashboard {
 
     }
 	
+	@Autowired
+	private UserComponent userComponent;
+	
 	@RequestMapping("/upload")
 	public String upload(Model model) {
 
 		model.addAttribute("products", productRepository.findAll());
-		model.addAttribute("name", userRepository.findByName("u1"));
+		
+	  if( userComponent.isLoggedUser()) {
+			model.addAttribute("name",userComponent.getLoggedUser());
+			model.addAttribute("logged", true);
+		}else {
+			
+			model.addAttribute("logged", false);
+	        
+		}
+
 		return "subir";
 	}
 	
 	@RequestMapping("/index")
-	public String index(Model model) {
+    public String index(Model model) {
 
-		model.addAttribute("products", productRepository.findAll());
-		model.addAttribute("name", userRepository.findByName("u1"));
-		return "index";
-	}
+        //model.addAttribute("products", productRepository.findAll());
+        //model.addAttribute("name", userRepository.findByName("u1"));
+		
+        if( userComponent.isLoggedUser()) {
+			model.addAttribute("name",userComponent.getLoggedUser());
+			model.addAttribute("logged", true);
+		}else {
+			
+			model.addAttribute("logged", false);
+	        
+		}
+        
+        return "index";
+    }
 	
 	//POR SI ACASO TESTEAMOS MÁS CON PASAR PRODUCTOS USAR ESTA, ELIMINAR ANTES DE RELEASE
 	@RequestMapping("/tablon")
@@ -127,7 +149,7 @@ public class Dashboard {
 		
 		 
 		model.addAttribute("products", productRepository.findAll());
-		model.addAttribute("name", userRepository.findByName("u1"));
+
 		return "tablon";
 	}
 	
@@ -135,36 +157,58 @@ public class Dashboard {
 
 	@RequestMapping("/login")
 	public String login(Model model) {
-		model.addAttribute("name", userRepository.findByName("u1"));
+	 
 		return "login";
 	}
-	
-	/*@RequestMapping("/error")
-	public String error() {
-		return "404";
-	}*/
 	
 	
 	@RequestMapping("/search")
 	public String search(Model model) {
+		
+	  if( userComponent.isLoggedUser()) {
+			model.addAttribute("name",userComponent.getLoggedUser());
+			model.addAttribute("logged", true);
+		}else {
+			
+			model.addAttribute("logged", false);
+	        
+		}
 
 		model.addAttribute("products", productRepository.findAll());
-		model.addAttribute("name", userRepository.findByName("u1"));
 
 		return "product";
 	}
 	
 	@RequestMapping("/about")
 	public String about(Model model) {
-		model.addAttribute("name", userRepository.findByName("u1"));
+		
+	  if( userComponent.isLoggedUser()) {
+			model.addAttribute("name",userComponent.getLoggedUser());
+			model.addAttribute("logged", true);
+		}else {
+			
+			model.addAttribute("logged", false);
+	        
+		}
+
 
 		return "about";
 	}
 	
 	//HAY QUE ELIMINARLO EN ALGÚN MOMENTO
+	
 	@RequestMapping("/product/new")
 	public String nuevoAnuncio(Model model, Product product) {
-		model.addAttribute("name", userRepository.findByName("u1"));
+		
+  		if( userComponent.isLoggedUser()) {
+			model.addAttribute("name",userComponent.getLoggedUser());
+			model.addAttribute("logged", true);
+		}else {
+			
+			model.addAttribute("logged", false);
+	        
+		}
+
 		productRepository.save(product);
 
 		return "anuncio_guardado";
@@ -172,14 +216,32 @@ public class Dashboard {
 	}
 	
 	@RequestMapping("/contact")
-	public String contact() {
+	public String contact(Model model) {
 		
-		return "contact";
+	  if( userComponent.isLoggedUser()) {
+			model.addAttribute("name",userComponent.getLoggedUser());
+			model.addAttribute("logged", true);
+		}else {
+			
+			model.addAttribute("logged", false);
+	        
+		}
 
+		return "contact";
 	}
 	
 	@RequestMapping("user/register")
 	public String registerUser(Model model) {
+		
+		  if( userComponent.isLoggedUser()) {
+				model.addAttribute("name",userComponent.getLoggedUser());
+				model.addAttribute("logged", true);
+			}else {
+				
+				model.addAttribute("logged", false);
+		        
+			}
+		  
 		return "register";
 	}
 	
@@ -194,6 +256,15 @@ public class Dashboard {
 	@RequestMapping("/user/{id}")
 	public String showUser(Model model, @PathVariable long id, @PageableDefault(value = PRODUCTS_PER_PAGE) @Qualifier("products")Pageable productPage,  @PageableDefault(value = VALORATIONS_PER_PAGE) @Qualifier("valorations")Pageable valorationPage) {
 		model.addAttribute("user",userRepository.findOne(id));
+		
+		if( userComponent.isLoggedUser()) {
+			model.addAttribute("name",userComponent.getLoggedUser());
+			model.addAttribute("logged", true);
+		}else {
+			
+			model.addAttribute("logged", false);
+	        
+		}
 		
 		Page<Product> products = productRepository.findByUser_Id(id, productPage);
 		model.addAttribute("products", products);
@@ -211,7 +282,6 @@ public class Dashboard {
 		model.addAttribute("showPrevValorations", !valorations.isFirst());
 		model.addAttribute("nextPageValorations", valorations.getNumber()+1);
 		model.addAttribute("prevPageValorations", valorations.getNumber()-1);
-		model.addAttribute("name", userRepository.findByName("u1"));
 		
 		//model.addAttribute("products", productRepository.findByUser_Id(id));
 		return "seller";
