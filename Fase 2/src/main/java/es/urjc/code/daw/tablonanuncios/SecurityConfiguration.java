@@ -19,7 +19,15 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     	// Public pages
         http.authorizeRequests().antMatchers("/Index").permitAll();
         http.authorizeRequests().antMatchers("/login").permitAll();
-       
+        http.authorizeRequests().antMatchers("/product").permitAll();
+        http.authorizeRequests().antMatchers("/about").permitAll();
+        
+        http.authorizeRequests().antMatchers("/css/**").permitAll();
+        http.authorizeRequests().antMatchers("/js/**").permitAll();
+        http.authorizeRequests().antMatchers("/includes/**").permitAll();
+        http.authorizeRequests().antMatchers("/images/**").permitAll();
+        http.authorizeRequests().antMatchers("/fonts/**").permitAll();
+        http.authorizeRequests().antMatchers("/vendor/**").permitAll();
         
 
         // Private pages (all other pages)
@@ -36,8 +44,6 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
         //http.logout().logoutUrl("/tablon");
         http.logout().logoutSuccessUrl("/login");
         
-        // Disable CSRF at the moment
-        http.csrf().disable();
     }
     
     @Autowired
