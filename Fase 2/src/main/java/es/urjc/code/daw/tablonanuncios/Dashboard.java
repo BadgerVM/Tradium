@@ -1,12 +1,13 @@
 package es.urjc.code.daw.tablonanuncios;
 
-import java.util.List;
 
 import javax.annotation.PostConstruct;
-import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.web.csrf.CsrfToken;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -15,9 +16,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class Dashboard {
 	
-	//Si se abre la URL http://127.0.0.1:8080/h2-console y se configura
-	//la URL JDBC con el valor jdbc:h2:mem:testdb se puede acceder a la 
-	//base de datos de la aplicación
+	final static int PRODUCTS_PER_PAGE = 12;
+	final static int VALORATIONS_PER_PAGE = 10;
+
 
 	@Autowired
 	private ProductRepository productRepository;
@@ -49,7 +50,7 @@ public class Dashboard {
         Product p11 = new Product("pr11", "barata barata11", "asda", 11);p11.setUser(u1);
         Product p12 = new Product("pr12", "barata barata12", "asda", 12);p12.setUser(u1);
         Product p13 = new Product("pr13", "barata barata13", "asda", 13);p13.setUser(u1);
-Product p14 = new Product("pr14", "barata barata14", "asda", 14);p14.setUser(u1);
+        Product p14 = new Product("pr14", "barata barata14", "asda", 14);p14.setUser(u1);
         Product p15 = new Product("pr15", "barata barata15", "asda", 15);p15.setUser(u1);
         Product p16 = new Product("pr16", "barata barata16", "asda", 16);p16.setUser(u1);
         Product p17 = new Product("pr17", "barata barata17", "asda", 17);p17.setUser(u2);
@@ -58,9 +59,11 @@ Product p14 = new Product("pr14", "barata barata14", "asda", 14);p14.setUser(u1)
         Product p20 = new Product("pr20", "barata barata20", "asda", 20);p20.setUser(u3);
         Product p21 = new Product("pr21", "barata barata21", "asda", 21);p21.setUser(u3);
 
-        Valoration v1 = new Valoration(u1, u2, 5);
-        Valoration v2 = new Valoration(u1, u2, 3);
-        Valoration v3 = new Valoration(u1, u4, 4);
+        Valoration v1 = new Valoration(u1, u2, 5, "all ok");
+		Valoration v2 = new Valoration(u1, u2, 3, "meh","21-March-2012");
+		Valoration v3 = new Valoration(u1, u4, 4, "nani");
+		Valoration v4 = new Valoration(u2, u1, 4, "good","1-April-2102");
+
 
         userRepository.save(u1);
         userRepository.save(u2);
@@ -92,6 +95,7 @@ Product p14 = new Product("pr14", "barata barata14", "asda", 14);p14.setUser(u1)
         valorationRepository.save(v1);
         valorationRepository.save(v2);
         valorationRepository.save(v3);
+        valorationRepository.save(v4);
 
     }
 	
@@ -134,13 +138,6 @@ Product p14 = new Product("pr14", "barata barata14", "asda", 14);p14.setUser(u1)
 		return "404";
 	}*/
 	
-	@RequestMapping("/user/{id}")
-	public String showUser(Model model, @PathVariable long id) {
-		User user = userRepository.findOne(id);
-		model.addAttribute("user",user);
-		model.addAttribute("products", productRepository.findByUser_Id(id));
-		return "seller";
-	}
 	
 	@RequestMapping("/search")
 	public String search(Model model) {
@@ -187,17 +184,31 @@ Product p14 = new Product("pr14", "barata barata14", "asda", 14);p14.setUser(u1)
 
 	
 
-	@RequestMapping("/product/{id}")
-	public String verAnuncio(Model model, @PathVariable long id, HttpServletRequest request) {
+	@RequestMapping("/user/{id}")
+	public String showUser(Model model, @PathVariable long id, @PageableDefault(value = PRODUCTS_PER_PAGE) @Qualifier("products")Pageable productPage,  @PageableDefault(value = VALORATIONS_PER_PAGE) @Qualifier("valorations")Pageable valorationPage) {
+		model.addAttribute("user",userRepository.findOne(id));
 		
-		List <Product> product = productRepository.findByTags("search");
-
-		model.addAttribute("product", product);
-		model.addAttribute("admin", request.isUserInRole("ADMIN"));
-		model.addAttribute("user", request.isUserInRole("USER"));
-
-		return "product";
+		Page<Product> products = productRepository.findByUser_Id(id, productPage);
+		model.addAttribute("products", products);
+		
+		model.addAttribute("showNextProducts", !products.isLast());
+		model.addAttribute("showPrevProducts", !products.isFirst());
+		model.addAttribute("nextPageProducts", products.getNumber()+1);
+		model.addAttribute("prevPageProducts", products.getNumber()-1);
+		
+		
+		Page<Valoration> valorations = valorationRepository.findBySeller_Id(id, valorationPage);
+		model.addAttribute("valorations", valorations);
+		
+		model.addAttribute("showNextValorations", !valorations.isLast());
+		model.addAttribute("showPrevValorations", !valorations.isFirst());
+		model.addAttribute("nextPageValorations", valorations.getNumber()+1);
+		model.addAttribute("prevPageValorations", valorations.getNumber()-1);
+		
+		//model.addAttribute("products", productRepository.findByUser_Id(id));
+		return "seller";
 	}
+
 	
 	
 

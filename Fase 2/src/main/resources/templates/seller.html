@@ -48,7 +48,7 @@
 
 				<div class="topbar-child2">
 					<span class="topbar-email">
-						{{user.email}}
+						<!--  {{user.email}}-->Login email
 					</span>
 				</div>
 			</div>
@@ -288,6 +288,14 @@
 							</div>
 						</div>
 						{{/products}}
+
+						{{#showPrevProducts}}
+							<a href="/user/{{id}}?products_page={{prevPageProducts}}">Prev page</a>
+						{{/showPrevProducts}}
+						{{#showNextProducts}}
+							<a href="/user/{{id}}?products_page={{nextPageProducts}}">Next page</a>
+						{{/showNextProducts}}
+						
 					</div>
 				</div>
 					
@@ -295,6 +303,7 @@
 					
 					
 					<div class="tab-pane fade" id="valuations" role="tabpanel">
+					{{#valorations}}
 						<div class="row">
 							<div class="col-md-2 p-b-10 m-l-20">
 								<div class="hov-img-zoom">
@@ -303,9 +312,10 @@
 							</div>
 
 							<div class="col-md-9 p-b-30">
-								<span class="card-review-date">05-sep-2017</span>
+								<!--  <span class="card-review-date">05-sep-2017</span>-->
+								<span class="card-review-date">{{date}}</span>
 								<h3 class="m-text10 p-t-7 p-b-12">
-									Comprador1
+									{{buyer.name}}
 								</h3>
 								<div id=ratingUsuario" class="card-profile-rating">
 									<img src="images/icons/star_full.svg">
@@ -315,58 +325,18 @@
 									<img src="images/icons/star_empty.svg">
 								</div>
 								<h3 class="m-text27 p-t-10 p-b-10">
-									He arrived late.
+									{{description}}
 								</h3>
 							</div>
 						</div>
-						<div class="row">
-							<div class="col-md-2 p-b-10 m-l-20">
-								<div class="hov-img-zoom">
-									<img src="images/banner-08.jpg" alt="IMG-ABOUT">
-								</div>
-							</div>
+						{{/valorations}}
 
-							<div class="col-md-9 p-b-30">
-								<span class="card-review-date">04-july-2017</span>
-								<h3 class="m-text10 p-t-7 p-b-12">
-									Buyer2
-								</h3>
-								<div id=ratingUsuario" class="card-profile-rating">
-									<img src="images/icons/star_empty.svg">
-									<img src="images/icons/star_empty.svg">
-									<img src="images/icons/star_empty.svg">
-									<img src="images/icons/star_empty.svg">
-									<img src="images/icons/star_empty.svg">
-								</div>
-								<h3 class="m-text27 p-t-10 p-b-10">
-									He sold me a broken object.
-								</h3>
-							</div>
-						</div>
-						<div class="row">
-							<div class="col-md-2 p-b-10 m-l-20">
-								<div class="hov-img-zoom">
-									<img src="images/banner-08.jpg" alt="IMG-ABOUT">
-								</div>
-							</div>
-
-							<div class="col-md-9 p-b-30">
-								<span class="card-review-date">03-may-2017</span>
-								<h3 class="m-text10 p-t-7 p-b-12">
-									Buyer3
-								</h3>
-								<div id=ratingUsuario" class="card-profile-rating">
-									<img src="images/icons/star_full.svg">
-									<img src="images/icons/star_full.svg">
-									<img src="images/icons/star_full.svg">
-									<img src="images/icons/star_full.svg">
-									<img src="images/icons/star_full.svg">
-								</div>
-								<h3 class="m-text27 p-t-10 p-b-10">
-									Nice seller.
-								</h3>
-							</div>
-						</div>
+						{{#showPrevValorations}}
+							<a href="/user/{{id}}?valorations_page={{prevPageValorations}}">Prev page</a>
+						{{/showPrevValorations}}
+						{{#showNextValorations}}
+							<a href="/user/{{id}}?valorations_page={{nextPageValorations}}">Next page</a>
+						{{/showNextValorations}}
 					</div>
 		
 		
