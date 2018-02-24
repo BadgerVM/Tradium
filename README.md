@@ -38,4 +38,4 @@ Ignacio Ruiz Ardisoni- i.ruiza@alumnos.urjc.es. @TaXiD
 
 ## Navigation Diagram
 
-![alt text](https://github.com/RoberG/Tradium/blob/master/diagram.png)
+
