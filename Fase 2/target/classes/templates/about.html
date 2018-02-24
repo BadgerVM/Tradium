@@ -58,11 +58,21 @@
 				<div class="topbar-child2">
 					<span class="topbar-email">
 					{{#logged}} 
+					<div style="position: absolute; top: 10px; right:130px;">
 						{{name.name}}
+					</div>
+					
+					<form  action="/logout" method="post">
+					
+						<input type="hidden" name="_csrf" value="{{token}}" /> 
+						<input class="size2 m-text2 trans-0-4" style="background-color:rgba(0, 0, 0, 0);" type="submit" value="     Sign Out" />
+						
+					</form>
+					
 					{{/logged}} 
 					
 					{{^logged}} 
-						<a href="/login"class="size2 m-text2 trans-0-4"> Log in </a> 
+						<a href="/login" class="size2 m-text2 trans-0-4"> Log in </a> 
 					{{/logged}}
 					
 					</span>
