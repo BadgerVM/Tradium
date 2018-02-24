@@ -9,7 +9,9 @@
 	<br>
 	
 	<form action="/logout" method="post">
+		<input type="hidden" name="_csrf" value="{{token}}" /> 
 		<input type="submit" value="Sign Out" />
+		
 	</form>
 	
 	<a href="nuevoAnuncio.html">Nuevo anuncio</a>

@@ -18,6 +18,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
         
     	// Public pages
         http.authorizeRequests().antMatchers("/index").permitAll();
+        http.authorizeRequests().antMatchers("/logout").permitAll();
         http.authorizeRequests().antMatchers("/login").permitAll();
         http.authorizeRequests().antMatchers("/product").permitAll();
         http.authorizeRequests().antMatchers("/about").permitAll();
@@ -42,8 +43,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
         http.formLogin().failureUrl("/login");
 
         // Logout
-       // http.logout().logoutUrl("/login");
-        http.logout().logoutSuccessUrl("/login");
+        http.logout().logoutUrl("/logout");
+        http.logout().logoutSuccessUrl("/index");
     
         
     }

@@ -8,6 +8,8 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -111,7 +113,6 @@ public class Dashboard {
 	@RequestMapping("/upload")
 	public String upload(Model model) {
 
-		model.addAttribute("products", productRepository.findAll());
 		
 	  if( userComponent.isLoggedUser()) {
 			model.addAttribute("name",userComponent.getLoggedUser());
@@ -122,7 +123,7 @@ public class Dashboard {
 	        
 		}
 
-		return "subir";
+		return "/upload";
 	}
 	
 	@RequestMapping("/index")
@@ -132,7 +133,10 @@ public class Dashboard {
         //model.addAttribute("name", userRepository.findByName("u1"));
 		
         if( userComponent.isLoggedUser()) {
-			model.addAttribute("name",userComponent.getLoggedUser());
+        	User loggedUser = userComponent.getLoggedUser();
+        	
+			model.addAttribute("name",loggedUser);
+			model.addAttribute("ID", loggedUser.getId());
 			model.addAttribute("logged", true);
 		}else {
 			
@@ -140,7 +144,7 @@ public class Dashboard {
 	        
 		}
         
-        return "index";
+        return "/index";
     }
 	
 	//POR SI ACASO TESTEAMOS MÁS CON PASAR PRODUCTOS USAR ESTA, ELIMINAR ANTES DE RELEASE
@@ -150,15 +154,24 @@ public class Dashboard {
 		 
 		model.addAttribute("products", productRepository.findAll());
 
-		return "tablon";
+		return "/tablon";
 	}
-	
-
 
 	@RequestMapping("/login")
 	public String login(Model model) {
 	 
-		return "login";
+		return "/login";
+	}
+	
+	@RequestMapping("/logout")
+	public String logout(Model model) {
+		
+		if(userComponent.isLoggedUser()){
+			userComponent.setLoggedUser(null);
+		}
+	
+
+		return "/logout";
 	}
 	
 	
@@ -184,6 +197,7 @@ public class Dashboard {
 		
 	  if( userComponent.isLoggedUser()) {
 			model.addAttribute("name",userComponent.getLoggedUser());
+			model.addAttribute("id",userComponent.getLoggedUser().getId());
 			model.addAttribute("logged", true);
 		}else {
 			
@@ -192,7 +206,7 @@ public class Dashboard {
 		}
 
 
-		return "about";
+		return "/about";
 	}
 	
 	//HAY QUE ELIMINARLO EN ALGÚN MOMENTO
@@ -227,8 +241,10 @@ public class Dashboard {
 	        
 		}
 
-		return "contact";
+		return "/contact";
 	}
+	
+	
 	
 	@RequestMapping("user/register")
 	public String registerUser(Model model) {
@@ -242,7 +258,7 @@ public class Dashboard {
 		        
 			}
 		  
-		return "register";
+		return "/register";
 	}
 	
 	@RequestMapping("/user/new")
@@ -284,7 +300,7 @@ public class Dashboard {
 		model.addAttribute("prevPageValorations", valorations.getNumber()-1);
 		
 		//model.addAttribute("products", productRepository.findByUser_Id(id));
-		return "seller";
+		return "/seller";
 	}
 
 }

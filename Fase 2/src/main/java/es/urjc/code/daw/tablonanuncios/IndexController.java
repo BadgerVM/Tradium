@@ -13,19 +13,20 @@ public class IndexController implements ErrorController {
 	 
 	 @RequestMapping(value = PATH)
 	    public String error(Model model) {
+		 
 			if( userComponent.isLoggedUser()) {
 				model.addAttribute("name",userComponent.getLoggedUser());
 				model.addAttribute("logged", true);
-			}else {
 				
+			}else {	
 				model.addAttribute("logged", false);
-		        
 			}
 	        return "Error handling";
 	    }
 	 
 	@Override
 	public String getErrorPath() {
+		
 		// TODO Auto-generated method stub
 		return PATH;
 	}
