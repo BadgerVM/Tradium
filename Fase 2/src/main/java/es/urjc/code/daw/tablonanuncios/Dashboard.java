@@ -1,6 +1,12 @@
 package es.urjc.code.daw.tablonanuncios;
 
 
+import java.io.File;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.ArrayList;
+import java.util.Arrays;
+
 import javax.annotation.PostConstruct;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,18 +14,20 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
 @Controller
 public class Dashboard {
 	
 	final static int PRODUCTS_PER_PAGE = 12;
 	final static int VALORATIONS_PER_PAGE = 10;
+	private static final Path USER_IMAGES_FOLDER = Paths.get(System.getProperty("user.dir"), "\\src\\main\\resources\\static\\images\\user_images");
 
 
 	@Autowired
@@ -37,7 +45,7 @@ public class Dashboard {
         User u1 = new User("u1", "p1","b1@a.com", "USER");u1.setImage("\\images\\user_images\\user1.jpg");
         User u2 = new User("u2", "p2","b2@a.com", "USER");u2.setImage("\\images\\user_images\\user2.jpg");
         User u3 = new User("u3", "p3","b3@a.com", "USER");u3.setImage("\\images\\user_images\\user3.jpg");
-        User u4 = new User("u4", "p4","b4@a.com", "USER");u4.setImage("\\images\\user_images\\user4.png");
+        User u4 = new User("u4", "p4","b4@a.com", "USER");u4.setImage("\\images\\user_images\\user4.jpg");
         User u5 = new User("u5", "p5","b5@a.com", "USER");
 
         Product p1 = new Product("pr1", "barata barata1", "asda", 1);p1.setUser(u1);
@@ -261,16 +269,38 @@ public class Dashboard {
 		return "/register";
 	}
 	
-	@RequestMapping("/user/new")
-	public String newUser(Model model, User user) {
+	@RequestMapping(value = "/user/new", method = RequestMethod.POST)
+	public String handleFileUpload(Model model, User user, @RequestParam("file") MultipartFile file) {
+
+		String fileName = "\\user"+(userRepository.findTopByOrderByIdDesc().getId()+1)+".jpg";
+		user.setRoles(new ArrayList<>(Arrays.asList("USER")));
+		user.setLocationX("0sdad");
+		user.setLocationY("0sdad0");
+
+		if (!file.isEmpty()) {
+			try {
+				
+				//Absolute path!!!
+				file.transferTo(new File(USER_IMAGES_FOLDER.toFile(), fileName));
+				user.setImage("\\images\\user_images"+fileName);
+				
+			} catch (Exception e) {
+				user.setImage("\\images\\user_images\\user_default.jpg");
+			}
+		} else {
+			
+			user.setImage("\\images\\user_images\\user_default.jpg");
+		}
 		userRepository.save(user);
 		return "redirect:../index";
 	}
 
+
 	
 
 	@RequestMapping("/user/{id}")
-	public String showUser(Model model, @PathVariable long id, @PageableDefault(value = PRODUCTS_PER_PAGE) @Qualifier("products")Pageable productPage,  @PageableDefault(value = VALORATIONS_PER_PAGE) @Qualifier("valorations")Pageable valorationPage) {
+	public String showUser(Model model, @PathVariable long id, @PageableDefault(value = PRODUCTS_PER_PAGE) @Qualifier("products")Pageable productPage,  
+			@PageableDefault(value = VALORATIONS_PER_PAGE) @Qualifier("valorations")Pageable valorationPage) {
 		model.addAttribute("user",userRepository.findOne(id));
 		
 		if( userComponent.isLoggedUser()) {

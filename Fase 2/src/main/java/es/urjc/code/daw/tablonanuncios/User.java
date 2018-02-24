@@ -29,10 +29,6 @@ public class User {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;
 	
-
-	
-
-	
 	@JsonView(BasicAtt.class)
 	private String name;
 	
@@ -84,7 +80,7 @@ public class User {
 		this.locationX = "0000";
 		this.locationY = "0000";
 		this.roles = new ArrayList<>(Arrays.asList(roles));
-		this.image="\\images\\user_images\\user_default.png";
+		this.image="\\images\\user_images\\user_default.jpg";
 	}
 	
 	
