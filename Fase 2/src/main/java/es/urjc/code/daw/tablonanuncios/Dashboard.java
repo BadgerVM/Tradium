@@ -48,7 +48,7 @@ public class Dashboard {
         User u4 = new User("u4", "p4","b4@a.com", "USER");u4.setImage("\\images\\user_images\\user4.jpg");
         User u5 = new User("u5", "p5","b5@a.com", "USER");
 
-        Product p1 = new Product("pr1", "barata barata1", "asda", 1);p1.setUser(u1);
+        Product p1 = new Product("pr1", "barata barata1", "asda", 1);p1.setUser(u1);        
         Product p2 = new Product("pr2", "barata barata2", "asda", 2);p2.setUser(u1);
         Product p3 = new Product("pr3", "barata barata3", "asda", 3);p3.setUser(u1);
         Product p4 = new Product("pr4", "barata barata4", "asda", 4);p4.setUser(u1);
@@ -253,6 +253,7 @@ public class Dashboard {
 			
 			product.setImage("\\images\\product_images\\product_default.jpg");
 		}
+		
 		product.setUser(userComponent.getLoggedUser());
 		productRepository.save(product);
 		
@@ -318,8 +319,156 @@ public class Dashboard {
 		userRepository.save(user);
 		return "redirect:../index";
 	}
+	
+	
+	@RequestMapping("/product/{id4}")
+	public String productDetail(Model model, @PathVariable long id4) {
+		
+	  if( userComponent.isLoggedUser()) {
+			model.addAttribute("name",userComponent.getLoggedUser());
+			model.addAttribute("id",userComponent.getLoggedUser().getId());
+			model.addAttribute("logged", true);
+		}else {
+			
+			model.addAttribute("logged", false);
+	        
+		}
+	  
+	  Product product = productRepository.findById(id4);
+	  
+	  if(userComponent.getLoggedUser().getId()==product.getUser().getId()) {
+		  model.addAttribute("vendor", true);
+	  }else {
+		  model.addAttribute("vendor", false);
+	  }
+	  
+	  			
+	  		  	model.addAttribute("product", product);
+	  		  	model.addAttribute("user", product.getUser());
 
+		return "product-detail";
+	}
+	
+	@RequestMapping("/product/{id4}/buy")
+	public String productBought(Model model, @PathVariable long id4) {
+		
+	  if( userComponent.isLoggedUser()) {
+			model.addAttribute("name",userComponent.getLoggedUser());
+			model.addAttribute("id",userComponent.getLoggedUser().getId());
+			model.addAttribute("logged", true);
+		}else {
+			
+			model.addAttribute("logged", false);
+	        
+		}
+	  	
+	  	Product product = productRepository.findById(id4);
+	  	
+	  	product.setBought(true);
+	  	productRepository.save(product);
+	  	
 
+		return "redirect:../../index";
+	}
+	
+	@RequestMapping("/product/{id4}/offer")
+	public String productOffer(Model model, @PathVariable long id4, Offer offer) {
+		
+	 
+	  	
+	  	Product product = productRepository.findById(id4);
+	  	
+	  	product.addListBuyers(userComponent.getLoggedUser());
+	  	//IMPLEMENT CHAT RESPONSE
+	  	
+	  	productRepository.save(product);
+	  	
+
+		return "redirect:../../index";
+	}
+	
+	@RequestMapping("/product/{id3}/sold")
+	public String sold(Model model, @PathVariable long id3) {
+		
+		if(userComponent.isLoggedUser()) {
+			model.addAttribute("name", userComponent.getLoggedUser());
+			model.addAttribute("logged", true);
+		}else {
+			model.addAttribute("logged", false);
+		}
+	 
+		Product product = productRepository.findById(id3);
+		
+		if (product.getUser().getId() != userComponent.getLoggedUser().getId()) {
+			return "redirect:../../error";
+		}
+		model.addAttribute("product", product);
+		model.addAttribute("listBuyers", product.getListBuyers());
+		
+		return "valorationSeller";
+}
+	
+	@RequestMapping("/product/{id}/sentRequest")
+	public String ValorationRequestSent(Model model, User user) {
+		
+  		if( userComponent.isLoggedUser()) {
+			model.addAttribute("name", userComponent.getLoggedUser());
+			model.addAttribute("logged", true);
+		}else {
+			model.addAttribute("logged", false);
+		}
+  		
+  		
+  		
+  		user = userRepository.findByid(user.getId());
+  		
+  		//user.setEmail("ENCONTRADO");
+  		
+  		//IMPLEMENTAR MÉTODO ENVIAR MENSAJE
+		//userRepository.save(user);
+		return "redirect:../../index";
+	}
+	//product/idproduct/idbuyer/buyer
+	@RequestMapping("/product/{id}/{id2}/buyer")
+	public String valoration(Model model, @PathVariable long id, @PathVariable long id2) {
+		
+		
+  		if( userComponent.isLoggedUser()) {
+			model.addAttribute("name",userComponent.getLoggedUser());
+			model.addAttribute("logged", true);
+		}else {
+			model.addAttribute("logged", false);	        
+		}
+  		
+  		Product product = productRepository.findById(id);
+  		
+  		if (userComponent.getLoggedUser().getId() != id2) {
+  			return "redirect:../../../error";
+  		}  		
+  		
+  		
+		model.addAttribute("product", product);
+		
+		return "valorationBuyer";
+
+	}
+	
+	@RequestMapping(value="/product/{id1}/{id2}/sent", method = RequestMethod.POST)
+	public String ValorationSent(@PathVariable long id1, @PathVariable long id2, Valoration valoration ) {
+		Valoration valoration2 = new Valoration();
+		
+		valoration2.createDate();
+		valoration2.setDescription(valoration.getDescription());
+		valoration2.setValoration(valoration.getValoration());
+		valoration2.setSeller(productRepository.findById(id1).getUser());
+		valoration2.setBuyer(userRepository.findByid(id2));
+		
+		
+		valorationRepository.save(valoration2);
+		
+		
+		return "redirect:../../../index";
+	}
 	
 	
 	@RequestMapping("/user/{id}")

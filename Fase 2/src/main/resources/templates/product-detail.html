@@ -5,45 +5,45 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <!--===============================================================================================-->
-<link rel="icon" type="image/png" href="images/icons/favicon.png" />
+<link rel="icon" type="image/png" href="/images/icons/favicon.png" />
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <!--===============================================================================================-->
 <link rel="stylesheet" type="text/css"
-	href="vendor/bootstrap/css/bootstrap.min.css">
+	href="/vendor/bootstrap/css/bootstrap.min.css">
 <!--===============================================================================================-->
 <link rel="stylesheet" type="text/css"
-	href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+	href="/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
 <!--===============================================================================================-->
 <link rel="stylesheet" type="text/css"
-	href="fonts/themify/themify-icons.css">
+	href="/fonts/themify/themify-icons.css">
 <!--===============================================================================================-->
 <link rel="stylesheet" type="text/css"
-	href="fonts/Linearicons-Free-v1.0.0/icon-font.min.css">
+	href="/fonts/Linearicons-Free-v1.0.0/icon-font.min.css">
 <!--===============================================================================================-->
 <link rel="stylesheet" type="text/css"
-	href="fonts/elegant-font/html-css/style.css">
+	href="/fonts/elegant-font/html-css/style.css">
 <!--===============================================================================================-->
-<link rel="stylesheet" type="text/css" href="vendor/animate/animate.css">
-<!--===============================================================================================-->
-<link rel="stylesheet" type="text/css"
-	href="vendor/css-hamburgers/hamburgers.min.css">
+<link rel="stylesheet" type="text/css" href="/vendor/animate/animate.css">
 <!--===============================================================================================-->
 <link rel="stylesheet" type="text/css"
-	href="vendor/animsition/css/animsition.min.css">
+	href="/vendor/css-hamburgers/hamburgers.min.css">
 <!--===============================================================================================-->
 <link rel="stylesheet" type="text/css"
-	href="vendor/select2/select2.min.css">
+	href="/vendor/animsition/css/animsition.min.css">
 <!--===============================================================================================-->
-<link rel="stylesheet" type="text/css" href="vendor/slick/slick.css">
+<link rel="stylesheet" type="text/css"
+	href="/vendor/select2/select2.min.css">
 <!--===============================================================================================-->
-<link rel="stylesheet" type="text/css" href="css/util.css">
-<link rel="stylesheet" type="text/css" href="css/main.css">
+<link rel="stylesheet" type="text/css" href="/vendor/slick/slick.css">
+<!--===============================================================================================-->
+<link rel="stylesheet" type="text/css" href="/css/util.css">
+<link rel="stylesheet" type="text/css" href="/css/main.css">
 <!--===============================================================================================-->
 </head>
 <body class="animsition">
 
-	<!-- Header -->
+<!-- Header -->
 	<header class="header1">
 		<!-- Header desktop -->
 		<div class="container-menu-header">
@@ -55,174 +55,169 @@
 				</div>
 
 
-
 				<div class="topbar-child2">
-					<span class="topbar-email">{{#logged}} {{name.name}}
-						{{/logged}} {{^logged}} <a href="/login"
-						class="size2 m-text2 trans-0-4"> Log in </a> {{/logged}}
+					<span class="topbar-email">
+					{{#logged}} 
+					<div style="position: absolute; top: 10px; right:130px;">
+						{{name.name}}
+					</div>
+					
+					<form  action="/logout" method="post">
+					
+						<input type="hidden" name="_csrf" value="{{token}}" /> 
+						<input class="size2 m-text2 trans-0-4" style="background-color:rgba(0, 0, 0, 0);" type="submit" value="     Sign Out" />
+						
+					</form>
+					
+					{{/logged}} 
+					
+					{{^logged}} 
+						<a href="/login" class="size2 m-text2 trans-0-4"> Log in </a> 
+					{{/logged}}
+					
 					</span>
+				</div>
+				</div>
+				<div class="wrap_header">
+					<!-- Logo -->
+					<a href="/index" class="logo"> <img src="/images/icons/logo.png"
+						alt="IMG-LOGO">
+					</a>
+
+					<!-- Menu -->
+					<div class="wrap_menu">
+						<nav class="menu">
+							<ul class="main_menu">
+
+
+								<li class="sale-noti"><a href="product">Shop</a></li>
+
+
+								<li><a href="/about">About us</a></li>
+
+								<li>
+									<div class="rightbar">
+										<!-- Search -->
+										<div class="pos-relative bo11 of-hidden">
+											<input class="s-text7 size16 p-l-23 p-r-50" type="text"
+												name="search-product" placeholder="Search">
+											<button
+												class="flex-c-m size5 ab-r-m color1 color0-hov trans-0-4">
+												<i class="fs-13 fa fa-search" aria-hidden="true"></i>
+											</button>
+										</div>
+
+									</div>
+
+								</li>
+
+							</ul>
+						</nav>
+					</div>
+
+					<!-- Header Icon -->
+					<div class="header-icons">
+
+						<a href="/upload" class="header-wrapicon1 dis-block"
+							style="margin-right: 10px"> <img
+							src="/images/icons/up-arrow.svg" class="header-icon1" alt="Upload">
+						</a> <a href="/chats" class="header-wrapicon1 dis-block"
+							style="margin-right: 10px"> <img
+							src="/images/icons/chat-icon.png" class="header-icon1" alt="ICON">
+						</a> <br> <a href="/login" class="header-wrapicon1 dis-block">
+							<img src="/images/icons/icon-header-01.png" class="header-icon1"
+							alt="ICON">
+						</a>
+
+					</div>
 				</div>
 			</div>
 
-			<div class="wrap_header">
-				<!-- Logo -->
-				<a href="index" class="logo"> <img src="images/icons/logo.png"
-					alt="IMG-LOGO">
+			<!-- Header Mobile -->
+			<div class="wrap_header_mobile">
+				<!-- Logo moblie -->
+				<a href="/index" class="logo-mobile"> <img
+					src="/images/icons/logo.png" alt="IMG-LOGO">
 				</a>
 
-				<!-- Menu -->
-				<div class="wrap_menu">
-					<nav class="menu">
-						<ul class="main_menu">
+				<!-- Button show menu -->
+				<div class="btn-show-menu">
+					<!-- Header Icon mobile -->
+					<div class="header-icons-mobile">
+					{{#logged}}
+						<a href="user/{{id}}" class="header-wrapicon1 dis-block"> <img
+							src="/images/icons/icon-header-01.png" class="header-icon1"
+							alt="ICON">
+						</a>
+					{{/logged}}	
+					
+					{{^logged}}
+						<a href="/login" class="header-wrapicon1 dis-block"> <img
+							src="/images/icons/icon-header-01.png" class="header-icon1"
+							alt="ICON">
+						</a>
+					{{/logged}}	
+					
+					</div>
 
+					<div class="btn-show-menu-mobile hamburger hamburger--squeeze">
+						<span class="hamburger-box"> <span class="hamburger-inner"></span>
+						</span>
+					</div>
+				</div>
+			</div>
 
-							<li class="sale-noti"><a href="product">Shop</a></li>
+			<!-- Menu Mobile -->
+			<div class="wrap-side-menu">
+				<nav class="side-menu">
+					<ul class="main-menu">
 
+						<li class="item-topbar-mobile p-l-20 p-t-8 p-b-8">
+							<div class="topbar-child2-mobile">
 
-							<li><a href="about">About us</a></li>
-
-							<li>
 								<div class="rightbar">
 									<!-- Search -->
 									<div class="pos-relative bo11 of-hidden">
 										<input class="s-text7 size16 p-l-23 p-r-50" type="text"
 											name="search-product" placeholder="Search">
+
 										<button
 											class="flex-c-m size5 ab-r-m color1 color0-hov trans-0-4">
 											<i class="fs-13 fa fa-search" aria-hidden="true"></i>
 										</button>
 									</div>
-
 								</div>
 
-							</li>
 
-						</ul>
-					</nav>
-				</div>
 
-				<!-- Header Icon -->
-				<div class="header-icons">
-
-					<a href="Upload" class="header-wrapicon1 dis-block"
-						style="margin-right: 10px"> <img
-						src="images/icons/up-arrow.svg" class="header-icon1" alt="Upload">
-					</a> <a href="chats" class="header-wrapicon1 dis-block"
-						style="margin-right: 10px"> <img
-						src="images/icons/chat-icon.png" class="header-icon1" alt="ICON">
-					</a> <br> <a href="Login" class="header-wrapicon1 dis-block">
-						<img src="images/icons/icon-header-01.png" class="header-icon1"
-						alt="ICON">
-					</a>
-
-				</div>
-			</div>
-		</div>
-
-		<!-- Header Mobile -->
-		<div class="wrap_header_mobile">
-			<!-- Logo moblie -->
-			<a href="index" class="logo-mobile"> <img
-				src="images/icons/logo.png" alt="IMG-LOGO">
-			</a>
-
-			<!-- Button show menu -->
-			<div class="btn-show-menu">
-				<!-- Header Icon mobile -->
-				<div class="header-icons-mobile">
-					<a href="#" class="header-wrapicon1 dis-block"> <img
-						src="images/icons/icon-header-01.png" class="header-icon1"
-						alt="ICON">
-					</a>
-				</div>
-
-				<div class="btn-show-menu-mobile hamburger hamburger--squeeze">
-					<span class="hamburger-box"> <span class="hamburger-inner"></span>
-					</span>
-				</div>
-			</div>
-		</div>
-
-		<!-- Menu Mobile -->
-		<div class="wrap-side-menu">
-			<nav class="side-menu">
-				<ul class="main-menu">
-
-					<li class="item-topbar-mobile p-l-20 p-t-8 p-b-8">
-						<div class="topbar-child2-mobile">
-
-							<div class="rightbar">
-								<!-- Search -->
-								<div class="pos-relative bo11 of-hidden">
-									<input class="s-text7 size16 p-l-23 p-r-50" type="text"
-										name="search-product" placeholder="Search">
-
-									<button
-										class="flex-c-m size5 ab-r-m color1 color0-hov trans-0-4">
-										<i class="fs-13 fa fa-search" aria-hidden="true"></i>
-									</button>
-								</div>
 							</div>
+						</li>
 
-
-
-						</div>
-					</li>
-
-					<li class="item-topbar-mobile p-l-10">
-						<div class="topbar-social-mobile">
-							<a href="#" class="topbar-social-item fa fa-facebook"></a> <a
-								href="#" class="topbar-social-item fa fa-instagram"></a> <a
-								href="#" class="topbar-social-item fa fa-twitter"></a>
-						</div>
-					</li>
-
-					<li class="item-menu-mobile"><a href="about">About us</a></li>
-
-					<li class="item-menu-mobile"><a href="product">Shop</a></li>
-
-					<li>
-						<div class="rightbar">
-							<!-- Search -->
-							<div class="pos-relative bo11 of-hidden">
-								<input class="s-text7 size16 p-l-23 p-r-50" type="text"
-									name="search-product" placeholder="Search">
-								<button
-									class="flex-c-m size5 ab-r-m color1 color0-hov trans-0-4">
-									<i class="fs-13 fa fa-search" aria-hidden="true"></i>
-								</button>
+						<li class="item-topbar-mobile p-l-10">
+							<div class="topbar-social-mobile">
+								<a href="#" class="topbar-social-item fa fa-facebook"></a> <a
+									href="#" class="topbar-social-item fa fa-instagram"></a> <a
+									href="#" class="topbar-social-item fa fa-twitter"></a>
 							</div>
+						</li>
 
-						</div>
-					</li>
-					<!-- Header Icon -->
-					<div class="header-icons">
+						<li class="item-menu-mobile"><a href="/about">About us</a></li>
 
-						<a href="Upload" class="header-wrapicon1 dis-block"
-							style="margin-right: 10px"> <img
-							src="images/icons/up-arrow.svg" class="header-icon1" alt="Upload">
-						</a> <a href="chats" class="header-wrapicon1 dis-block"
-							style="margin-right: 10px"> <img
-							src="images/icons/chat-icon.png" class="header-icon1" alt="ICON">
-						</a> <br> <a href="seller" class="header-wrapicon1 dis-block">
-							<img src="images/icons/icon-header-01.png" class="header-icon1"
-							alt="ICON">
-						</a>
-
-					</div>
-				</ul>
-			</nav>
-		</div>
+						<li class="item-menu-mobile"><a href="/product">Featured</a></li>
+						
+						<li class="item-menu-mobile"><a href="/upload">Upload</a></li>
+						{{#logged}}
+						<li class="item-menu-mobile"><form action="/logout" method="post">
+							<input type="hidden" name="_csrf" value="{{token}}" /> 
+							<input style="background-color:rgba(0, 0, 0, 0);" type="submit" value="     Sign Out" />
+						</form>
+						{{/logged}}
+						<br>
+						
+					</ul>
+				</nav>
+			</div>
 	</header>
-
-	<!-- breadcrumb -->
-	<div class="bread-crumb bgwhite flex-w p-l-52 p-r-15 p-t-30 p-l-15-sm">
-		<a href="index.html" class="s-text16"> Home <i
-			class="fa fa-angle-right m-l-8 m-r-9" aria-hidden="true"></i>
-		</a> <a href="product.html" class="s-text16"> Category <i
-			class="fa fa-angle-right m-l-8 m-r-9" aria-hidden="true"></i>
-		</a> <span class="s-text17"> Boxy T-Shirt </span> >
-	</div>
 
 	<!-- Product Detail -->
 	<div class="container bgwhite p-t-35 p-b-80">
@@ -231,39 +226,26 @@
 				<div class="wrap-slick3 flex-sb flex-w">
 					<div class="wrap-slick3-dots"></div>
 
-					<div class="slick3">
 						<div class="item-slick3" data-thumb="images/thumb-item-01.jpg">
 							<div class="wrap-pic-w">
-								<img src="images/product-detail-01.jpg" alt="IMG-PRODUCT">
+								<img src="{{product.image}}" alt="IMG-PRODUCT">
 							</div>
 						</div>
 
-						<div class="item-slick3" data-thumb="images/thumb-item-02.jpg">
-							<div class="wrap-pic-w">
-								<img src="images/product-detail-02.jpg" alt="IMG-PRODUCT">
-							</div>
-						</div>
-
-						<div class="item-slick3" data-thumb="images/thumb-item-03.jpg">
-							<div class="wrap-pic-w">
-								<img src="images/product-detail-03.jpg" alt="IMG-PRODUCT">
-							</div>
-						</div>
-					</div>
 				</div>
 			</div>
 
 			<div class="w-size14 p-t-30 respon5">
 				<h4 class="product-detail-name m-text16 p-b-13">
-					Boxy T-Shirt
+					{{product.name}}
 					<!--   Aqui se pondria nombreDelProducto-->
 				</h4>
 
-				<span class="m-text17"> $22 <!-- Aqui se pondria precioDelProducto -->
+				<span class="m-text17"> {{product.price}}€ <!-- Aqui se pondria precioDelProducto -->
 				</span>
 
 				<p class="s-text8 p-t-10">
-					Short description
+					{{product.description}}
 					<!-- Aqui se pondria descripcionDelProducto -->
 				</p>
 
@@ -272,17 +254,45 @@
 				<div class="p-t-33 p-b-60">
 					<div
 						class="btn-addcart-product-detail size9 trans-0-4 m-t-10 m-b-10">
-
-						<button class="flex-c-m size2 bg4 bo-rad-23 hov1 m-text3 trans-0-4">
-							Buy
-						</button>	
-						<br/>	
-						<form action="/login" method="post">
-							<label>Propose a counteroffer:</label><br /> <input style="display: inline-block" type="text" name="Offer"
-								placeholder="$" /><br /> <br /> <input
-								type="submit" value="Counteroffer"
+						{{^vendor}}
+						<form action="buy" method="post">
+						
+								<input type="hidden" name="_csrf" value="{{token}}" /> 
+								<input	type="submit" value="buy" class="flex-c-m size2 bg4 bo-rad-23 hov1 m-text3 trans-0-4" />
+						</form>
+						{{/vendor}}
+						
+						{{#vendor}}
+						<form action="sold" method="post">
+								<br>
+								<input type="hidden" name="_csrf" value="{{token}}" /> 
+								<input	type="submit" value="Mark as sold" class="flex-c-m size2 bg4 bo-rad-23 hov1 m-text3 trans-0-4" />
+						</form>
+						{{/vendor}}
+						
+						
+						{{^vendor}}	
+						<form action="{{product.id}}/offer" method="post">
+						<br>
+							<label>Propose a counteroffer:</label><br /> 
+							<input style="display: inline-block" type="text"  id="offer" name="offer" placeholder="$" />
+							<br /><br/>
+							<input type="hidden" name="_csrf" value="{{token}}" />
+							<input	type="submit" value="Counteroffer"
 								class="flex-c-m size2 bg4 bo-rad-23 hov1 m-text3 trans-0-4" />
 						</form>
+						{{/vendor}}
+						
+						{{#vendor}}
+						<form action="delete" method="post">
+								<br>
+								<input type="hidden" name="_csrf" value="{{token}}" /> 
+								<input	type="submit" value="delete" class="flex-c-m size2 bg4 bo-rad-23 hov1 m-text3 trans-0-4" />
+						</form>
+						
+						
+						{{/vendor}}
+						
 
 
 
@@ -300,8 +310,8 @@
 
 
 				<div class="p-b-45">
-				<br/><br/><br/><br/><br/><br/>	<br/>	
-					<br /> <span class="s-text8 m-r-35">Tags: ...</span>
+				<br/><br/><br/>	
+					<br /> <span class="s-text8 m-r-35">{{product.tags}}</span>
 
 
 				</div>
@@ -311,13 +321,18 @@
 					class="wrap-dropdown-content bo6 p-t-15 p-b-14 active-dropdown-content">
 					<h5
 						class="js-toggle-dropdown-content flex-sb-m cs-pointer m-text19 color0-hov trans-0-4">
-						Description <i class="down-mark fs-12 color1 fa fa-minus dis-none"
+						User: <i class="down-mark fs-12 color1 fa fa-minus dis-none"
 							aria-hidden="true"></i> <i
 							class="up-mark fs-12 color1 fa fa-plus" aria-hidden="true"></i>
 					</h5>
 
 					<div class="dropdown-content dis-none p-t-15 p-b-23">
-						<p class="s-text8">The description is right here.</p>
+						
+						<form action="../user/{{user.id}}" method="post">							
+							
+							<input type="hidden" name="_csrf" value="{{token}}" /> 
+							<input style="background-color:rgba(0, 0, 0, 0.0)"	type="submit" value="{{user.name}}" />
+						</form>
 					</div>
 				</div>
 
@@ -332,8 +347,8 @@
 
 					<div class="dropdown-content dis-none p-t-15 p-b-23">
 						<div class="contact-map size21" id="google_map"
-							data-map-x="40.614439" data-map-y="-73.926781"
-							data-pin="images/icons/icon-position-map.png"
+							data-map-x="{{user.locationX}}" data-map-y="{{user.locationY}}"
+							data-pin="/images/icons/icon-position-map.png"
 							data-scrollwhell="0" data-draggable="1"></div>
 
 					</div>
@@ -342,274 +357,6 @@
 		</div>
 	</div>
 
-
-	<!-- Relate Product -->
-	<section class="relateproduct bgwhite p-t-45 p-b-138">
-		<div class="container">
-			<div class="sec-title p-b-60">
-				<h3 class="m-text5 t-center">Related products</h3>
-			</div>
-
-			<!-- Slide2 -->
-			<div class="wrap-slick2">
-				<div class="slick2">
-
-					<div class="item-slick2 p-l-15 p-r-15">
-						<!-- Block2 -->
-						<div class="block2">
-							<div
-								class="block2-img wrap-pic-w of-hidden pos-relative block2-labelnew">
-								<img src="images/item-02.jpg" alt="IMG-PRODUCT">
-
-								<div class="block2-overlay trans-0-4">
-									<a href="#"
-										class="block2-btn-addwishlist hov-pointer trans-0-4"> <i
-										class="icon-wishlist icon_heart_alt" aria-hidden="true"></i> <i
-										class="icon-wishlist icon_heart dis-none" aria-hidden="true"></i>
-									</a>
-
-									<div class="block2-btn-addcart w-size1 trans-0-4">
-										<!-- Button -->
-										<button
-											class="flex-c-m size1 bg4 bo-rad-23 hov1 s-text1 trans-0-4">
-											Buy</button>
-									</div>
-								</div>
-							</div>
-
-							<div class="block2-txt p-t-20">
-								<a href="product-detail.html"
-									class="block2-name dis-block s-text3 p-b-5"> Herschel
-									supply co 25l </a> <span class="block2-price m-text6 p-r-5">
-									$75.00 </span>
-							</div>
-						</div>
-					</div>
-
-					<div class="item-slick2 p-l-15 p-r-15">
-						<!-- Block2 -->
-						<div class="block2">
-							<div class="block2-img wrap-pic-w of-hidden pos-relative">
-								<img src="images/item-03.jpg" alt="IMG-PRODUCT">
-
-								<div class="block2-overlay trans-0-4">
-									<a href="#"
-										class="block2-btn-addwishlist hov-pointer trans-0-4"> <i
-										class="icon-wishlist icon_heart_alt" aria-hidden="true"></i> <i
-										class="icon-wishlist icon_heart dis-none" aria-hidden="true"></i>
-									</a>
-
-									<div class="block2-btn-addcart w-size1 trans-0-4">
-										<!-- Button -->
-										<button
-											class="flex-c-m size1 bg4 bo-rad-23 hov1 s-text1 trans-0-4">
-											Buy</button>
-									</div>
-								</div>
-							</div>
-
-							<div class="block2-txt p-t-20">
-								<a href="product-detail.html"
-									class="block2-name dis-block s-text3 p-b-5"> Denim jacket
-									blue </a> <span class="block2-price m-text6 p-r-5"> $92.50 </span>
-							</div>
-						</div>
-					</div>
-
-					<div class="item-slick2 p-l-15 p-r-15">
-						<!-- Block2 -->
-						<div class="block2">
-							<div class="block2-img wrap-pic-w of-hidden pos-relative">
-								<img src="images/item-05.jpg" alt="IMG-PRODUCT">
-
-								<div class="block2-overlay trans-0-4">
-									<a href="#"
-										class="block2-btn-addwishlist hov-pointer trans-0-4"> <i
-										class="icon-wishlist icon_heart_alt" aria-hidden="true"></i> <i
-										class="icon-wishlist icon_heart dis-none" aria-hidden="true"></i>
-									</a>
-
-									<div class="block2-btn-addcart w-size1 trans-0-4">
-										<!-- Button -->
-										<button
-											class="flex-c-m size1 bg4 bo-rad-23 hov1 s-text1 trans-0-4">
-											Buy</button>
-									</div>
-								</div>
-							</div>
-
-							<div class="block2-txt p-t-20">
-								<a href="product-detail.html"
-									class="block2-name dis-block s-text3 p-b-5"> Coach slim
-									easton black </a> <span class="block2-price m-text6 p-r-5">
-									$165.90 </span>
-							</div>
-						</div>
-					</div>
-
-					<div class="item-slick2 p-l-15 p-r-15">
-						<!-- Block2 -->
-						<div class="block2">
-							<div
-								class="block2-img wrap-pic-w of-hidden pos-relative block2-labelsale">
-								<img src="images/item-07.jpg" alt="IMG-PRODUCT">
-
-								<div class="block2-overlay trans-0-4">
-									<a href="#"
-										class="block2-btn-addwishlist hov-pointer trans-0-4"> <i
-										class="icon-wishlist icon_heart_alt" aria-hidden="true"></i> <i
-										class="icon-wishlist icon_heart dis-none" aria-hidden="true"></i>
-									</a>
-
-									<div class="block2-btn-addcart w-size1 trans-0-4">
-										<!-- Button -->
-										<button
-											class="flex-c-m size1 bg4 bo-rad-23 hov1 s-text1 trans-0-4">
-											Buy</button>
-									</div>
-								</div>
-							</div>
-
-							<div class="block2-txt p-t-20">
-								<a href="product-detail.html"
-									class="block2-name dis-block s-text3 p-b-5"> Frayed denim
-									shorts </a> <span class="block2-oldprice m-text7 p-r-5">
-									$29.50 </span> <span class="block2-newprice m-text8 p-r-5">
-									$15.90 </span>
-							</div>
-						</div>
-					</div>
-
-					<div class="item-slick2 p-l-15 p-r-15">
-						<!-- Block2 -->
-						<div class="block2">
-							<div
-								class="block2-img wrap-pic-w of-hidden pos-relative block2-labelnew">
-								<img src="images/item-02.jpg" alt="IMG-PRODUCT">
-
-								<div class="block2-overlay trans-0-4">
-									<a href="#"
-										class="block2-btn-addwishlist hov-pointer trans-0-4"> <i
-										class="icon-wishlist icon_heart_alt" aria-hidden="true"></i> <i
-										class="icon-wishlist icon_heart dis-none" aria-hidden="true"></i>
-									</a>
-
-									<div class="block2-btn-addcart w-size1 trans-0-4">
-										<!-- Button -->
-										<button
-											class="flex-c-m size1 bg4 bo-rad-23 hov1 s-text1 trans-0-4">
-											Buy</button>
-									</div>
-								</div>
-							</div>
-
-							<div class="block2-txt p-t-20">
-								<a href="product-detail.html"
-									class="block2-name dis-block s-text3 p-b-5"> Herschel
-									supply co 25l </a> <span class="block2-price m-text6 p-r-5">
-									$75.00 </span>
-							</div>
-						</div>
-					</div>
-
-					<div class="item-slick2 p-l-15 p-r-15">
-						<!-- Block2 -->
-						<div class="block2">
-							<div class="block2-img wrap-pic-w of-hidden pos-relative">
-								<img src="images/item-03.jpg" alt="IMG-PRODUCT">
-
-								<div class="block2-overlay trans-0-4">
-									<a href="#"
-										class="block2-btn-addwishlist hov-pointer trans-0-4"> <i
-										class="icon-wishlist icon_heart_alt" aria-hidden="true"></i> <i
-										class="icon-wishlist icon_heart dis-none" aria-hidden="true"></i>
-									</a>
-
-									<div class="block2-btn-addcart w-size1 trans-0-4">
-										<!-- Button -->
-										<button
-											class="flex-c-m size1 bg4 bo-rad-23 hov1 s-text1 trans-0-4">
-											Buy</button>
-									</div>
-								</div>
-							</div>
-
-							<div class="block2-txt p-t-20">
-								<a href="product-detail.html"
-									class="block2-name dis-block s-text3 p-b-5"> Denim jacket
-									blue </a> <span class="block2-price m-text6 p-r-5"> $92.50 </span>
-							</div>
-						</div>
-					</div>
-
-					<div class="item-slick2 p-l-15 p-r-15">
-						<!-- Block2 -->
-						<div class="block2">
-							<div class="block2-img wrap-pic-w of-hidden pos-relative">
-								<img src="images/item-05.jpg" alt="IMG-PRODUCT">
-
-								<div class="block2-overlay trans-0-4">
-									<a href="#"
-										class="block2-btn-addwishlist hov-pointer trans-0-4"> <i
-										class="icon-wishlist icon_heart_alt" aria-hidden="true"></i> <i
-										class="icon-wishlist icon_heart dis-none" aria-hidden="true"></i>
-									</a>
-
-									<div class="block2-btn-addcart w-size1 trans-0-4">
-										<!-- Button -->
-										<button
-											class="flex-c-m size1 bg4 bo-rad-23 hov1 s-text1 trans-0-4">
-											Buy</button>
-									</div>
-								</div>
-							</div>
-
-							<div class="block2-txt p-t-20">
-								<a href="product-detail.html"
-									class="block2-name dis-block s-text3 p-b-5"> Coach slim
-									easton black </a> <span class="block2-price m-text6 p-r-5">
-									$165.90 </span>
-							</div>
-						</div>
-					</div>
-
-					<div class="item-slick2 p-l-15 p-r-15">
-						<!-- Block2 -->
-						<div class="block2">
-							<div
-								class="block2-img wrap-pic-w of-hidden pos-relative block2-labelsale">
-								<img src="images/item-07.jpg" alt="IMG-PRODUCT">
-
-								<div class="block2-overlay trans-0-4">
-									<a href="#"
-										class="block2-btn-addwishlist hov-pointer trans-0-4"> <i
-										class="icon-wishlist icon_heart_alt" aria-hidden="true"></i> <i
-										class="icon-wishlist icon_heart dis-none" aria-hidden="true"></i>
-									</a>
-
-									<div class="block2-btn-addcart w-size1 trans-0-4">
-										<!-- Button -->
-										<button
-											class="flex-c-m size1 bg4 bo-rad-23 hov1 s-text1 trans-0-4">
-											Buy</button>
-									</div>
-								</div>
-							</div>
-
-							<div class="block2-txt p-t-20">
-								<a href="product-detail.html"
-									class="block2-name dis-block s-text3 p-b-5"> Frayed denim
-									shorts </a> <span class="block2-oldprice m-text7 p-r-5">
-									$29.50 </span> <span class="block2-newprice m-text8 p-r-5">
-									$15.90 </span>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-
-		</div>
-	</section>
 
 	<!-- Footer -->
 	<footer class="bg6 p-t-45 p-b-43 p-l-45 p-r-45">
@@ -649,16 +396,16 @@
 
 
 	<!--===============================================================================================-->
-	<script type="text/javascript" src="vendor/jquery/jquery-3.2.1.min.js"></script>
+	<script type="text/javascript" src="/vendor/jquery/jquery-3.2.1.min.js"></script>
 	<!--===============================================================================================-->
 	<script type="text/javascript"
-		src="vendor/animsition/js/animsition.min.js"></script>
+		src="/vendor/animsition/js/animsition.min.js"></script>
 	<!--===============================================================================================-->
-	<script type="text/javascript" src="vendor/bootstrap/js/popper.js"></script>
+	<script type="text/javascript" src="/vendor/bootstrap/js/popper.js"></script>
 	<script type="text/javascript"
-		src="vendor/bootstrap/js/bootstrap.min.js"></script>
+		src="/vendor/bootstrap/js/bootstrap.min.js"></script>
 	<!--===============================================================================================-->
-	<script type="text/javascript" src="vendor/select2/select2.min.js"></script>
+	<script type="text/javascript" src="/vendor/select2/select2.min.js"></script>
 	<script type="text/javascript">
 		$(".selection-1").select2({
 			minimumResultsForSearch : 20,
@@ -671,10 +418,10 @@
 		});
 	</script>
 	<!--===============================================================================================-->
-	<script type="text/javascript" src="vendor/slick/slick.min.js"></script>
-	<script type="text/javascript" src="js/slick-custom.js"></script>
+	<script type="/text/javascript" src="vendor/slick/slick.min.js"></script>
+	<script type="/text/javascript" src="js/slick-custom.js"></script>
 	<!--===============================================================================================-->
-	<script type="text/javascript"
+	<script type="/text/javascript"
 		src="vendor/sweetalert/sweetalert.min.js"></script>
 	<script type="text/javascript">
 		$('.block2-btn-addcart').each(
@@ -704,12 +451,12 @@
 	</script>
 
 	<!--===============================================================================================-->
-	<script src="js/main.js"></script>
+	<script src="/js/main.js"></script>
 
 	<script
 		src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAKFWBqlKAGCeS1rMVoaNlwyayu0e0YRes"></script>
 
-	<script src="js/map-custom.js"></script>
+	<script src="/js/map-custom.js"></script>
 
 
 

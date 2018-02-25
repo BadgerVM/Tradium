@@ -1,12 +1,14 @@
 package es.urjc.code.daw.tablonanuncios;
 
 import java.util.ArrayList;
-
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -42,9 +44,21 @@ public class Product {
 	@JsonView(BasicAtt.class)
 	private double price;
 	
+	@JsonView(BasicAtt.class)
+	private double minPrice;
+	
+	@JsonView(BasicAtt.class)
+	private boolean bought;
+	
+
+
 	@Autowired
 	@OneToOne
 	private User user;
+	
+	@Autowired
+	@OneToMany
+	private List <User> listBuyers;
 	
 
 	public Product() {}
@@ -56,8 +70,36 @@ public class Product {
 		this.tags = tags;
 		this.image = "\\images\\product_images\\product_default.png";
 		this.price = price;
+		this.bought = false;
+	}
+    
+	public double getMinPrice() {
+		return minPrice;
 	}
 
+	public void setMinPrice(double minPrice) {
+		this.minPrice = minPrice;
+	}
+	
+	public boolean getBought() {
+		return bought;
+	}
+
+	public void setBought(boolean bought) {
+		this.bought = bought;
+	}
+
+	public List<User> getListBuyers() {
+		return listBuyers;
+	}
+
+	public void setListBuyers(List<User> listBuyers) {
+		this.listBuyers = listBuyers;
+	}
+	
+	public void addListBuyers(User buyer) {
+		this.listBuyers.add(buyer);
+	}
 	
 	public String getImage() {
 		return image;
