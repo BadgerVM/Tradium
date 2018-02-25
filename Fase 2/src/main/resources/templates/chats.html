@@ -5,40 +5,40 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <!--===============================================================================================-->
-<link rel="icon" type="image/png" href="images/icons/favicon.png" />
+<link rel="icon" type="image/png" href="/images/icons/favicon.png" />
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <!--===============================================================================================-->
 <link rel="stylesheet" type="text/css"
-	href="vendor/bootstrap/css/bootstrap.min.css">
+	href="/vendor/bootstrap/css/bootstrap.min.css">
 <!--===============================================================================================-->
 <link rel="stylesheet" type="text/css"
-	href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+	href="/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
 <!--===============================================================================================-->
 <link rel="stylesheet" type="text/css"
-	href="fonts/themify/themify-icons.css">
+	href="/fonts/themify/themify-icons.css">
 <!--===============================================================================================-->
 <link rel="stylesheet" type="text/css"
-	href="fonts/Linearicons-Free-v1.0.0/icon-font.min.css">
+	href="/fonts/Linearicons-Free-v1.0.0/icon-font.min.css">
 <!--===============================================================================================-->
 <link rel="stylesheet" type="text/css"
-	href="fonts/elegant-font/html-css/style.css">
+	href="/fonts/elegant-font/html-css/style.css">
 <!--===============================================================================================-->
-<link rel="stylesheet" type="text/css" href="vendor/animate/animate.css">
-<!--===============================================================================================-->
-<link rel="stylesheet" type="text/css"
-	href="vendor/css-hamburgers/hamburgers.min.css">
+<link rel="stylesheet" type="text/css" href="/vendor/animate/animate.css">
 <!--===============================================================================================-->
 <link rel="stylesheet" type="text/css"
-	href="vendor/animsition/css/animsition.min.css">
+	href="/vendor/css-hamburgers/hamburgers.min.css">
 <!--===============================================================================================-->
 <link rel="stylesheet" type="text/css"
-	href="vendor/select2/select2.min.css">
+	href="/vendor/animsition/css/animsition.min.css">
 <!--===============================================================================================-->
-<link rel="stylesheet" type="text/css" href="vendor/slick/slick.css">
+<link rel="stylesheet" type="text/css"
+	href="/vendor/select2/select2.min.css">
 <!--===============================================================================================-->
-<link rel="stylesheet" type="text/css" href="css/util.css">
-<link rel="stylesheet" type="text/css" href="css/main.css">
+<link rel="stylesheet" type="text/css" href="/vendor/slick/slick.css">
+<!--===============================================================================================-->
+<link rel="stylesheet" type="text/css" href="/css/util.css">
+<link rel="stylesheet" type="text/css" href="/css/main.css">
 <!--===============================================================================================-->
 </head>
 <body class="animsition">
@@ -64,7 +64,7 @@
 			</div>
 				<div class="wrap_header">
 					<!-- Logo -->
-					<a href="index" class="logo"> <img src="images/icons/logo.png"
+					<a href="index" class="logo"> <img src="/images/icons/logo.png"
 						alt="IMG-LOGO">
 					</a>
 
@@ -74,10 +74,10 @@
 							<ul class="main_menu">
 
 
-								<li class="sale-noti"><a href="product">Shop</a></li>
+								<li class="sale-noti"><a href="/../index">Shop</a></li>
 
 
-								<li><a href="about">About us</a></li>
+								<li><a href="/../about">About us</a></li>
 
 								<li>
 									<div class="rightbar">
@@ -102,15 +102,17 @@
 					<!-- Header Icon -->
 					<div class="header-icons">
 
-						<a href="Upload" class="header-wrapicon1 dis-block"
+						<a href="../../product/upload" class="header-wrapicon1 dis-block"
 							style="margin-right: 10px"> <img
-							src="images/icons/up-arrow.svg" class="header-icon1" alt="Upload">
-						</a> <a href="chats" class="header-wrapicon1 dis-block"
+							src="/images/icons/up-arrow.svg" class="header-icon1" alt="Upload">
+						</a> <a href="../chat" class="header-wrapicon1 dis-block"
 							style="margin-right: 10px"> <img
-							src="images/icons/chat-icon.png" class="header-icon1" alt="ICON">
-						</a> <br> <a href="Login" class="header-wrapicon1 dis-block">
-							<img src="images/icons/icon-header-01.png" class="header-icon1"
+							src="/images/icons/chat-icon.png" class="header-icon1" alt="ICON">
+							{{#logged}}
+						</a> <br> <a href="../user/{{name.id}}" class="header-wrapicon1 dis-block">
+							<img src="/images/icons/icon-header-01.png" class="header-icon1"
 							alt="ICON">
+							{{/logged}}
 						</a>
 
 					</div>
@@ -222,110 +224,58 @@
 
 		<table width="100%" height="700px" style="overflow: scroll">
 			<tr>
+			<!-- 
 				<td width="13%" style="min-width: 150px; background-color:">
+				
 					<ul class="nav flex-column" id="myTab" role="tablist"
 						style="position: absolute; top: 0px">
 						<li class="nav-item"><a class="nav-link active"
 							data-toggle="tab" href="#home" role="tab" aria-controls="home"><img
-								src="images/icons/icon-header-01.png" alt="ICON"> Pedro</a></li>
-						<li class="nav-item"><a class="nav-link" data-toggle="tab"
-							href="#menu1" role="tab" aria-controls="profile"><img
-								src="images/icons/icon-header-01.png" alt="ICON"> Juandi</a></li>
-						<li class="nav-item"><a class="nav-link" data-toggle="tab"
-							href="#menu2" role="tab" aria-controls="messages"><img
-								src="images/icons/icon-header-01.png" alt="ICON"> Maria</a></li>
+								src="images/icons/icon-header-01.png" alt="ICON">Pepe</a></li>
 					</ul>
+				
+				
 
 				</td>
-
+ 				-->
 				<td style="background-color: grey;">
 					<div class="tab-content"
 						style="position: relative; height: 100%; width: inherit; overflow-y: scroll; padding-top: 6px">
+						
 						<div id="home" class="container tab-pane active"
 							style="width: inherit;">
-
+							{{#messages}}
 							<div class="card"
-								style="padding: 4px; margin: 5px; max-width: 50%; background-color: #EFFBF5;">Nice
-								to meet U</div>
-
-							<div class="card"
-								style="padding: 4px; margin: 5px; max-width: 50%; background-color: #E0F8F7; left: 50%; text-align: right;"; >
-								Thank you!</div>
-							<div class="card"
-								style="padding: 4px; margin: 5px; max-width: 50%; background-color: #EFFBF5">When
-								would you like to meet?</div>
-							<div class="card"
-								style="padding: 4px; margin: 5px; max-width: 50%; background-color: #EFFBF5">I'm
-								free on saturdays evening and sundays btw</div>
-							<div class="card"
-								style="padding: 4px; margin: 5px; max-width: 50%; background-color: #E0F8F7; left: 50%; text-align: right;"; >Me
-								too, do you know the park around the college?</div>
-							<div class="card"
-								style="padding: 4px; margin: 5px; max-width: 50%; background-color: #EFFBF5">The
-								one with planets?</div>
+								style="padding: 4px; margin: 5px; max-width: 100%; background-color: #EFFBF5;">
+								<p><b>{{transmitter.name}}</b></p>
+								<p>{{text}}</p>
+								</div>
+							{{/messages}}
+								<!--  
 							<div class="card"
 								style="padding: 4px; margin: 5px; max-width: 50%; background-color: #E0F8F7; left: 50%; text-align: right;"; >yes!
 								it's a beatifull place to chill, would you like to meet there?</div>
 							<div class="card"
 								style="padding: 4px; margin: 5px; max-width: 50%; background-color: #EFFBF5">Yes!
-								sure, see you there on saturday evening, at 5 are you free?</div>
-
-
-						</div>
-
-						<div id="menu1" class="container tab-pane" style="width: inherit;">
-
-							<div class="card"
-								style="padding: 4px; margin: 5px; max-width: 50%; background-color: #EFFBF5;">Lorem
-								ipsum dolor sit amet, consectetuer adipiscing elit. Aenean
-								commodo ligula eget dolor. Aenean massa.</div>
-
-							<div class="card"
-								style="padding: 4px; margin: 5px; max-width: 50%; background-color: #E0F8F7; left: 50%; text-align: right;"; >
-								Cum sociis natoque penatibus et magnis dis parturient montes,
-								nascetur ridiculus mus. Donec quam felis, ultricies nec,
-								pellentesque eu, pretium quis, sem.</div>
-							<div class="card"
-								style="padding: 4px; margin: 5px; max-width: 50%; background-color: #EFFBF5">Nulla
-								consequat massa quis enim.</div>
-							<div class="card"
-								style="padding: 4px; margin: 5px; max-width: 50%; background-color: #EFFBF5">onec
-								pede justo, fringilla vel, aliquet nec, vulputate eget, arcu.</div>
-							<div class="card"
-								style="padding: 4px; margin: 5px; max-width: 50%; background-color: #E0F8F7; left: 50%; text-align: right;"; >Ok.
-							</div>
-							<div class="card"
-								style="padding: 4px; margin: 5px; max-width: 50%; background-color: #EFFBF5">ok
-							</div>
-							<div class="card"
-								style="padding: 4px; margin: 5px; max-width: 50%; background-color: #E0F8F7; left: 50%; text-align: right;"; >Ok.
-							</div>
-							<div class="card"
-								style="padding: 4px; margin: 5px; max-width: 50%; background-color: #EFFBF5">onec
-								pede justo, fringilla vel, aliquet nec, vulputate eget, arcu.</div>
-
-
-						</div>
-						<div id="menu2" class="container tab-pane fade"
-							style="height: 700px">
-							<br>
-
+								sure, see you there on saturday evening, at 5 are you free?</div>-->
 						</div>
 					</div>
 
-
+				
 					<div class="card"
-						style="padding: 2px; margin: 2px; width: 80%; position: absolute; bottom: 3px; right: 0px;">
+						style="padding: 2px; margin: 2px; width: 99%; position: absolute; bottom: 3px; right: 2px;">
 
 
-
-						<input type="text" class="form-control" id="usr"><img
+						<form action="/chat/{{id}}/new">
+						<input type="hidden" name="_csrf" value="{{token}}" />
+						<input type="text" class="form-control" id="text" name="text"/>
+						<input id="sendMessage" type="image" alt="send"
 							style="position: absolute; right: 3px; top: -1px; padding-bottom: 1px; margin-bottom: 1px; margin-top: 6px;"
-							width="30" height="30" src="images/icons/arrow-alt-from-left.svg" />
+							width="30" height="30" src="/images/icons/arrow-alt-from-left.svg" 
+							/>
+						</form>
 					</div>
 				</td>
-
-
 			</tr>
 
 		</table>
@@ -370,16 +320,14 @@
 
 
 	<!--===============================================================================================-->
-	<script type="text/javascript" src="vendor/jquery/jquery-3.2.1.min.js"></script>
+	<script type="text/javascript" src="/vendor/jquery/jquery-3.2.1.min.js"></script>
 	<!--===============================================================================================-->
-	<script type="text/javascript"
-		src="vendor/animsition/js/animsition.min.js"></script>
+	<script type="text/javascript" src="/vendor/animsition/js/animsition.min.js"></script>
 	<!--===============================================================================================-->
-	<script type="text/javascript" src="vendor/bootstrap/js/popper.js"></script>
-	<script type="text/javascript"
-		src="vendor/bootstrap/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="/vendor/bootstrap/js/popper.js"></script>
+	<script type="text/javascript" src="/vendor/bootstrap/js/bootstrap.min.js"></script>
 	<!--===============================================================================================-->
-	<script type="text/javascript" src="vendor/select2/select2.min.js"></script>
+	<script type="text/javascript" src="/vendor/select2/select2.min.js"></script>
 	<script type="text/javascript">
 		$(".selection-1").select2({
 			minimumResultsForSearch : 20,
@@ -392,6 +340,6 @@
 		});
 	</script>
 	<!--===============================================================================================-->
-	<script src="js/main.js"></script>
+	<script src="/js/main.js"></script>
 </body>
 </html>

@@ -6,6 +6,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 import javax.annotation.PostConstruct;
 
@@ -25,8 +26,8 @@ import org.springframework.web.multipart.MultipartFile;
 @Controller
 public class Dashboard {
 	
-	final static int PRODUCTS_PER_PAGE = 12;
-	final static int VALORATIONS_PER_PAGE = 10;
+	private final static int PRODUCTS_PER_PAGE = 12;
+	private final static int VALORATIONS_PER_PAGE = 10;
 	private static final Path USER_IMAGES_FOLDER = Paths.get(System.getProperty("user.dir"), "\\src\\main\\resources\\static\\images\\user_images");
 	private static final Path PRODUCT_IMAGES_FOLDER = Paths.get(System.getProperty("user.dir"), "\\src\\main\\resources\\static\\images\\product_images");
 
@@ -38,6 +39,13 @@ public class Dashboard {
 	
 	@Autowired
 	private ValorationRepository valorationRepository;
+	
+	@Autowired
+	private ChatRepository chatRepository;
+	
+	@Autowired
+	private MessageRepository messageRepository;
+
 	
 
 	@PostConstruct
@@ -76,6 +84,18 @@ public class Dashboard {
 		Valoration v4 = new Valoration(u2, u1, 4, "good","1-April-2102");
 		Valoration v5 = new Valoration(u1, u3, 2, "bad");
 		Valoration v6 = new Valoration(u1, u5, 5, "perfect","24-October-2017");
+		
+		Chat c1 = new Chat(u1, u2);
+		Chat c2 = new Chat(u1, u3);
+		Chat c3 = new Chat(u3, u2);
+		Chat c4 = new Chat(u5, u1);
+		
+		Message m1 = new Message(u1, "hi");m1.setChat(c1);
+		Message m2 = new Message(u1, "how are u?");m2.setChat(c1);
+		Message m3 = new Message(u2, "fine thanks");m3.setChat(c1);
+		Message m4 = new Message(u3, "SHUT UP");m4.setChat(c2);
+		Message m5 = new Message(u1, "are u retarded?");m5.setChat(c2);
+
 
 
         userRepository.save(u1);
@@ -112,27 +132,30 @@ public class Dashboard {
         valorationRepository.save(v4);
         valorationRepository.save(v5);
         valorationRepository.save(v6);
+        
+        chatRepository.save(c1);
+        chatRepository.save(c2);
+        chatRepository.save(c3);
+        chatRepository.save(c4);
+        
+        messageRepository.save(m1);
+        messageRepository.save(m2);
+        messageRepository.save(m3);
+        messageRepository.save(m4);
+        messageRepository.save(m5);
+
 
     }
 	
 	@Autowired
 	private UserComponent userComponent;
 	
-	@RequestMapping("/upload")
-	public String upload(Model model) {
-
-		
-	  if( userComponent.isLoggedUser()) {
-			model.addAttribute("name",userComponent.getLoggedUser());
-			model.addAttribute("logged", true);
-		}else {
-			
-			model.addAttribute("logged", false);
-	        
-		}
-
-		return "/upload";
+	
+	@RequestMapping("/")
+    public String home(Model model) {
+		return "redirect:/index";
 	}
+	
 	
 	@RequestMapping("/index")
     public String index(Model model) {
@@ -154,16 +177,6 @@ public class Dashboard {
         
         return "/index";
     }
-	
-	//POR SI ACASO TESTEAMOS MÁS CON PASAR PRODUCTOS USAR ESTA, ELIMINAR ANTES DE RELEASE
-	@RequestMapping("/tablon")
-	public String tablon(Model model) {
-		
-		 
-		model.addAttribute("products", productRepository.findAll());
-
-		return "/tablon";
-	}
 
 	@RequestMapping("/login")
 	public String login(Model model) {
@@ -505,5 +518,57 @@ public class Dashboard {
 		//model.addAttribute("products", productRepository.findByUser_Id(id));
 		return "/seller";
 	}
+	
+	@RequestMapping("/chat/{id}/new")
+	public String newMessage(Model model, @PathVariable long id, Message m) {
+		Message m1= new Message();
+		m1.setText(m.getText());
+		m1.setTransmitter(userRepository.findByid(userComponent.getLoggedUser().getId()));
+		m1.setChat(chatRepository.findById(id));
+		messageRepository.save(m1);
+		return "redirect:../../chat/{id}";
+	}
+	
+	@RequestMapping("/chat/{id}")
+	public String showMessages(Model model, @PathVariable long id) {
+		
+		if( userComponent.isLoggedUser()) {
+			model.addAttribute("name",userComponent.getLoggedUser());
+			model.addAttribute("logged", true);
+		}else {
+			
+			model.addAttribute("logged", false);
+	        
+		}
+
+		model.addAttribute("messages", messageRepository.getMessages(chatRepository.findById(id)));
+		
+		return "/chats";
+	}
+	
+	@RequestMapping("/chat")
+	public String showChats(Model model) {
+		if( userComponent.isLoggedUser()) {
+			model.addAttribute("name",userComponent.getLoggedUser());
+			model.addAttribute("logged", true);
+		}else {
+			
+			model.addAttribute("logged", false);
+	        
+		}
+		User u;
+		List<Chat> chats = chatRepository.getChats(userRepository.findByid(userComponent.getLoggedUser().getId()));
+		for(int i=0;i<chats.size();i++) {
+			if(chats.get(i).getUser1().getId()!=userComponent.getLoggedUser().getId()) {
+				u=chats.get(i).getUser1();
+				chats.get(i).setUser1(chats.get(i).getUser2());
+				chats.get(i).setUser2(u);
+			}
+		}
+		model.addAttribute("chats",chats);
+		return "/open_chats";
+	}
+
+	
 
 }
