@@ -321,7 +321,7 @@ public class Dashboard {
 
 
 	
-
+	
 	@RequestMapping("/user/{id}")
 	public String showUser(Model model, @PathVariable long id, @PageableDefault(value = PRODUCTS_PER_PAGE) @Qualifier("products")Pageable productPage,  
 			@PageableDefault(value = VALORATIONS_PER_PAGE) @Qualifier("valorations")Pageable valorationPage) {
