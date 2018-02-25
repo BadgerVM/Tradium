@@ -12,6 +12,10 @@ public interface ProductRepository extends JpaRepository<Product, Long> {
 	List <Product> findByUser_Id(long id);
 	Page <Product> findByUser_Id(long id, Pageable page);
 	Product findTopByOrderByIdDesc();
-
+	Page<Product> findByTagsContaining(String s, Pageable page);
+	
+	/*
+	@Query(value = "select iu from iu product where iu.tags like '%:s%'", nativeQuery = true)
+	Page<Product> getProducts(String s, Pageable page);*/
 	
 }	

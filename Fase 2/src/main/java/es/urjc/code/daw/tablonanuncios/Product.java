@@ -16,7 +16,6 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import com.fasterxml.jackson.annotation.JsonView;
 
-import es.urjc.code.daw.tablonanuncios.User.BasicAtt;
 
 
 @Entity
