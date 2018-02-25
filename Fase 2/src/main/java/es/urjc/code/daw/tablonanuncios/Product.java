@@ -16,7 +16,6 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import com.fasterxml.jackson.annotation.JsonView;
 
-import es.urjc.code.daw.tablonanuncios.User.BasicAtt;
 
 
 @Entity
@@ -55,14 +54,6 @@ public class Product {
 	
 
 
-	public boolean isFeatured() {
-		return featured;
-	}
-
-	public void setFeatured(boolean featured) {
-		this.featured = featured;
-	}
-
 	@Autowired
 	@OneToOne
 	private User user;
@@ -84,6 +75,14 @@ public class Product {
 		this.bought = false;
 	}
     
+	public boolean isFeatured() {
+		return featured;
+	}
+
+	public void setFeatured(boolean featured) {
+		this.featured = featured;
+	}
+	
 	public double getMinPrice() {
 		return minPrice;
 	}

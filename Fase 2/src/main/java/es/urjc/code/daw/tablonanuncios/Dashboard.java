@@ -93,8 +93,8 @@ public class Dashboard {
         p5.setFeatured(true);
         p6.setFeatured(true);
 
+
         Valoration v1 = new Valoration(u1, u2, 5, "all ok");
-        u1.setMedValoration(4);
 		Valoration v2 = new Valoration(u1, u2, 3, "meh","21-March-2012");
 		Valoration v3 = new Valoration(u1, u4, 4, "nani");
 		Valoration v4 = new Valoration(u2, u1, 4, "good","1-April-2102");
@@ -113,7 +113,7 @@ public class Dashboard {
 		Message m5 = new Message(u1, "are u retarded?");m5.setChat(c2);
 
 
-
+		u1.setMedValoration(4);
         userRepository.save(u1);
         userRepository.save(u2);
         userRepository.save(u3);
@@ -150,7 +150,7 @@ public class Dashboard {
         productRepository.save(p28);
         productRepository.save(p29);
         
-
+        
         valorationRepository.save(v1);
         valorationRepository.save(v2);
         valorationRepository.save(v3);
@@ -185,6 +185,8 @@ public class Dashboard {
 	@RequestMapping("/index")
     public String index(Model model) {
 
+        //model.addAttribute("products", productRepository.findAll());
+        //model.addAttribute("name", userRepository.findByName("u1"));
 		
         if( userComponent.isLoggedUser()) {
         	User loggedUser = userComponent.getLoggedUser();
@@ -216,6 +218,7 @@ public class Dashboard {
        model.addAttribute("product5", anArray[4]);
        model.addAttribute("product6", anArray[5]);
        
+   
         return "/index";
     }
 
@@ -553,6 +556,8 @@ public class Dashboard {
 		model.addAttribute("showPrevValorations", !valorations.isFirst());
 		model.addAttribute("nextPageValorations", valorations.getNumber()+1);
 		model.addAttribute("prevPageValorations", valorations.getNumber()-1);
+		
+		
 		
 		//model.addAttribute("products", productRepository.findByUser_Id(id));
 		return "/seller";

@@ -1,6 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+   
+    
+    
 <title>Seller</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -177,9 +181,9 @@
 						</div>
 					</li>
 
-					<li class="item-menu-mobile"><a href="../about">About us</a></li>
+					<li class="item-menu-mobile"><a href="about">About us</a></li>
 
-					<li class="item-menu-mobile"><a href="../product">Shop</a></li>
+					<li class="item-menu-mobile"><a href="product">Shop</a></li>
 
 					<li>
 						<div class="rightbar">
@@ -234,12 +238,12 @@
 
 				<div class="col-md-8 p-b-30">
 					<h3 class="m-text26 p-t-15 p-b-16">{{user.name}}</h3>
-					<div id=ratingUsuario " class="card-profile-rating">
-						<img src="/images/icons/star_full.svg"> <img
-							src="/images/icons/star_full.svg"> <img
-							src="/images/icons/star_full.svg"> <img
-							src="/images/icons/star_half.svg"> <img
-							src="/images/icons/star_empty.svg">
+					<div id=ratingSeller " class="card-profile-rating">
+					
+					<input class="ratingUser" type="hidden" value="{{user.medValoration}}">									
+					
+					<div class="star"> </div>
+						
 					</div>
 				</div>
 			</div>
@@ -311,7 +315,7 @@
 						<div class="row">
 							<div class="col-md-2 p-b-10 m-l-20">
 								<div class="wrap-pic-w">
-									<img src="{{buyer.image}}" alt="IMG-ABOUT">
+									<img style="width: 170px;  height: 110px;  overflow: hidden" src="{{buyer.image}}" alt="IMG-ABOUT">
 								</div>
 							</div>
 
@@ -320,16 +324,18 @@
 								<h3 class="m-text10 p-t-7 p-b-12">
 									<a href="/user/{{buyer.id}}">{{buyer.name}}</a>
 								</h3>
-								<div id=ratingUsuario " class="card-profile-rating">
-									<img src="/images/icons/star_full.svg"> <img
-										src="/images/icons/star_full.svg"> <img
-										src="/images/icons/star_full.svg"> <img
-										src="/images/icons/star_half.svg"> <img
-										src="/images/icons/star_empty.svg">
+								
+								<div class="card-profile-rating">
+									<input class="ratingUser" type="hidden" value="{{valoration}}">
+									
+									<div class="star"> </div>
+										
 								</div>
+								
 								<h3 class="m-text27 p-t-10 p-b-10">{{description}}</h3>
 							</div>
 						</div>
+						
 						{{/valorations}} {{#showPrevValorations}} <a
 							href="/user/{{id}}?valorations_page={{prevPageValorations}}">Prev
 							page</a> {{/showPrevValorations}} {{#showNextValorations}} <a
@@ -382,6 +388,9 @@
 
 	<!--===============================================================================================-->
 	<script type="text/javascript" src="/vendor/jquery/jquery-3.2.1.min.js"></script>
+	
+	<script type="text/javascript" src="/vendor/select2/select2.min.js"></script>
+		
 	<!--===============================================================================================-->
 	<script type="text/javascript"
 		src="/vendor/animsition/js/animsition.min.js"></script>
@@ -408,6 +417,34 @@
 	<script src="/js/map-custom.js"></script>
 	<!--===============================================================================================-->
 	<script src="/js/main.js"></script>
+	
+	<script type="text/javascript">
+                
+            	var paragraph = document.getElementsByClassName("star");
+            	
+            	var howmany = document.getElementsByClassName("ratingUser");
+            	
+           		
+            	for (i = 0; i < paragraph.length; i++) 
+            	{
+            		
+            		for (var k = 0; k < howmany[i].value; k++) {
+    	       	        paragraph[i].innerHTML +="<img src='/images/icons/star_full.svg'>";
+    	       	    }
+            		
+    	       		var restantes = 5-howmany[i].value;
+    	       	
+   	       			
+   	       			for (var k = 0; k < 5-howmany[i].value; k++) {
+   	       			    paragraph[i].innerHTML +="<img src='/images/icons/star_empty.svg'>";
+   		       	    }
+   	       		
+            		
+            	}
+	       		
+             
+
+    </script>
 
 </body>
 </html>
