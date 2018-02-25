@@ -1,5 +1,8 @@
 package es.urjc.code.daw.tablonanuncios;
 
+import java.util.ArrayList;
+
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -7,8 +10,11 @@ import javax.persistence.Id;
 import javax.persistence.OneToOne;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import com.fasterxml.jackson.annotation.JsonView;
+
+import es.urjc.code.daw.tablonanuncios.User.BasicAtt;
 
 
 @Entity
@@ -31,6 +37,9 @@ public class Product {
 	private String tags;
 	
 	@JsonView(BasicAtt.class)
+	 private String image;
+	
+	@JsonView(BasicAtt.class)
 	private double price;
 	
 	@Autowired
@@ -45,10 +54,19 @@ public class Product {
 		this.name = name;
 		this.description = desc;
 		this.tags = tags;
+		this.image = "\\images\\product_images\\product_default.png";
 		this.price = price;
 	}
 
 	
+	public String getImage() {
+		return image;
+	}
+
+	public void setImage(String image) {
+		this.image = image;
+	}
+
 
 	public long getId() {
 		return id;
