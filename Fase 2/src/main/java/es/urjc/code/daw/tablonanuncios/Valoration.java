@@ -114,6 +114,11 @@ public class Valoration {
 		this.date = date;
 	}
 	
+	public void createDate() {
+		Calendar calendar=Calendar.getInstance();
+		calendar.setTime(new Date());
+		this.date=calendar.get(Calendar.DAY_OF_MONTH)+"-"+calendar.getDisplayName(Calendar.MONTH, Calendar.LONG, Locale.ENGLISH)+"-"+calendar.get(Calendar.YEAR);
+	}
 	
 	
 

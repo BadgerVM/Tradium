@@ -6,6 +6,9 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.Locale;
 
 import javax.annotation.PostConstruct;
 
@@ -16,6 +19,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -64,15 +68,18 @@ public class Dashboard {
         Product p14 = new Product("pr14", "barata barata14", "asda", 14);p14.setUser(u1);
         Product p15 = new Product("pr15", "barata barata15", "asda", 15);p15.setUser(u1);
         Product p16 = new Product("pr16", "barata barata16", "asda", 16);p16.setUser(u1);
+        
         Product p17 = new Product("pr17", "barata barata17", "asda", 17);p17.setUser(u2);
         Product p18 = new Product("pr18", "barata barata18", "asda", 18);p18.setUser(u2);
         Product p19 = new Product("pr19", "barata barata19", "asda", 19);p19.setUser(u2);
+        
         Product p20 = new Product("pr20", "barata barata20", "asda", 20);p20.setUser(u3);
         Product p21 = new Product("pr21", "barata barata21", "asda", 21);p21.setUser(u3);
 
         Valoration v1 = new Valoration(u1, u2, 5, "all ok");
 		Valoration v2 = new Valoration(u1, u2, 3, "meh","21-March-2012");
 		Valoration v3 = new Valoration(u1, u4, 4, "nani");
+		
 		Valoration v4 = new Valoration(u2, u1, 4, "good","1-April-2102");
 		Valoration v5 = new Valoration(u1, u3, 2, "bad");
 		Valoration v6 = new Valoration(u1, u5, 5, "perfect","24-October-2017");
@@ -234,8 +241,90 @@ public class Dashboard {
 		productRepository.save(product);
 
 		return "anuncio_guardado";
+	}
+		@RequestMapping("/product/{id3}/sold")
+		public String sold(Model model, @PathVariable long id3) {
+			
+			if(userComponent.isLoggedUser()) {
+				model.addAttribute("name", userComponent.getLoggedUser());
+				model.addAttribute("logged", true);
+			}else {
+				model.addAttribute("logged", false);
+			}
+		 
+			Product product = productRepository.findById(id3);
+			if (product.getUser().getId() != userComponent.getLoggedUser().getId()) {
+				return "redirect:../../error";
+			}
+			
+			return "valorationSeller";
+	}
+		
+		@RequestMapping("/product/{id}/sentRequest")
+		public String ValorationRequestSent(Model model, User user) {
+			
+	  		if( userComponent.isLoggedUser()) {
+				model.addAttribute("name", userComponent.getLoggedUser());
+				model.addAttribute("logged", true);
+			}else {
+				model.addAttribute("logged", false);
+			}
+	  		
+	  		
+	  		
+	  		user = userRepository.findByid(user.getId());
+	  		
+	  		//user.setEmail("ENCONTRADO");
+	  		
+	  		//IMPLEMENTAR MÉTODO ENVIAR MENSAJE
+			//userRepository.save(user);
+			return "redirect:../../index";
+		}
+	
+	
+	//product/id product/id buyer/webpage to redirect
+	
+	@RequestMapping("/product/{id}/{id2}/buyer")
+	public String valoration(Model model, @PathVariable long id, @PathVariable long id2) {
+		
+		
+  		if( userComponent.isLoggedUser()) {
+			model.addAttribute("name",userComponent.getLoggedUser());
+			model.addAttribute("logged", true);
+		}else {
+			model.addAttribute("logged", false);	        
+		}
+  		
+  		Product product = productRepository.findById(id);
+  		
+  		if (userComponent.getLoggedUser().getId() != id2) {
+  			return "redirect:../../../error";
+  		}  		
+  		
+  		
+		model.addAttribute("product", product);
+		
+		return "valorationBuyer";
 
 	}
+	
+	@RequestMapping(value="/product/{id1}/{id2}/sent", method = RequestMethod.POST)
+	public String ValorationSent(@PathVariable long id1, @PathVariable long id2, Valoration valoration ) {
+		Valoration valoration2 = new Valoration();
+		
+		valoration2.createDate();
+		valoration2.setDescription(valoration.getDescription());
+		valoration2.setValoration(valoration.getValoration());
+		valoration2.setSeller(productRepository.findById(id1).getUser());
+		valoration2.setBuyer(userRepository.findByid(id2));
+		
+		
+		valorationRepository.save(valoration2);
+		
+		
+		return "redirect:../../../index";
+	}
+
 	
 	@RequestMapping("/contact")
 	public String contact(Model model) {
@@ -260,6 +349,7 @@ public class Dashboard {
 		  if( userComponent.isLoggedUser()) {
 				model.addAttribute("name",userComponent.getLoggedUser());
 				model.addAttribute("logged", true);
+				return "/index";
 			}else {
 				
 				model.addAttribute("logged", false);
@@ -271,11 +361,14 @@ public class Dashboard {
 	
 	@RequestMapping(value = "/user/new", method = RequestMethod.POST)
 	public String handleFileUpload(Model model, User user, @RequestParam("file") MultipartFile file) {
-
+		
 		String fileName = "\\user"+(userRepository.findTopByOrderByIdDesc().getId()+1)+".jpg";
 		user.setRoles(new ArrayList<>(Arrays.asList("USER")));
 		user.setLocationX("0sdad");
 		user.setLocationY("0sdad0");
+		userComponent.setLoggedUser(user);
+		model.addAttribute("name",userComponent.getLoggedUser());
+		model.addAttribute("logged", true);
 
 		if (!file.isEmpty()) {
 			try {
