@@ -86,30 +86,15 @@
 								<li>
 									<div class="rightbar">
 										<!-- Search -->
-										
 										<div class="pos-relative bo11 of-hidden">
-										
-										<form action="/product">
-										<input type="hidden" name="_csrf" value="{{token}}" />
 											<input class="s-text7 size16 p-l-23 p-r-50" type="text"
-												name="search" placeholder="Search"/>
-											<!--  
-											<input id="sendMessage" type="image" alt="send"
-											style="position: absolute; right: 3px; top: -1px; padding-bottom: 1px; margin-bottom: 1px; margin-top: 6px;"
-											width="30" height="30" class="flex-c-m size5 ab-r-m color1 color0-hov trans-0-4" 
-											src="/images/icons/magnifying_glass.svg" />
-											
-											<input id="sendSearch" type="image" alt="send"
-												style="position: absolute; right: 3px; top: -1px; padding-bottom: 1px; margin-bottom: 1px; margin-top: 6px;"
-												width="30" height="30" src="/images/icons/magnifying-glass.svg" 
-												/>-->
-											<input id="sendSearch" type="image" alt="send"
-												style="position: absolute; right: 3px; top: -1px; padding-bottom: 1px; margin-bottom: 1px; margin-top: 6px;"
-												width="30" height="30" src="/images/icons/magnifying-glass.svg" 
-												/>
-										</form>
-
+												name="search-product" placeholder="Search">
+											<button
+												class="flex-c-m size5 ab-r-m color1 color0-hov trans-0-4">
+												<i class="fs-13 fa fa-search" aria-hidden="true"></i>
+											</button>
 										</div>
+
 									</div>
 
 								</li>
@@ -305,64 +290,84 @@
 			<div class="row">
 				<div class="col-sm-10 col-md-8 col-lg-4 m-l-r-auto">
 					<!-- block1 -->
-					<div class="block1 hov-img-zoom pos-relative m-b-30">
-						<img src="images/banner-02.jpg" alt="IMG-BENNER">
+					{{#product1}}
+					<div  class="block1 hov-img-zoom pos-relative m-b-30">
+						<img style="width: 370px;  height: 480px;  overflow: hidden" src="{{product1.image}}" alt="IMG-BENNER">
 
 						<div class="block1-wrapbtn w-size2">
 							<!-- Button -->
-							<a href="#" class="flex-c-m size2 m-text2 bg3 hov1 trans-0-4">
-								Mobiles </a>
+							<a href="/product/{{product1.id}}" stlyle="position:relative" class="flex-c-m size2 m-text2 bg3 hov1 trans-0-4">
+								{{product1.name}} </a>
 						</div>
 					</div>
-
+					{{/product1}}
+					{{#product4}}
 					<!-- block1 -->
 					<div class="block1 hov-img-zoom pos-relative m-b-30">
-						<img src="images/banner-05.jpg" alt="IMG-BENNER">
+						<img style="width: 370px;  height: 340px;  overflow: hidden"  src="{{product4.image}}" alt="IMG-BENNER">
 
 						<div class="block1-wrapbtn w-size2">
 							<!-- Button -->
-							<a href="#" class="flex-c-m size2 m-text2 bg3 hov1 trans-0-4">
-								Computers </a>
+							<a href="/product/{{product4.id}}" class="flex-c-m size2 m-text2 bg3 hov1 trans-0-4">
+								{{product4.name}}</a>
 						</div>
 					</div>
+					{{/product4}}
 				</div>
 
 				<div class="col-sm-10 col-md-8 col-lg-4 m-l-r-auto">
 					<!-- block1 -->
+					{{#product2}}
 					<div class="block1 hov-img-zoom pos-relative m-b-30">
-						<img src="images/banner-03.jpg" alt="IMG-BENNER">
+						<img style="width: 370px;  height: 340px;  overflow: hidden"  src="{{product2.image}}" alt="IMG-BENNER">
 
 						<div class="block1-wrapbtn w-size2">
 							<!-- Button -->
-							<a href="#" class="flex-c-m size2 m-text2 bg3 hov1 trans-0-4">
-								Watches </a>
+							<a href="/product/{{product2.id}}" class="flex-c-m size2 m-text2 bg3 hov1 trans-0-4">
+								{{product2.name}} </a>
 						</div>
 					</div>
-
+					{{/product2}}
+					{{#product5}}
 					<!-- block1 -->
 					<div class="block1 hov-img-zoom pos-relative m-b-30">
-						<img src="images/banner-07.jpg" alt="IMG-BENNER">
+						<img style="width: 370px;  height: 480px;  overflow: hidden" src="{{product5.image}}" alt="IMG-BENNER">
 
 						<div class="block1-wrapbtn w-size2">
 							<!-- Button -->
-							<a href="#" class="flex-c-m size2 m-text2 bg3 hov1 trans-0-4">
-								Shoes </a>
+							<a href="/product/{{product5.id}}" class="flex-c-m size2 m-text2 bg3 hov1 trans-0-4">
+								{{product5.name}}</a>
 						</div>
 					</div>
+					{{/product5}}
 				</div>
 
 				<div class="col-sm-10 col-md-8 col-lg-4 m-l-r-auto">
 					<!-- block1 -->
+					{{#product3}}
 					<div class="block1 hov-img-zoom pos-relative m-b-30">
-						<img src="images/banner-04.jpg" alt="IMG-BENNER">
+						<img style="width: 370px;  height: 480px;  overflow: hidden" src="{{product3.image}}" alt="IMG-BENNER">
 
 						<div class="block1-wrapbtn w-size2">
 							<!-- Button -->
-							<a href="#" class="flex-c-m size2 m-text2 bg3 hov1 trans-0-4">
-								Bags </a>
+							<a href="/products/{{product3.id}}" class="flex-c-m size2 m-text2 bg3 hov1 trans-0-4">
+								{{product3.name}}</a>
 						</div>
 					</div>
+					{{/product3}}
+					{{#product6}}
+					
+					<!-- block1 -->
+					<div class="block1 hov-img-zoom pos-relative m-b-30">
+						<img style="width: 370px;  height: 340px;  overflow: hidden"  src="{{product6.image}}" alt="IMG-BENNER">
 
+						<div class="block1-wrapbtn w-size2">
+							<!-- Button -->
+							<a href="/product/{{product6.id}}" class="flex-c-m size2 m-text2 bg3 hov1 trans-0-4">
+								{{product6.name}} </a>
+						</div>
+					</div>
+					{{/product6}}
 				</div>
 			</div>
 		</div>

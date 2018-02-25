@@ -16,6 +16,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import com.fasterxml.jackson.annotation.JsonView;
 
+import es.urjc.code.daw.tablonanuncios.User.BasicAtt;
 
 
 @Entity
@@ -49,7 +50,18 @@ public class Product {
 	@JsonView(BasicAtt.class)
 	private boolean bought;
 	
+	@JsonView(BasicAtt.class)
+	private boolean featured;
+	
 
+
+	public boolean isFeatured() {
+		return featured;
+	}
+
+	public void setFeatured(boolean featured) {
+		this.featured = featured;
+	}
 
 	@Autowired
 	@OneToOne

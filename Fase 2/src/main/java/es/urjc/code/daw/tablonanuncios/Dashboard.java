@@ -86,8 +86,15 @@ public class Dashboard {
         Product p28 = new Product("pr28", "barata barata28", "books", 28);p28.setUser(u1);
         Product p29 = new Product("pr29", "barata barata29", "books", 29);p29.setUser(u1);
         
+        p1.setFeatured(true);
+        p2.setFeatured(true);
+        p3.setFeatured(true);
+        p4.setFeatured(true);        
+        p5.setFeatured(true);
+        p6.setFeatured(true);
 
         Valoration v1 = new Valoration(u1, u2, 5, "all ok");
+        u1.setMedValoration(4);
 		Valoration v2 = new Valoration(u1, u2, 3, "meh","21-March-2012");
 		Valoration v3 = new Valoration(u1, u4, 4, "nani");
 		Valoration v4 = new Valoration(u2, u1, 4, "good","1-April-2102");
@@ -178,8 +185,6 @@ public class Dashboard {
 	@RequestMapping("/index")
     public String index(Model model) {
 
-        //model.addAttribute("products", productRepository.findAll());
-        //model.addAttribute("name", userRepository.findByName("u1"));
 		
         if( userComponent.isLoggedUser()) {
         	User loggedUser = userComponent.getLoggedUser();
@@ -193,6 +198,24 @@ public class Dashboard {
 	        
 		}
         
+        List <Product>  products = productRepository.findByFeatured(true);
+        Product[] anArray = new Product[6];
+        
+        int index;
+        
+        for(int i=6; i > 0; i--) {
+        	index = (products.size() - i);
+        	anArray[index] = products.get(index);
+        }
+        
+        
+       model.addAttribute("product1", anArray[0]);
+       model.addAttribute("product2", anArray[1]);
+       model.addAttribute("product3", anArray[2]);
+       model.addAttribute("product4", anArray[3]);
+       model.addAttribute("product5", anArray[4]);
+       model.addAttribute("product6", anArray[5]);
+       
         return "/index";
     }
 
