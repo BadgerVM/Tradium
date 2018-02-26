@@ -57,7 +57,7 @@ And that's all!
 
 ## Java Class Diagram
 
-![alt text](https://github.com/RoberG/Tradium/blob/master/classDiagram.png)
+
 
 
 
