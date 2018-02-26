@@ -39,3 +39,22 @@ Ignacio Ruiz Ardisoni- i.ruiza@alumnos.urjc.es. @TaXiD
 ## Navigation Diagram
 
 ![alt text](https://github.com/RoberG/Tradium/blob/master/diagram.png)
+
+## Development environment
+To open our application, on Spring Tool Suite, you have to: 
+Press File ->Open projects from file system... ->Directory... (And select the folder where the project is placed).
+Then press Finish, and the project is already imported.
+
+To prepare the database with mysql. Open mysql workbench, create a new connection with the propierties:
+Name: Local Instance MySQL 57, Connection Method: Standard (TCP/IP), Hostname: localhost, Port:3306, username:root, and passwod:pass.
+Then press close, and run the connection.
+In the connection, create a new schema, with the name: Test.
+
+After that, come back to the STS, and in the project that u have imported, go to the folder tradium, and run the application, as a 
+Spring boot app. 
+
+And that is all!
+
+
+
+
