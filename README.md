@@ -37,6 +37,9 @@ Daniel García Cisneros- d.garciaci@alumnos.urjc.es. @dgarciaci
 Ignacio Ruiz Ardisoni- i.ruiza@alumnos.urjc.es. @TaXiD
 
 ## Navigation Diagram
+
+![alt text](https://github.com/RoberG/Tradium/blob/master/THEDIAGRAM.png)
+
 ## Development environment
 To open our application, on Spring Tool Suite, you have to: 
 Press File ->Import -> Existing Maven Projects -> Browse..(And select the folder where the project is placed).
