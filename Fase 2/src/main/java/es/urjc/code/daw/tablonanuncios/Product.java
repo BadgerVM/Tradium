@@ -60,7 +60,7 @@ public class Product {
 	
 	@Autowired
 	@OneToMany
-	private List <User> listBuyers;
+	private List <User> listBuyers = new ArrayList();
 	
 
 	public Product() {}

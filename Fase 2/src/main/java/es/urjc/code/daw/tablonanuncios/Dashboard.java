@@ -56,7 +56,7 @@ public class Dashboard {
         User u4 = new User("u4", "p4","b4@a.com", "USER");u4.setImage("\\images\\user_images\\user4.jpg");
         User u5 = new User("u5", "p5","b5@a.com", "USER");
 
-        Product p1 = new Product("pr1", "barata barata1", "fashion", 1);p1.setUser(u1);        
+        Product p1 = new Product("pr1", "barata barata1", "fashion", 15);p1.setUser(u1);        
         Product p2 = new Product("pr2", "barata barata2", "videogames", 2);p2.setUser(u1);
         Product p3 = new Product("pr3", "barata barata3", "books", 3);p3.setUser(u1);
         Product p4 = new Product("pr4", "barata barata4", "books", 4);p4.setUser(u1);
@@ -119,7 +119,7 @@ public class Dashboard {
         userRepository.save(u3);
         userRepository.save(u4);
         userRepository.save(u5);
-
+        p1.addListBuyers(u3);
         productRepository.save(p1);
         productRepository.save(p2);
         productRepository.save(p3);
@@ -352,28 +352,28 @@ public class Dashboard {
 	
 	
 	@RequestMapping(value = "/user/new", method = RequestMethod.POST)
-	public String handleFileUpload(Model model, User user, @RequestParam("file") MultipartFile file) {
+    public String handleFileUpload(Model model, User user, @RequestParam("file") MultipartFile file) {
 
-		String fileName = "\\user"+(userRepository.findTopByOrderByIdDesc().getId()+1)+".jpg";
-		user.setRoles(new ArrayList<>(Arrays.asList("USER")));
+        String fileName = "\\user"+(userRepository.findTopByOrderByIdDesc().getId()+1)+".jpg";
+        user.setRoles(new ArrayList<>(Arrays.asList("USER")));
 
-		if (!file.isEmpty()) {
-			try {
-				
-				//Absolute path!!!
-				file.transferTo(new File(USER_IMAGES_FOLDER.toFile(), fileName));
-				user.setImage("\\images\\user_images"+fileName);
-				
-			} catch (Exception e) {
-				user.setImage("\\images\\user_images\\user_default.jpg");
-			}
-		} else {
-			
-			user.setImage("\\images\\user_images\\user_default.jpg");
-		}
-		userRepository.save(user);
-		return "redirect:../index";
-	}
+        if (!file.isEmpty()) {
+            try {
+
+                //Absolute path!!!
+                file.transferTo(new File(USER_IMAGES_FOLDER.toFile(), fileName));
+                user.setImage("\\images\\user_images"+fileName);
+
+            } catch (Exception e) {
+                user.setImage("\\images\\user_images\\user_default.jpg");
+            }
+        } else {
+
+            user.setImage("\\images\\user_images\\user_default.jpg");
+        }
+        userRepository.save(user);
+        return "redirect:../index";
+    }
 	
 	
 	@RequestMapping("/product/{id4}")
@@ -427,23 +427,41 @@ public class Dashboard {
 	}
 	
 	@RequestMapping("/product/{id4}/offer")
-	public String productOffer(Model model, @PathVariable long id4, Offer offer) {
-		
+	public String productOffer(Model model, @PathVariable long id4, Offer offer) {		
 	 
 	  	
 	  	Product product = productRepository.findById(id4);
-	  	
-	  	product.addListBuyers(userComponent.getLoggedUser());
+	  		  	
 	  	//IMPLEMENT CHAT RESPONSE
+	  	User seller =productRepository.findById(id4).getUser();
 	  	
-	  	productRepository.save(product);
-	  	
+	  	User buyer = userComponent.getLoggedUser();
+  		
+  		Chat c1 = new Chat(buyer, seller);
+  		
+  		int number = Integer.parseInt(offer.getOffer());
+  		
+  		Message m1 = new Message();
+  		
+		if( number > productRepository.findById(id4).getMinPrice() ) {
+			m1 = new Message(seller, "Hi! i offer you"+ offer.getOffer() +"€"); m1.setChat(c1);	
+			product.addListBuyers(buyer);			
+		}else {
+			m1 = new Message(seller, "Hi! i offer you"+ offer.getOffer() +"€, may you get your price down a little bit?"); m1.setChat(c1);	
+			product.addListBuyers(buyer);
+		}
 
+		chatRepository.save(c1);
+		messageRepository.save(m1);
+		productRepository.save(product);
+
+      
 		return "redirect:../../index";
 	}
 	
 	@RequestMapping("/product/{id3}/sold")
 	public String sold(Model model, @PathVariable long id3) {
+		List <User> users= new ArrayList();		
 		
 		if(userComponent.isLoggedUser()) {
 			model.addAttribute("name", userComponent.getLoggedUser());
@@ -457,15 +475,19 @@ public class Dashboard {
 		if (product.getUser().getId() != userComponent.getLoggedUser().getId()) {
 			return "redirect:../../error";
 		}
+		for(User u: product.getListBuyers()) {
+			users.add(u);		
+			
+		}
 		model.addAttribute("product", product);
-		model.addAttribute("listBuyers", product.getListBuyers());
+		model.addAttribute("listBuyers", users);
 		
 		return "valorationSeller";
 }
 	
 	@RequestMapping("/product/{id}/sentRequest")
-	public String ValorationRequestSent(Model model, User user) {
-		
+	public String ValorationRequestSent(Model model, @PathVariable long id, User user) {
+	
   		if( userComponent.isLoggedUser()) {
 			model.addAttribute("name", userComponent.getLoggedUser());
 			model.addAttribute("logged", true);
@@ -474,13 +496,16 @@ public class Dashboard {
 		}
   		
   		
-  		
+  		User seller = userRepository.findByid(id);
   		user = userRepository.findByid(user.getId());
   		
-  		//user.setEmail("ENCONTRADO");
+  		Chat c1 = new Chat(seller, user);
+		
+		Message m1 = new Message(seller, "Could you please valorate me in /product/"+id+"/"+user.getId() +"/buyer?");m1.setChat(c1);
   		
-  		//IMPLEMENTAR MÉTODO ENVIAR MENSAJE
-		//userRepository.save(user);
+		
+		chatRepository.save(c1);
+		messageRepository.save(m1);
 		return "redirect:../../index";
 	}
 	//product/idproduct/idbuyer/buyer
@@ -518,7 +543,18 @@ public class Dashboard {
 		valoration2.setSeller(productRepository.findById(id1).getUser());
 		valoration2.setBuyer(userRepository.findByid(id2));
 		
+		List <Valoration> valor = new ArrayList();
 		
+		valor = valorationRepository.findBySellerId(id2);
+		int add= 0;
+		
+		for (Valoration v: valor) {
+			add =+ v.getValoration();			
+		}
+		
+		add = add/ valor.size();
+		User seller = productRepository.findById(id1).getUser();
+		seller.setMedValoration(add);
 		valorationRepository.save(valoration2);
 		
 		
