@@ -59,5 +59,6 @@ And that's all!
 
 ![alt text](https://github.com/RoberG/Tradium/blob/master/classDiagram2.png)
 
+## Database Relational Diagram
 
-
+![alt text](https://github.com/RoberG/Tradium/blob/master/relational.png)
