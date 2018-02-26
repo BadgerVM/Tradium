@@ -75,6 +75,16 @@ public class Product {
 		this.bought = false;
 	}
     
+	public Product(String name, String desc, String tags, double price, boolean bo) {
+		super();
+		this.name = name;
+		this.description = desc;
+		this.tags = tags;
+		this.image = "\\images\\product_images\\product_default.png";
+		this.price = price;
+		this.bought = bo;
+	}
+    
 	public boolean isFeatured() {
 		return featured;
 	}

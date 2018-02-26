@@ -1,5 +1,7 @@
 package es.urjc.code.daw.tablonanuncios;
 
+import java.util.List;
+
 import org.springframework.context.annotation.Scope;
 import org.springframework.context.annotation.ScopedProxyMode;
 import org.springframework.stereotype.Component;
@@ -23,6 +25,9 @@ import org.springframework.web.context.WebApplicationContext;
 public class UserComponent {
 
 	private User user;
+	
+	private List<String> roles;
+
 
 	public User getLoggedUser() {
 		return user;
@@ -35,5 +40,10 @@ public class UserComponent {
 	public boolean isLoggedUser() {
 		return this.user != null;
 	}
+
+	public boolean isUserInRole(String str) {
+		return this.roles.contains(str);
+	}
+	
 
 }

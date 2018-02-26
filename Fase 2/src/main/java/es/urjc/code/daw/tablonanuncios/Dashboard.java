@@ -50,14 +50,14 @@ public class Dashboard {
 
 	@PostConstruct
     public void init() {
-		User u1 = new User("u1", "p1","b1@a.com", "USER");u1.setImage("\\images\\user_images\\user1.jpg");u1.setLocationY("-3.7053825000000002");u1.setLocationX("40.4088432");
-        User u2 = new User("u2", "p2","b2@a.com", "USER");u2.setImage("\\images\\user_images\\user2.jpg");u2.setLocationY("-3.7053825000003002");u2.setLocationX("42.4088432");
-        User u3 = new User("u3", "p3","b3@a.com", "USER");u3.setImage("\\images\\user_images\\user3.jpg");u3.setLocationY("-3.7053825000000022");u3.setLocationX("40.4088432");
-        User u4 = new User("u4", "p4","b4@a.com", "USER");u4.setImage("\\images\\user_images\\user4.jpg");u4.setLocationY("-3.7053825000003002");u4.setLocationX("40.4088432");
+        User u1 = new User("u1", "p1","b1@a.com", "USER");u1.setImage("\\images\\user_images\\user1.jpg");
+        User u2 = new User("u2", "p2","b2@a.com", "USER");u2.setImage("\\images\\user_images\\user2.jpg");
+        User u3 = new User("u3", "p3","b3@a.com", "USER");u3.setImage("\\images\\user_images\\user3.jpg");
+        User u4 = new User("u4", "p4","b4@a.com", "USER");u4.setImage("\\images\\user_images\\user4.jpg");
         User u5 = new User("u5", "p5","b5@a.com", "USER");
+        User u6 = new User("u6", "ROOT","b5@a.com", "USER", "ADMIN");
 
-
-        Product p1 = new Product("pr1", "barata barata1", "fashion", 15);p1.setUser(u1);        
+        Product p1 = new Product("pr1", "barata barata1", "fashion", 15, true);p1.setUser(u1);        
         Product p2 = new Product("pr2", "barata barata2", "videogames", 2);p2.setUser(u1);
         Product p3 = new Product("pr3", "barata barata3", "books", 3);p3.setUser(u1);
         Product p4 = new Product("pr4", "barata barata4", "books", 4);p4.setUser(u1);
@@ -120,6 +120,7 @@ public class Dashboard {
         userRepository.save(u3);
         userRepository.save(u4);
         userRepository.save(u5);
+        userRepository.save(u6);
         p1.addListBuyers(u3);
         productRepository.save(p1);
         productRepository.save(p2);
@@ -384,7 +385,8 @@ public class Dashboard {
 			model.addAttribute("name",userComponent.getLoggedUser());
 			model.addAttribute("id",userComponent.getLoggedUser().getId());
 			model.addAttribute("logged", true);
-		}else {
+			model.addAttribute("admin", userRepository.findByid(userComponent.getLoggedUser().getId() ).isUserInRole("ADMIN") );
+	  }else {
 			
 			model.addAttribute("logged", false);
 	        
@@ -403,6 +405,33 @@ public class Dashboard {
 	  		  	model.addAttribute("user", product.getUser());
 
 		return "product-detail";
+	}
+	
+	@RequestMapping("/product/{id4}/delete")
+	public String productDeleted(Model model, @PathVariable long id4) {
+		
+	  if( userComponent.isLoggedUser()) {
+			model.addAttribute("name",userComponent.getLoggedUser());
+			model.addAttribute("id",userComponent.getLoggedUser().getId());
+			model.addAttribute("logged", true);
+			
+		}else {
+			
+			model.addAttribute("logged", false);
+	        
+		}
+	  	
+	  	Product product = productRepository.findById(id4);
+	  	
+	  	if(userComponent.getLoggedUser()!=productRepository.findById(id4).getUser() && !userRepository.findByid(userComponent.getLoggedUser().getId() ).isUserInRole("ADMIN") ) 
+	  	{
+	  		return "redirect:../../index";
+		}
+	  	
+	  	productRepository.delete(product);
+	  	
+
+		return "redirect:../../index";
 	}
 	
 	@RequestMapping("/product/{id4}/buy")
@@ -480,6 +509,7 @@ public class Dashboard {
 			users.add(u);		
 			
 		}
+		product.setBought(true);
 		model.addAttribute("product", product);
 		model.addAttribute("listBuyers", users);
 		

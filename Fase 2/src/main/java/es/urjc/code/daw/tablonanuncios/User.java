@@ -29,6 +29,7 @@ public class User {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;
 	
+	
 	@JsonView(BasicAtt.class)
 	private String name;
 	
@@ -60,19 +61,7 @@ public class User {
 	
 	public User() {}
 	
-
-	
-	public User(String name, String password, String email, String locationX, String locationY, String roles) {
-		super();
-		this.name = name;
-		this.locationX = locationX;
-		this.locationY = locationY;
-		this.passwordHash = new BCryptPasswordEncoder().encode(password);
-		this.email=email;
-		this.roles = new ArrayList<>(Arrays.asList(roles));
-		this.image="\\images\\user_images\\user_default.png";
-	}
-	public User(String name, String password, String email, String roles) {
+	public User(String name, String password, String email, String... roles) {
 		super();
 		this.name = name;
 		this.email=email;
@@ -147,6 +136,10 @@ public class User {
 
 	public String getPasswordHash() {
 		return passwordHash;
+	}
+	
+	public boolean isUserInRole(String str) {
+		return this.roles.contains(str);
 	}
 
 
