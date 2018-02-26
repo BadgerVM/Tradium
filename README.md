@@ -46,15 +46,18 @@ Press File ->Import -> Existing Maven Projects -> Browse..(And select the folder
 Then press Finish, and the project is already imported.
 
 To prepare the database with mysql. Open mysql workbench, create a new connection with the propierties:
-Name: Local Instance MySQL 57, Connection Method: Standard (TCP/IP), Hostname: localhost, Port:3306, username:root, and passwod:pass.
+Name: Local Instance MySQL 57, Connection Method: Standard (TCP/IP), Hostname: localhost, Port:3306, username:root, and password:pass.
 Then press close, and run the connection.
 In the connection, create a new schema, with the name: Test.
 
 After that, come back to the STS, and in the project that u have imported, go to the folder tradium, and run the application, as a 
 Spring boot app. 
 
-And that is all!
+And that's all!
 
+## Java Class Diagram
+
+![alt text](https://github.com/RoberG/Tradium/blob/master/classDiagram2.png)
 
 
 
