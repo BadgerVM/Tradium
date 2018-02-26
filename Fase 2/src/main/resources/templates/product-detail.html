@@ -24,7 +24,8 @@
 <link rel="stylesheet" type="text/css"
 	href="/fonts/elegant-font/html-css/style.css">
 <!--===============================================================================================-->
-<link rel="stylesheet" type="text/css" href="/vendor/animate/animate.css">
+<link rel="stylesheet" type="text/css"
+	href="/vendor/animate/animate.css">
 <!--===============================================================================================-->
 <link rel="stylesheet" type="text/css"
 	href="/vendor/css-hamburgers/hamburgers.min.css">
@@ -43,182 +44,199 @@
 </head>
 <body class="animsition">
 
-<!-- Header -->
+		<!-- Header -->
 	<header class="header1">
 		<!-- Header desktop -->
 		<div class="container-menu-header">
 			<div class="topbar">
 				<div class="topbar-social">
-					<a href="#" class="topbar-social-item fa fa-facebook"></a> <a
-						href="#" class="topbar-social-item fa fa-instagram"></a> <a
-						href="#" class="topbar-social-item fa fa-twitter"></a>
+					<a href="https://twitter.com/share?ref_src=twsrc%5Etfw"
+						class="twitter-share-button" data-show-count="false">Tweet</a>
+					<script async src="https://platform.twitter.com/widgets.js"
+						charset="utf-8"></script>
 				</div>
 
 
 				<div class="topbar-child2">
-					<span class="topbar-email">
-					{{#logged}} 
-					<div style="position: absolute; top: 10px; right:130px;">
-						{{name.name}}
-					</div>
-					
-					<form  action="/logout" method="post">
-					
-						<input type="hidden" name="_csrf" value="{{token}}" /> 
-						<input class="size2 m-text2 trans-0-4" style="background-color:rgba(0, 0, 0, 0);" type="submit" value="     Sign Out" />
-						
-					</form>
-					
-					{{/logged}} 
-					
-					{{^logged}} 
-						<a href="/login" class="size2 m-text2 trans-0-4"> Log in </a> 
-					{{/logged}}
-					
+					<span class="topbar-email"> {{#logged}}
+						<div style="position: absolute; top: 10px; right: 130px;">
+							{{name.name}}</div>
+
+						<form action="/logout" method="post">
+
+							<input type="hidden" name="_csrf" value="{{token}}" /> <input
+								class="size2 m-text2 trans-0-4"
+								style="background-color: rgba(0, 0, 0, 0);" type="submit"
+								value="     Sign Out" />
+
+						</form> {{/logged}} {{^logged}} <a href="/login"
+						class="size2 m-text2 trans-0-4"> Log in </a> {{/logged}}
+
 					</span>
 				</div>
-				</div>
-				<div class="wrap_header">
-					<!-- Logo -->
-					<a href="/index" class="logo"> <img src="/images/icons/logo.png"
-						alt="IMG-LOGO">
-					</a>
-
-					<!-- Menu -->
-					<div class="wrap_menu">
-						<nav class="menu">
-							<ul class="main_menu">
-
-
-								<li class="sale-noti"><a href="product">Shop</a></li>
-
-
-								<li><a href="/about">About us</a></li>
-
-								<li>
-									<div class="rightbar">
-										<!-- Search -->
-										<div class="pos-relative bo11 of-hidden">
-											<input class="s-text7 size16 p-l-23 p-r-50" type="text"
-												name="search-product" placeholder="Search">
-											<button
-												class="flex-c-m size5 ab-r-m color1 color0-hov trans-0-4">
-												<i class="fs-13 fa fa-search" aria-hidden="true"></i>
-											</button>
-										</div>
-
-									</div>
-
-								</li>
-
-							</ul>
-						</nav>
-					</div>
-
-					<!-- Header Icon -->
-					<div class="header-icons">
-
-						<a href="/upload" class="header-wrapicon1 dis-block"
-							style="margin-right: 10px"> <img
-							src="/images/icons/up-arrow.svg" class="header-icon1" alt="Upload">
-						</a> <a href="/chats" class="header-wrapicon1 dis-block"
-							style="margin-right: 10px"> <img
-							src="/images/icons/chat-icon.png" class="header-icon1" alt="ICON">
-						</a> <br> <a href="/login" class="header-wrapicon1 dis-block">
-							<img src="/images/icons/icon-header-01.png" class="header-icon1"
-							alt="ICON">
-						</a>
-
-					</div>
-				</div>
 			</div>
-
-			<!-- Header Mobile -->
-			<div class="wrap_header_mobile">
-				<!-- Logo moblie -->
-				<a href="/index" class="logo-mobile"> <img
-					src="/images/icons/logo.png" alt="IMG-LOGO">
+			<div class="wrap_header">
+				<!-- Logo -->
+				<a href="/index" class="logo"> <img src="/images/icons/logo.png"
+					alt="IMG-LOGO">
 				</a>
 
-				<!-- Button show menu -->
-				<div class="btn-show-menu">
-					<!-- Header Icon mobile -->
-					<div class="header-icons-mobile">
-					{{#logged}}
-						<a href="user/{{id}}" class="header-wrapicon1 dis-block"> <img
-							src="/images/icons/icon-header-01.png" class="header-icon1"
-							alt="ICON">
-						</a>
-					{{/logged}}	
-					
-					{{^logged}}
-						<a href="/login" class="header-wrapicon1 dis-block"> <img
-							src="/images/icons/icon-header-01.png" class="header-icon1"
-							alt="ICON">
-						</a>
-					{{/logged}}	
-					
-					</div>
+				<!-- Menu -->
+				<div class="wrap_menu">
+					<nav class="menu">
+						<ul class="main_menu">
 
-					<div class="btn-show-menu-mobile hamburger hamburger--squeeze">
-						<span class="hamburger-box"> <span class="hamburger-inner"></span>
-						</span>
-					</div>
-				</div>
-			</div>
 
-			<!-- Menu Mobile -->
-			<div class="wrap-side-menu">
-				<nav class="side-menu">
-					<ul class="main-menu">
+							<li class="sale-noti"><a href="/index">Shop</a></li>
 
-						<li class="item-topbar-mobile p-l-20 p-t-8 p-b-8">
-							<div class="topbar-child2-mobile">
 
+							<li><a href="/about">About us</a></li>
+
+							<li>
 								<div class="rightbar">
 									<!-- Search -->
 									<div class="pos-relative bo11 of-hidden">
-										<input class="s-text7 size16 p-l-23 p-r-50" type="text"
-											name="search-product" placeholder="Search">
-
-										<button
-											class="flex-c-m size5 ab-r-m color1 color0-hov trans-0-4">
-											<i class="fs-13 fa fa-search" aria-hidden="true"></i>
-										</button>
+										<form action="/consult">
+											<input type="hidden" name="_csrf" value="{{token}}" /> <input
+												class="s-text7 size16 p-l-23 p-r-50" type="text"
+												name="search" placeholder="Search" />
+											<!--
+                                                        <input id="sendMessage" type="image" alt="send"
+                                                        style="position: absolute; right: 3px; top: -1px; padding-bottom: 1px; margin-bottom: 1px; margin-top: 6px;"
+                                                        width="30" height="30" class="flex-c-m size5 ab-r-m color1 color0-hov trans-0-4" 
+                                                        src="/images/icons/magnifying_glass.svg" />
+            <input id="sendSearch" type="image" alt="send"
+                                                            style="position: absolute; right: 3px; top: -1px; padding-bottom: 1px; margin-bottom: 1px; margin-top: 6px;"
+                                                            width="30" height="30" src="/images/icons/magnifying-glass.svg" 
+                                                            />-->
+											<input id="sendSearch" type="image" alt="send"
+												style="position: absolute; right: 10px; top: 10px; padding-bottom: 1px; margin-bottom: 1px; margin-top: 6px;"
+												width="18" height="18"
+												src="/images/icons/magnifying-glass.svg" />
+										</form>
 									</div>
+
 								</div>
 
+							</li>
 
+						</ul>
+					</nav>
+				</div>
 
-							</div>
-						</li>
+				<!-- Header Icon -->
+				<div class="header-icons">
+					{{#logged}} <a href="/product/upload"
+						class="header-wrapicon1 dis-block" style="margin-right: 10px">
+						<img src="/images/icons/up-arrow.svg" class="header-icon1"
+						alt="Upload">
+					</a> <a href="/chat" class="header-wrapicon1 dis-block"
+						style="margin-right: 10px"> <img
+						src="/images/icons/chat-icon.png" class="header-icon1" alt="ICON">
 
-						<li class="item-topbar-mobile p-l-10">
-							<div class="topbar-social-mobile">
-								<a href="#" class="topbar-social-item fa fa-facebook"></a> <a
-									href="#" class="topbar-social-item fa fa-instagram"></a> <a
-									href="#" class="topbar-social-item fa fa-twitter"></a>
-							</div>
-						</li>
+					</a> <br> <a href="/user/{{id}}"
+						class="header-wrapicon1 dis-block"> <img
+						src="/images/icons/icon-header-01.png" class="header-icon1"
+						alt="ICON">
+					</a> {{/logged}} {{^logged}} </a> <br> <a href="/login"
+						class="header-wrapicon1 dis-block"> <img
+						src="/images/icons/icon-header-01.png" class="header-icon1"
+						alt="ICON">
+					</a> {{/logged}}
 
-						<li class="item-menu-mobile"><a href="/about">About us</a></li>
-
-						<li class="item-menu-mobile"><a href="/product">Featured</a></li>
-						
-						<li class="item-menu-mobile"><a href="/upload">Upload</a></li>
-						{{#logged}}
-						<li class="item-menu-mobile"><form action="/logout" method="post">
-							<input type="hidden" name="_csrf" value="{{token}}" /> 
-							<input style="background-color:rgba(0, 0, 0, 0);" type="submit" value="     Sign Out" />
-						</form>
-						{{/logged}}
-						<br>
-						
-					</ul>
-				</nav>
+				</div>
 			</div>
-	</header>
+		</div>
 
+		<!-- Header Mobile -->
+		<div class="wrap_header_mobile">
+			<!-- Logo moblie -->
+			<a href="/index" class="logo-mobile"> <img
+				src="/images/icons/logo.png" alt="IMG-LOGO">
+			</a>
+
+			<!-- Button show menu -->
+			<div class="btn-show-menu">
+				<!-- Header Icon mobile -->
+				<div class="header-icons-mobile">
+					{{#logged}} <a href="user/{{id}}"
+						class="header-wrapicon1 dis-block"> <img
+						src="/images/icons/icon-header-01.png" class="header-icon1"
+						alt="ICON">
+					</a> {{/logged}} {{^logged}} <a href="/login"
+						class="header-wrapicon1 dis-block"> <img
+						src="/images/icons/icon-header-01.png" class="header-icon1"
+						alt="ICON">
+					</a> {{/logged}}
+
+				</div>
+
+				<div class="btn-show-menu-mobile hamburger hamburger--squeeze">
+					<span class="hamburger-box"> <span class="hamburger-inner"></span>
+					</span>
+				</div>
+			</div>
+		</div>
+
+		<!-- Menu Mobile -->
+		<div class="wrap-side-menu">
+			<nav class="side-menu">
+				<ul class="main-menu">
+
+					<li class="item-topbar-mobile p-l-20 p-t-8 p-b-8">
+						<div class="topbar-child2-mobile">
+
+							<form action="/consult">
+								<input type="hidden" name="_csrf" value="{{token}}" /> <input
+									class="s-text7 size16 p-l-23 p-r-50" type="text" name="search"
+									placeholder="Search" />
+								<!--
+                                                        <input id="sendMessage" type="image" alt="send"
+                                                        style="position: absolute; right: 3px; top: -1px; padding-bottom: 1px; margin-bottom: 1px; margin-top: 6px;"
+                                                        width="30" height="30" class="flex-c-m size5 ab-r-m color1 color0-hov trans-0-4" 
+                                                        src="/images/icons/magnifying_glass.svg" />
+            <input id="sendSearch" type="image" alt="send"
+                                                            style="position: absolute; right: 3px; top: -1px; padding-bottom: 1px; margin-bottom: 1px; margin-top: 6px;"
+                                                            width="30" height="30" src="/images/icons/magnifying-glass.svg" 
+                                                            />-->
+								<input id="sendSearch" type="image" alt="send"
+									style="position: absolute; right: 10px; top: 10px; padding-bottom: 1px; margin-bottom: 1px; margin-top: 6px;"
+									width="18" height="18" src="/images/icons/magnifying-glass.svg" />
+							</form>
+
+
+
+						</div>
+					</li>
+
+					<li class="item-topbar-mobile p-l-10">
+						<div class="topbar-social-mobile">
+							<br /> <a href="https://twitter.com/share?ref_src=twsrc%5Etfw"
+								class="twitter-share-button" data-show-count="false">Tweet</a>
+							<script async src="https://platform.twitter.com/widgets.js"
+								charset="utf-8"></script>
+						</div>
+
+					</li>
+
+					<li class="item-menu-mobile"><a href="/about">About us</a></li>
+
+					<li class="item-menu-mobile"><a href="/index">Shop</a></li>
+
+					{{#logged}}
+					<li class="item-menu-mobile"><a href="/chat">Chats</a></li>
+					<li class="item-menu-mobile"><a href="/product/upload">Upload</a></li>
+
+					<li class="item-menu-mobile"><form action="/logout"
+							method="post">
+							<input type="hidden" name="_csrf" value="{{token}}" /> <input
+								style="background-color: rgba(0, 0, 0, 0);" type="submit"
+								value="     Sign Out" />
+						</form> {{/logged}} <br>
+				</ul>
+			</nav>
+		</div>
+	</header>
 	<!-- Product Detail -->
 	<div class="container bgwhite p-t-35 p-b-80">
 		<div class="flex-w flex-sb">
@@ -226,11 +244,12 @@
 				<div class="wrap-slick3 flex-sb flex-w">
 					<div class="wrap-slick3-dots"></div>
 
-						<div class="item-slick3" data-thumb="images/thumb-item-01.jpg">
-							<div class="wrap-pic-w">
-								<img style="width: 370px;  height: 480px;  overflow: hidden" src="{{product.image}}" alt="IMG-PRODUCT">
-							</div>
+					<div class="item-slick3" data-thumb="images/thumb-item-01.jpg">
+						<div class="wrap-pic-w">
+							<img style="width: 370px; height: 480px; overflow: hidden"
+								src="{{product.image}}" alt="IMG-PRODUCT">
 						</div>
+					</div>
 
 				</div>
 			</div>
@@ -254,76 +273,63 @@
 				<div class="p-t-33 p-b-60">
 					<div
 						class="btn-addcart-product-detail size9 trans-0-4 m-t-10 m-b-10">
-						{{^vendor}}	{{^admin}}
-						
+						{{^vendor}} {{^admin}}
+
 						<form action="{{id}}/buy" method="post">
-						
-								<input type="hidden" name="_csrf" value="{{token}}" /> 
-								<input	type="submit" value="buy" class="flex-c-m size2 bg4 bo-rad-23 hov1 m-text3 trans-0-4" />
-						</form>
-						{{/admin}}
-						{{/vendor}}
-						
-						{{#vendor}}
-						<form action="{{product.id}}/sold" method="post">
-								<br>
-								<input type="hidden" name="_csrf" value="{{token}}" /> 
-								<input	type="submit" value="Mark as sold" class="flex-c-m size2 bg4 bo-rad-23 hov1 m-text3 trans-0-4" />
-						</form>
-						{{/vendor}}
-						
-						{{#admin}}
-						<form action="{{product.id}}/delete" method="post">
-								<br>
-								<input type="hidden" name="_csrf" value="{{token}}" /> 
-								<input	type="submit" value="delete" class="flex-c-m size2 bg4 bo-rad-23 hov1 m-text3 trans-0-4" />
-						</form>
-						
-						
-						{{/admin}}
-						
-						{{#admin}}
-						<form action="{{product.id}}/feature" method="post">
-								<br>
-								<input type="hidden" name="_csrf" value="{{token}}" /> 
-								<input	type="submit" value="Feature" class="flex-c-m size2 bg4 bo-rad-23 hov1 m-text3 trans-0-4" />
-						</form>
-						{{/admin}}
-						
-						
-						{{^vendor}}	{{^admin}}
-						<form action="{{product.id}}/offer" method="post">
-						<br>
-							<label>Propose a counteroffer:</label><br /> 
-							<input style="display: inline-block" type="text"  id="offer" name="offer" placeholder="$" />
-							<br /><br/>
-							<input type="hidden" name="_csrf" value="{{token}}" />
-							<input	type="submit" value="Counteroffer"
+
+							<input type="hidden" name="_csrf" value="{{token}}" /> <input
+								type="submit" value="buy"
 								class="flex-c-m size2 bg4 bo-rad-23 hov1 m-text3 trans-0-4" />
 						</form>
-						{{/admin}}
-						{{/vendor}}
-						
-						{{#vendor}}
-						<form action="{{product.id}}/delete" method="post">
-								<br>
-								<input type="hidden" name="_csrf" value="{{token}}" /> 
-								<input	type="submit" value="delete" class="flex-c-m size2 bg4 bo-rad-23 hov1 m-text3 trans-0-4" />
+						{{/admin}} {{/vendor}} {{#vendor}}
+						<form action="{{product.id}}/sold" method="post">
+							<br> <input type="hidden" name="_csrf" value="{{token}}" />
+							<input type="submit" value="Mark as sold"
+								class="flex-c-m size2 bg4 bo-rad-23 hov1 m-text3 trans-0-4" />
 						</form>
-						
-						
+						{{/vendor}} {{#admin}}
+						<form action="{{product.id}}/delete" method="post">
+							<br> <input type="hidden" name="_csrf" value="{{token}}" />
+							<input type="submit" value="delete"
+								class="flex-c-m size2 bg4 bo-rad-23 hov1 m-text3 trans-0-4" />
+						</form>
+
+
+						{{/admin}} {{#admin}}
+						<form action="{{product.id}}/feature" method="post">
+							<br> <input type="hidden" name="_csrf" value="{{token}}" />
+							<input type="submit" value="Feature"
+								class="flex-c-m size2 bg4 bo-rad-23 hov1 m-text3 trans-0-4" />
+						</form>
+						{{/admin}} {{^vendor}} {{^admin}}
+						<form action="{{product.id}}/offer" method="post">
+							<br> <label>Propose a counteroffer:</label><br /> <input
+								style="display: inline-block" type="text" id="offer"
+								name="offer" placeholder="$" /> <br /> <br /> <input
+								type="hidden" name="_csrf" value="{{token}}" /> <input
+								type="submit" value="Counteroffer"
+								class="flex-c-m size2 bg4 bo-rad-23 hov1 m-text3 trans-0-4" />
+						</form>
+						{{/admin}} {{/vendor}} {{#vendor}}
+						<form action="{{product.id}}/delete" method="post">
+							<br> <input type="hidden" name="_csrf" value="{{token}}" />
+							<input type="submit" value="delete"
+								class="flex-c-m size2 bg4 bo-rad-23 hov1 m-text3 trans-0-4" />
+						</form>
+
+
 						{{/vendor}}
-						
 
 
 
-												
-						</div>
 
 
-						<!-- Button -->
+					</div>
 
-					
+
+					<!-- Button -->
+
+
 					<div class="flex-r-m flex-w p-t-10">
 						<div class="w-size16 flex-m flex-w"></div>
 					</div>
@@ -331,8 +337,7 @@
 
 
 				<div class="p-b-45">
-				<br/><br/><br/>	
-					<br /> <span class="s-text8 m-r-35">{{product.tags}}</span>
+					<br /> <br /> <br /> <br /> <span class="s-text8 m-r-35">{{product.tags}}</span>
 
 
 				</div>
@@ -348,11 +353,12 @@
 					</h5>
 
 					<div class="dropdown-content dis-none p-t-15 p-b-23">
-						
-						<form action="../user/{{user.id}}" method="post">							
-							
-							<input type="hidden" name="_csrf" value="{{token}}" /> 
-							<input style="background-color:rgba(0, 0, 0, 0.0)"	type="submit" value="{{user.name}}" />
+
+						<form action="../user/{{user.id}}" method="post">
+
+							<input type="hidden" name="_csrf" value="{{token}}" /> <input
+								style="background-color: rgba(0, 0, 0, 0.0)" type="submit"
+								value="{{user.name}}" />
 						</form>
 					</div>
 				</div>
@@ -390,9 +396,9 @@
 						OurEmail@gmail.com</p>
 
 					<div class="flex-m p-t-30">
-						<a href="#" class="fs-18 color1 p-r-20 fa fa-facebook"></a> <a
-							href="#" class="fs-18 color1 p-r-20 fa fa-instagram"></a> <a
-							href="#" class="fs-18 color1 p-r-20 fa fa-youtube-play"></a>
+
+						<a href="http://www.twitter.com/rapidasdaniel"
+							class="topbar-social-item fa fa-twitter"></a>
 					</div>
 				</div>
 			</div>
@@ -400,6 +406,7 @@
 		</div>
 
 	</footer>
+
 
 
 

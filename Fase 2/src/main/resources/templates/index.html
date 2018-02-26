@@ -43,28 +43,40 @@
 </head>
 <body class="animsition">
 
-	<!-- Header -->
+		<!-- Header -->
 	<header class="header1">
 		<!-- Header desktop -->
 		<div class="container-menu-header">
 			<div class="topbar">
 				<div class="topbar-social">
-					<a href="#" class="topbar-social-item fa fa-facebook"></a> <a
-						href="#" class="topbar-social-item fa fa-instagram"></a> <a
-						href="#" class="topbar-social-item fa fa-twitter"></a>
+					<a href="https://twitter.com/share?ref_src=twsrc%5Etfw"
+						class="twitter-share-button" data-show-count="false">Tweet</a>
+					<script async src="https://platform.twitter.com/widgets.js"
+						charset="utf-8"></script>
 				</div>
 
 
 				<div class="topbar-child2">
-					<span class="topbar-email"> {{#logged}} {{name.name}}
-						{{/logged}} {{^logged}} <a href="/index"
+					<span class="topbar-email"> {{#logged}}
+						<div style="position: absolute; top: 10px; right: 130px;">
+							{{name.name}}</div>
+
+						<form action="/logout" method="post">
+
+							<input type="hidden" name="_csrf" value="{{token}}" /> <input
+								class="size2 m-text2 trans-0-4"
+								style="background-color: rgba(0, 0, 0, 0);" type="submit"
+								value="     Sign Out" />
+
+						</form> {{/logged}} {{^logged}} <a href="/login"
 						class="size2 m-text2 trans-0-4"> Log in </a> {{/logged}}
+
 					</span>
 				</div>
 			</div>
 			<div class="wrap_header">
 				<!-- Logo -->
-				<a href="/index" class="logo"> <img src="images/icons/logo.png"
+				<a href="/index" class="logo"> <img src="/images/icons/logo.png"
 					alt="IMG-LOGO">
 				</a>
 
@@ -74,37 +86,35 @@
 						<ul class="main_menu">
 
 
-							<li class="sale-noti"><a href="product">Shop</a></li>
+							<li class="sale-noti"><a href="/index">Shop</a></li>
 
 
-							<li><a href="about">About us</a></li>
+							<li><a href="/about">About us</a></li>
 
 							<li>
 								<div class="rightbar">
 									<!-- Search -->
-
 									<div class="pos-relative bo11 of-hidden">
-
-										<form action="/product">
+										<form action="/consult">
 											<input type="hidden" name="_csrf" value="{{token}}" /> <input
 												class="s-text7 size16 p-l-23 p-r-50" type="text"
 												name="search" placeholder="Search" />
 											<!--
-			                                            <input id="sendMessage" type="image" alt="send"
-			                                            style="position: absolute; right: 3px; top: -1px; padding-bottom: 1px; margin-bottom: 1px; margin-top: 6px;"
-			                                            width="30" height="30" class="flex-c-m size5 ab-r-m color1 color0-hov trans-0-4" 
-			                                            src="/images/icons/magnifying_glass.svg" />
-			<input id="sendSearch" type="image" alt="send"
-			                                                style="position: absolute; right: 3px; top: -1px; padding-bottom: 1px; margin-bottom: 1px; margin-top: 6px;"
-			                                                width="30" height="30" src="/images/icons/magnifying-glass.svg" 
-			                                                />-->
+                                                        <input id="sendMessage" type="image" alt="send"
+                                                        style="position: absolute; right: 3px; top: -1px; padding-bottom: 1px; margin-bottom: 1px; margin-top: 6px;"
+                                                        width="30" height="30" class="flex-c-m size5 ab-r-m color1 color0-hov trans-0-4" 
+                                                        src="/images/icons/magnifying_glass.svg" />
+            <input id="sendSearch" type="image" alt="send"
+                                                            style="position: absolute; right: 3px; top: -1px; padding-bottom: 1px; margin-bottom: 1px; margin-top: 6px;"
+                                                            width="30" height="30" src="/images/icons/magnifying-glass.svg" 
+                                                            />-->
 											<input id="sendSearch" type="image" alt="send"
-												style="position: absolute; right: 3px; top: -1px; padding-bottom: 1px; margin-bottom: 1px; margin-top: 6px;"
-												width="30" height="30"
+												style="position: absolute; right: 10px; top: 10px; padding-bottom: 1px; margin-bottom: 1px; margin-top: 6px;"
+												width="18" height="18"
 												src="/images/icons/magnifying-glass.svg" />
 										</form>
-
 									</div>
+
 								</div>
 
 							</li>
@@ -115,16 +125,21 @@
 
 				<!-- Header Icon -->
 				<div class="header-icons">
+					{{#logged}} <a href="/product/upload"
+						class="header-wrapicon1 dis-block" style="margin-right: 10px">
+						<img src="/images/icons/up-arrow.svg" class="header-icon1"
+						alt="Upload">
+					</a> <a href="/chat" class="header-wrapicon1 dis-block"
+						style="margin-right: 10px"> <img
+						src="/images/icons/chat-icon.png" class="header-icon1" alt="ICON">
 
-					<a href="/upload" class="header-wrapicon1 dis-block"
-						style="margin-right: 10px"> <img
-						src="images/icons/up-arrow.svg" class="header-icon1" alt="Upload">
-					</a> <a href="chats" class="header-wrapicon1 dis-block"
-						style="margin-right: 10px"> <img
-						src="images/icons/chat-icon.png" class="header-icon1" alt="ICON">
-					</a> <br> {{#logged}} <a href="user/{{ID}}"
+					</a> <br> <a href="/user/{{id}}"
 						class="header-wrapicon1 dis-block"> <img
-						src="images/icons/icon-header-01.png" class="header-icon1"
+						src="/images/icons/icon-header-01.png" class="header-icon1"
+						alt="ICON">
+					</a> {{/logged}} {{^logged}} </a> <br> <a href="/login"
+						class="header-wrapicon1 dis-block"> <img
+						src="/images/icons/icon-header-01.png" class="header-icon1"
 						alt="ICON">
 					</a> {{/logged}}
 
@@ -136,17 +151,23 @@
 		<div class="wrap_header_mobile">
 			<!-- Logo moblie -->
 			<a href="/index" class="logo-mobile"> <img
-				src="images/icons/logo.png" alt="IMG-LOGO">
+				src="/images/icons/logo.png" alt="IMG-LOGO">
 			</a>
 
 			<!-- Button show menu -->
 			<div class="btn-show-menu">
 				<!-- Header Icon mobile -->
 				<div class="header-icons-mobile">
-					<a href="#" class="header-wrapicon1 dis-block"> <img
-						src="images/icons/icon-header-01.png" class="header-icon1"
+					{{#logged}} <a href="user/{{id}}"
+						class="header-wrapicon1 dis-block"> <img
+						src="/images/icons/icon-header-01.png" class="header-icon1"
 						alt="ICON">
-					</a>
+					</a> {{/logged}} {{^logged}} <a href="/login"
+						class="header-wrapicon1 dis-block"> <img
+						src="/images/icons/icon-header-01.png" class="header-icon1"
+						alt="ICON">
+					</a> {{/logged}}
+
 				</div>
 
 				<div class="btn-show-menu-mobile hamburger hamburger--squeeze">
@@ -164,18 +185,23 @@
 					<li class="item-topbar-mobile p-l-20 p-t-8 p-b-8">
 						<div class="topbar-child2-mobile">
 
-							<div class="rightbar">
-								<!-- Search -->
-								<div class="pos-relative bo11 of-hidden">
-									<input class="s-text7 size16 p-l-23 p-r-50" type="text"
-										name="search-product" placeholder="Search">
-
-									<button
-										class="flex-c-m size5 ab-r-m color1 color0-hov trans-0-4">
-										<i class="fs-13 fa fa-search" aria-hidden="true"></i>
-									</button>
-								</div>
-							</div>
+							<form action="/consult">
+								<input type="hidden" name="_csrf" value="{{token}}" /> <input
+									class="s-text7 size16 p-l-23 p-r-50" type="text" name="search"
+									placeholder="Search" />
+								<!--
+                                                        <input id="sendMessage" type="image" alt="send"
+                                                        style="position: absolute; right: 3px; top: -1px; padding-bottom: 1px; margin-bottom: 1px; margin-top: 6px;"
+                                                        width="30" height="30" class="flex-c-m size5 ab-r-m color1 color0-hov trans-0-4" 
+                                                        src="/images/icons/magnifying_glass.svg" />
+            <input id="sendSearch" type="image" alt="send"
+                                                            style="position: absolute; right: 3px; top: -1px; padding-bottom: 1px; margin-bottom: 1px; margin-top: 6px;"
+                                                            width="30" height="30" src="/images/icons/magnifying-glass.svg" 
+                                                            />-->
+								<input id="sendSearch" type="image" alt="send"
+									style="position: absolute; right: 10px; top: 10px; padding-bottom: 1px; margin-bottom: 1px; margin-top: 6px;"
+									width="18" height="18" src="/images/icons/magnifying-glass.svg" />
+							</form>
 
 
 
@@ -184,111 +210,32 @@
 
 					<li class="item-topbar-mobile p-l-10">
 						<div class="topbar-social-mobile">
-							<a href="#" class="topbar-social-item fa fa-facebook"></a> <a
-								href="#" class="topbar-social-item fa fa-instagram"></a> <a
-								href="#" class="topbar-social-item fa fa-twitter"></a>
+							<br /> <a href="https://twitter.com/share?ref_src=twsrc%5Etfw"
+								class="twitter-share-button" data-show-count="false">Tweet</a>
+							<script async src="https://platform.twitter.com/widgets.js"
+								charset="utf-8"></script>
 						</div>
+
 					</li>
 
 					<li class="item-menu-mobile"><a href="/about">About us</a></li>
 
-					<li class="item-menu-mobile"><a href="/product">Shop</a></li>
+					<li class="item-menu-mobile"><a href="/index">Shop</a></li>
 
-					<li>
-						<div class="rightbar">
-							<!-- Search -->
-							<div class="pos-relative bo11 of-hidden">
-								<input class="s-text7 size16 p-l-23 p-r-50" type="text"
-									name="search-product" placeholder="Search">
-								<button
-									class="flex-c-m size5 ab-r-m color1 color0-hov trans-0-4">
-									<i class="fs-13 fa fa-search" aria-hidden="true"></i>
-								</button>
-							</div>
+					{{#logged}}
+					<li class="item-menu-mobile"><a href="/chat">Chats</a></li>
+					<li class="item-menu-mobile"><a href="/product/upload">Upload</a></li>
 
-						</div>
-					</li>
-					<!-- Header Icon -->
-					<div class="header-icons">
-
-						<a href="Upload" class="header-wrapicon1 dis-block"
-							style="margin-right: 10px"> <img
-							src="images/icons/up-arrow.svg" class="header-icon1" alt="Upload">
-						</a> <a href="chats" class="header-wrapicon1 dis-block"
-							style="margin-right: 10px"> <img
-							src="images/icons/chat-icon.png" class="header-icon1" alt="ICON">
-						</a> <br> <a href="seller" class="header-wrapicon1 dis-block">
-							<img src="images/icons/icon-header-01.png" class="header-icon1"
-							alt="ICON">
-						</a>
-
-					</div>
+					<li class="item-menu-mobile"><form action="/logout"
+							method="post">
+							<input type="hidden" name="_csrf" value="{{token}}" /> <input
+								style="background-color: rgba(0, 0, 0, 0);" type="submit"
+								value="     Sign Out" />
+						</form> {{/logged}} <br>
 				</ul>
 			</nav>
 		</div>
 	</header>
-
-	<!-- Slide1 -->
-	<section class="slide1">
-		<div class="wrap-slick1">
-			<div class="slick1">
-				<div class="item-slick1 item1-slick1"
-					style="background-image: url(images/master-slide-02.jpg);">
-					<div
-						class="wrap-content-slide1 sizefull flex-col-c-m p-l-15 p-r-15 p-t-150 p-b-170">
-						<span
-							class="caption1-slide1 m-text1 t-center animated visible-false m-b-15"
-							data-appear="fadeInDown"> Best product 2018 </span>
-
-						<div class="wrap-btn-slide1 w-size1 animated visible-false"
-							data-appear="zoomIn">
-							<!-- Button -->
-							<a href="product"
-								class="flex-c-m size2 bo-rad-23 s-text2 bgwhite hov1 trans-0-4">
-								Buy now </a>
-						</div>
-					</div>
-				</div>
-
-				<div class="item-slick1 item2-slick1"
-					style="background-image: url(images/master-slide-03.jpg);">
-					<div
-						class="wrap-content-slide1 sizefull flex-col-c-m p-l-15 p-r-15 p-t-150 p-b-170">
-						<span
-							class="caption1-slide1 m-text1 t-center animated visible-false m-b-15"
-							data-appear="rollIn"> Best product 2018 </span>
-
-						<div class="wrap-btn-slide1 w-size1 animated visible-false"
-							data-appear="slideInUp">
-							<!-- Button -->
-							<a href="product"
-								class="flex-c-m size2 bo-rad-23 s-text2 bgwhite hov1 trans-0-4">
-								Buy now </a>
-						</div>
-					</div>
-				</div>
-
-				<div class="item-slick1 item3-slick1"
-					style="background-image: url(images/master-slide-04.jpg);">
-					<div
-						class="wrap-content-slide1 sizefull flex-col-c-m p-l-15 p-r-15 p-t-150 p-b-170">
-						<span
-							class="caption1-slide1 m-text1 t-center animated visible-false m-b-15"
-							data-appear="rotateInDownLeft"> Best product 2018 </span>
-
-						<div class="wrap-btn-slide1 w-size1 animated visible-false"
-							data-appear="rotateIn">
-							<!-- Button -->
-							<a href="product"
-								class="flex-c-m size2 bo-rad-23 s-text2 bgwhite hov1 trans-0-4">
-								Buy now </a>
-						</div>
-					</div>
-				</div>
-
-			</div>
-		</div>
-	</section>
 
 	<!-- Banner -->
 	<section class="banner bgwhite p-t-40 p-b-40">
@@ -363,7 +310,7 @@
 
 						<div class="block1-wrapbtn w-size2">
 							<!-- Button -->
-							<a href="/products/{{product3.id}}"
+							<a href="/product/{{product3.id}}"
 								class="flex-c-m size2 m-text2 bg3 hov1 trans-0-4">
 								{{product3.name}}</a>
 						</div>
@@ -388,380 +335,7 @@
 		</div>
 	</section>
 
-	<!-- New Product -->
-	<section class="newproduct bgwhite p-t-45 p-b-105">
-		<div class="container">
-			<div class="sec-title p-b-60">
-				<h3 class="m-text5 t-center">Recommended products</h3>
-			</div>
-
-			<!-- Slide2 -->
-			<div class="wrap-slick2">
-				<div class="slick2">
-
-					{{#recommendedProducts}} <b>{{name}}</b> <b>{{img}}</b> <b>{{price}}</b>
-
-
-					<div class="item-slick2 p-l-15 p-r-15">
-						<!-- Block2 -->
-						<div class="block2">
-							<div
-								class="block2-img wrap-pic-w of-hidden pos-relative block2-labelnew">
-								<img src={{img}} alt="IMG-PRODUCT">
-
-								<div class="block2-overlay trans-0-4">
-									<a href="#"
-										class="block2-btn-addwishlist hov-pointer trans-0-4"> <i
-										class="icon-wishlist icon_heart_alt" aria-hidden="true"></i> <i
-										class="icon-wishlist icon_heart dis-none" aria-hidden="true"></i>
-									</a>
-
-									<div class="block2-btn-addcart w-size1 trans-0-4">
-										<!-- Button -->
-										<button
-											class="flex-c-m size1 bg4 bo-rad-23 hov1 s-text1 trans-0-4">
-											See details</button>
-									</div>
-								</div>
-							</div>
-
-							<div class="block2-txt p-t-20">
-								<a href="product-detail"
-									class="block2-name dis-block s-text3 p-b-5"> {{name}} </a> <span
-									class="block2-price m-text6 p-r-5"> </span>
-							</div>
-						</div>
-					</div>
-
-					<div class="item-slick2 p-l-15 p-r-15">
-						<!-- Block2 -->
-						<div class="block2">
-							<div class="block2-img wrap-pic-w of-hidden pos-relative">
-								<img src={{img}} alt="IMG-PRODUCT">
-
-								<div class="block2-overlay trans-0-4">
-									<a href="#"
-										class="block2-btn-addwishlist hov-pointer trans-0-4"> <i
-										class="icon-wishlist icon_heart_alt" aria-hidden="true"></i> <i
-										class="icon-wishlist icon_heart dis-none" aria-hidden="true"></i>
-									</a>
-
-									<div class="block2-btn-addcart w-size1 trans-0-4">
-										<!-- Button -->
-										<button
-											class="flex-c-m size1 bg4 bo-rad-23 hov1 s-text1 trans-0-4">
-											See details</button>
-									</div>
-								</div>
-							</div>
-
-							<div class="block2-txt p-t-20">
-								<a href="product-detail"
-									class="block2-name dis-block s-text3 p-b-5"> {{name}} </a> <span
-									class="block2-price m-text6 p-r-5"> {{price}} </span>
-							</div>
-						</div>
-					</div>
-
-					<div class="item-slick2 p-l-15 p-r-15">
-						<!-- Block2 -->
-						<div class="block2">
-							<div class="block2-img wrap-pic-w of-hidden pos-relative">
-								<img src={{img}} alt="IMG-PRODUCT">
-
-								<div class="block2-overlay trans-0-4">
-									<a href="#"
-										class="block2-btn-addwishlist hov-pointer trans-0-4"> <i
-										class="icon-wishlist icon_heart_alt" aria-hidden="true"></i> <i
-										class="icon-wishlist icon_heart dis-none" aria-hidden="true"></i>
-									</a>
-
-									<div class="block2-btn-addcart w-size1 trans-0-4">
-										<!-- Button -->
-										<button
-											class="flex-c-m size1 bg4 bo-rad-23 hov1 s-text1 trans-0-4">
-											See details</button>
-									</div>
-								</div>
-							</div>
-
-							<div class="block2-txt p-t-20">
-								<a href="product-detail"
-									class="block2-name dis-block s-text3 p-b-5"> {{name}} </a> <span
-									class="block2-price m-text6 p-r-5"> {{price}} </span>
-							</div>
-						</div>
-					</div>
-
-					<div class="item-slick2 p-l-15 p-r-15">
-						<!-- Block2 -->
-						<div class="block2">
-							<div
-								class="block2-img wrap-pic-w of-hidden pos-relative block2-labelsale">
-								<img src={{img}} alt="IMG-PRODUCT">
-
-								<div class="block2-overlay trans-0-4">
-									<a href="#"
-										class="block2-btn-addwishlist hov-pointer trans-0-4"> <i
-										class="icon-wishlist icon_heart_alt" aria-hidden="true"></i> <i
-										class="icon-wishlist icon_heart dis-none" aria-hidden="true"></i>
-									</a>
-
-									<div class="block2-btn-addcart w-size1 trans-0-4">
-										<!-- Button -->
-										<button
-											class="flex-c-m size1 bg4 bo-rad-23 hov1 s-text1 trans-0-4">
-											See details</button>
-									</div>
-								</div>
-							</div>
-
-							<div class="block2-txt p-t-20">
-								<a href="product-detail"
-									class="block2-name dis-block s-text3 p-b-5"> {{name}} </a> <span
-									class="block2-oldprice m-text7 p-r-5"> {{price}} </span> <span
-									class="block2-newprice m-text8 p-r-5"> {{price}} </span>
-							</div>
-						</div>
-					</div>
-
-					<div class="item-slick2 p-l-15 p-r-15">
-						<!-- Block2 -->
-						<div class="block2">
-							<div
-								class="block2-img wrap-pic-w of-hidden pos-relative block2-labelnew">
-								<img src={{img}} alt="IMG-PRODUCT">
-
-								<div class="block2-overlay trans-0-4">
-									<a href="#"
-										class="block2-btn-addwishlist hov-pointer trans-0-4"> <i
-										class="icon-wishlist icon_heart_alt" aria-hidden="true"></i> <i
-										class="icon-wishlist icon_heart dis-none" aria-hidden="true"></i>
-									</a>
-
-									<div class="block2-btn-addcart w-size1 trans-0-4">
-										<!-- Button -->
-										<button
-											class="flex-c-m size1 bg4 bo-rad-23 hov1 s-text1 trans-0-4">
-											See details</button>
-									</div>
-								</div>
-							</div>
-
-							<div class="block2-txt p-t-20">
-								<a href="product-detail"
-									class="block2-name dis-block s-text3 p-b-5"> {{name}} </a> <span
-									class="block2-price m-text6 p-r-5"> {{price}} </span>
-							</div>
-						</div>
-					</div>
-
-					<div class="item-slick2 p-l-15 p-r-15">
-						<!-- Block2 -->
-						<div class="block2">
-							<div class="block2-img wrap-pic-w of-hidden pos-relative">
-								<img src={{img}} alt="IMG-PRODUCT">
-
-								<div class="block2-overlay trans-0-4">
-									<a href="#"
-										class="block2-btn-addwishlist hov-pointer trans-0-4"> <i
-										class="icon-wishlist icon_heart_alt" aria-hidden="true"></i> <i
-										class="icon-wishlist icon_heart dis-none" aria-hidden="true"></i>
-									</a>
-
-									<div class="block2-btn-addcart w-size1 trans-0-4">
-										<!-- Button -->
-										<button
-											class="flex-c-m size1 bg4 bo-rad-23 hov1 s-text1 trans-0-4">
-											See details</button>
-									</div>
-								</div>
-							</div>
-
-							<div class="block2-txt p-t-20">
-								<a href="product-detail"
-									class="block2-name dis-block s-text3 p-b-5"> {{name}} </a> <span
-									class="block2-price m-text6 p-r-5"> {{price}} </span>
-							</div>
-						</div>
-					</div>
-
-					<div class="item-slick2 p-l-15 p-r-15">
-						<!-- Block2 -->
-						<div class="block2">
-							<div class="block2-img wrap-pic-w of-hidden pos-relative">
-								<img src={{img}} alt="IMG-PRODUCT">
-
-								<div class="block2-overlay trans-0-4">
-									<a href="#"
-										class="block2-btn-addwishlist hov-pointer trans-0-4"> <i
-										class="icon-wishlist icon_heart_alt" aria-hidden="true"></i> <i
-										class="icon-wishlist icon_heart dis-none" aria-hidden="true"></i>
-									</a>
-
-									<div class="block2-btn-addcart w-size1 trans-0-4">
-										<!-- Button -->
-										<button
-											class="flex-c-m size1 bg4 bo-rad-23 hov1 s-text1 trans-0-4">
-											See details</button>
-									</div>
-								</div>
-							</div>
-
-							<div class="block2-txt p-t-20">
-								<a href="product-detail"
-									class="block2-name dis-block s-text3 p-b-5"> {{name}} </a> <span
-									class="block2-price m-text6 p-r-5"> {{price}} </span>
-							</div>
-						</div>
-					</div>
-
-					<div class="item-slick2 p-l-15 p-r-15">
-						<!-- Block2 -->
-						<div class="block2">
-							<div
-								class="block2-img wrap-pic-w of-hidden pos-relative block2-labelsale">
-								<img src={{img}} alt="IMG-PRODUCT">
-
-								<div class="block2-overlay trans-0-4">
-									<a href="#"
-										class="block2-btn-addwishlist hov-pointer trans-0-4"> <i
-										class="icon-wishlist icon_heart_alt" aria-hidden="true"></i> <i
-										class="icon-wishlist icon_heart dis-none" aria-hidden="true"></i>
-									</a>
-
-									<div class="block2-btn-addcart w-size1 trans-0-4">
-										<!-- Button -->
-										<button
-											class="flex-c-m size1 bg4 bo-rad-23 hov1 s-text1 trans-0-4">
-											See details</button>
-									</div>
-								</div>
-							</div>
-
-							<div class="block2-txt p-t-20">
-								<a href="product-detail"
-									class="block2-name dis-block s-text3 p-b-5"> {{name}} </a> <span
-									class="block2-oldprice m-text7 p-r-5"> {{price}} </span> <span
-									class="block2-newprice m-text8 p-r-5"> {{price}} </span>
-							</div>
-						</div>
-					</div>
-				</div>
-				{{/recommendedProducts}}
-			</div>
-
-		</div>
-	</section>
-
-	<!-- Instagram -->
-	<section class="instagram p-t-20">
-		<div class="sec-title p-b-52 p-l-15 p-r-15">
-			<h3 class="m-text5 t-center">@ Follow us on Instagram</h3>
-		</div>
-
-		<div class="flex-w">
-			<!-- Block4 -->
-			<div class="block4 wrap-pic-w">
-				<img src="images/gallery-03.jpg" alt="IMG-INSTAGRAM"> <a
-					href="#" class="block4-overlay sizefull ab-t-l trans-0-4"> <span
-					class="block4-overlay-heart s-text9 flex-m trans-0-4 p-l-40 p-t-25">
-						<i class="icon_heart_alt fs-20 p-r-12" aria-hidden="true"></i> <span
-						class="p-t-2">39</span>
-				</span>
-
-					<div class="block4-overlay-txt trans-0-4 p-l-40 p-r-25 p-b-30">
-						<p class="s-text10 m-b-15 h-size1 of-hidden">Nullam
-							scelerisque, lacus sed consequat laoreet, dui enim iaculis leo,
-							eu viverra ex nulla in tellus. Nullam nec ornare tellus, ac
-							fringilla lacus. Ut sit amet enim orci. Nam eget metus elit.</p>
-
-						<span class="s-text9"> Photo by @nancyward </span>
-					</div>
-				</a>
-			</div>
-
-			<!-- Block4 -->
-			<div class="block4 wrap-pic-w">
-				<img src="images/gallery-07.jpg" alt="IMG-INSTAGRAM"> <a
-					href="#" class="block4-overlay sizefull ab-t-l trans-0-4"> <span
-					class="block4-overlay-heart s-text9 flex-m trans-0-4 p-l-40 p-t-25">
-						<i class="icon_heart_alt fs-20 p-r-12" aria-hidden="true"></i> <span
-						class="p-t-2">39</span>
-				</span>
-
-					<div class="block4-overlay-txt trans-0-4 p-l-40 p-r-25 p-b-30">
-						<p class="s-text10 m-b-15 h-size1 of-hidden">Nullam
-							scelerisque, lacus sed consequat laoreet, dui enim iaculis leo,
-							eu viverra ex nulla in tellus. Nullam nec ornare tellus, ac
-							fringilla lacus. Ut sit amet enim orci. Nam eget metus elit.</p>
-
-						<span class="s-text9"> Photo by @nancyward </span>
-					</div>
-				</a>
-			</div>
-
-			<!-- Block4 -->
-			<div class="block4 wrap-pic-w">
-				<img src="images/gallery-09.jpg" alt="IMG-INSTAGRAM"> <a
-					href="#" class="block4-overlay sizefull ab-t-l trans-0-4"> <span
-					class="block4-overlay-heart s-text9 flex-m trans-0-4 p-l-40 p-t-25">
-						<i class="icon_heart_alt fs-20 p-r-12" aria-hidden="true"></i> <span
-						class="p-t-2">39</span>
-				</span>
-
-					<div class="block4-overlay-txt trans-0-4 p-l-40 p-r-25 p-b-30">
-						<p class="s-text10 m-b-15 h-size1 of-hidden">Nullam
-							scelerisque, lacus sed consequat laoreet, dui enim iaculis leo,
-							eu viverra ex nulla in tellus. Nullam nec ornare tellus, ac
-							fringilla lacus. Ut sit amet enim orci. Nam eget metus elit.</p>
-
-						<span class="s-text9"> Photo by @nancyward </span>
-					</div>
-				</a>
-			</div>
-
-			<!-- Block4 -->
-			<div class="block4 wrap-pic-w">
-				<img src="images/gallery-13.jpg" alt="IMG-INSTAGRAM"> <a
-					href="#" class="block4-overlay sizefull ab-t-l trans-0-4"> <span
-					class="block4-overlay-heart s-text9 flex-m trans-0-4 p-l-40 p-t-25">
-						<i class="icon_heart_alt fs-20 p-r-12" aria-hidden="true"></i> <span
-						class="p-t-2">39</span>
-				</span>
-
-					<div class="block4-overlay-txt trans-0-4 p-l-40 p-r-25 p-b-30">
-						<p class="s-text10 m-b-15 h-size1 of-hidden">Nullam
-							scelerisque, lacus sed consequat laoreet, dui enim iaculis leo,
-							eu viverra ex nulla in tellus. Nullam nec ornare tellus, ac
-							fringilla lacus. Ut sit amet enim orci. Nam eget metus elit.</p>
-
-						<span class="s-text9"> Photo by @nancyward </span>
-					</div>
-				</a>
-			</div>
-
-			<!-- Block4 -->
-			<div class="block4 wrap-pic-w">
-				<img src="images/gallery-15.jpg" alt="IMG-INSTAGRAM"> <a
-					href="#" class="block4-overlay sizefull ab-t-l trans-0-4"> <span
-					class="block4-overlay-heart s-text9 flex-m trans-0-4 p-l-40 p-t-25">
-						<i class="icon_heart_alt fs-20 p-r-12" aria-hidden="true"></i> <span
-						class="p-t-2">39</span>
-				</span>
-
-					<div class="block4-overlay-txt trans-0-4 p-l-40 p-r-25 p-b-30">
-						<p class="s-text10 m-b-15 h-size1 of-hidden">Nullam
-							scelerisque, lacus sed consequat laoreet, dui enim iaculis leo,
-							eu viverra ex nulla in tellus. Nullam nec ornare tellus, ac
-							fringilla lacus. Ut sit amet enim orci. Nam eget metus elit.</p>
-
-						<span class="s-text9"> Photo by @nancyward </span>
-					</div>
-				</a>
-			</div>
-		</div>
-	</section>
+	
 
 	<!-- Footer -->
 	<footer class="bg6 p-t-45 p-b-43 p-l-45 p-r-45">
@@ -774,9 +348,9 @@
 						OurEmail@gmail.com</p>
 
 					<div class="flex-m p-t-30">
-						<a href="#" class="fs-18 color1 p-r-20 fa fa-facebook"></a> <a
-							href="#" class="fs-18 color1 p-r-20 fa fa-instagram"></a> <a
-							href="#" class="fs-18 color1 p-r-20 fa fa-youtube-play"></a>
+
+						<a href="http://www.twitter.com/rapidasdaniel"
+							class="topbar-social-item fa fa-twitter"></a>
 					</div>
 				</div>
 			</div>
@@ -784,6 +358,7 @@
 		</div>
 
 	</footer>
+
 
 	<!-- Back to top -->
 	<div class="btn-back-to-top bg0-hov" id="myBtn">
