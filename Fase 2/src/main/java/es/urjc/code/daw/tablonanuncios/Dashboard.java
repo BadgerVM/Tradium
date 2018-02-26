@@ -600,10 +600,13 @@ public class Dashboard {
 		
 		if( userComponent.isLoggedUser()) {
 			model.addAttribute("name",userComponent.getLoggedUser());
+			model.addAttribute(id);
 			model.addAttribute("logged", true);
 		}else {
 			
 			model.addAttribute("logged", false);
+			model.addAttribute(id);
+			model.addAttribute("name","register");
 	        
 		}
 		

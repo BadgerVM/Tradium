@@ -228,7 +228,7 @@
 
 						<div class="item-slick3" data-thumb="images/thumb-item-01.jpg">
 							<div class="wrap-pic-w">
-								<img src="{{product.image}}" alt="IMG-PRODUCT">
+								<img style="width: 370px;  height: 480px;  overflow: hidden" src="{{product.image}}" alt="IMG-PRODUCT">
 							</div>
 						</div>
 
@@ -254,12 +254,14 @@
 				<div class="p-t-33 p-b-60">
 					<div
 						class="btn-addcart-product-detail size9 trans-0-4 m-t-10 m-b-10">
-						{{^vendor}}
+						{{^vendor}}	{{^admin}}
+						
 						<form action="{{id}}/buy" method="post">
 						
 								<input type="hidden" name="_csrf" value="{{token}}" /> 
 								<input	type="submit" value="buy" class="flex-c-m size2 bg4 bo-rad-23 hov1 m-text3 trans-0-4" />
 						</form>
+						{{/admin}}
 						{{/vendor}}
 						
 						{{#vendor}}
@@ -270,8 +272,26 @@
 						</form>
 						{{/vendor}}
 						
+						{{#admin}}
+						<form action="{{product.id}}/delete" method="post">
+								<br>
+								<input type="hidden" name="_csrf" value="{{token}}" /> 
+								<input	type="submit" value="delete" class="flex-c-m size2 bg4 bo-rad-23 hov1 m-text3 trans-0-4" />
+						</form>
 						
-						{{^vendor}}	
+						
+						{{/admin}}
+						
+						{{#admin}}
+						<form action="{{product.id}}/feature" method="post">
+								<br>
+								<input type="hidden" name="_csrf" value="{{token}}" /> 
+								<input	type="submit" value="Feature" class="flex-c-m size2 bg4 bo-rad-23 hov1 m-text3 trans-0-4" />
+						</form>
+						{{/admin}}
+						
+						
+						{{^vendor}}	{{^admin}}
 						<form action="{{product.id}}/offer" method="post">
 						<br>
 							<label>Propose a counteroffer:</label><br /> 
@@ -281,10 +301,11 @@
 							<input	type="submit" value="Counteroffer"
 								class="flex-c-m size2 bg4 bo-rad-23 hov1 m-text3 trans-0-4" />
 						</form>
+						{{/admin}}
 						{{/vendor}}
 						
 						{{#vendor}}
-						<form action="delete" method="post">
+						<form action="{{product.id}}/delete" method="post">
 								<br>
 								<input type="hidden" name="_csrf" value="{{token}}" /> 
 								<input	type="submit" value="delete" class="flex-c-m size2 bg4 bo-rad-23 hov1 m-text3 trans-0-4" />
