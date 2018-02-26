@@ -32,7 +32,7 @@
 	<link rel="stylesheet" type="text/css" href="/css/main.css">
 <!--===============================================================================================-->
 </head>
-<body class="animsition">
+<body class="animsition" onload="getLocation()">
 
 		<!-- Header -->
 	<header class="header1">
@@ -244,6 +244,8 @@
                         <input type="file" name="file" value="Send">
                     </div>
                 </div>
+                <input type="hidden" id="location-long" name="LocationY" class="form-control input-md">
+				<input type="hidden" id="location-lat" name="LocationX" class="form-control input-md">
                  
             
             <!-- Button -->
@@ -257,6 +259,23 @@
                 <input type='submit' class="flex-c-m size2 bg4 bo-rad-23 hov1 m-text3 trans-0-4" value='Register'/>
             </div>
             </form>
+            <script>
+			function getLocation() {
+				
+				if (navigator.geolocation) {
+					
+					var nav = navigator.geolocation.getCurrentPosition(showPosition);
+   					
+				} 
+			}
+			
+			function showPosition(pos){
+				var locationLong = document.getElementById("location-long");
+				var locationLat = document.getElementById("location-lat");
+				locationLong.value = pos.coords.longitude;
+				locationLat.value = pos.coords.latitude;
+			}
+		</script>
         </section>
         
     </div>

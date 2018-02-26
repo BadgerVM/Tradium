@@ -50,11 +50,12 @@ public class Dashboard {
 
 	@PostConstruct
     public void init() {
-        User u1 = new User("u1", "p1","b1@a.com", "USER");u1.setImage("\\images\\user_images\\user1.jpg");
-        User u2 = new User("u2", "p2","b2@a.com", "USER");u2.setImage("\\images\\user_images\\user2.jpg");
-        User u3 = new User("u3", "p3","b3@a.com", "USER");u3.setImage("\\images\\user_images\\user3.jpg");
-        User u4 = new User("u4", "p4","b4@a.com", "USER");u4.setImage("\\images\\user_images\\user4.jpg");
+		User u1 = new User("u1", "p1","b1@a.com", "USER");u1.setImage("\\images\\user_images\\user1.jpg");u1.setLocationY("-3.7053825000000002");u1.setLocationX("40.4088432");
+        User u2 = new User("u2", "p2","b2@a.com", "USER");u2.setImage("\\images\\user_images\\user2.jpg");u2.setLocationY("-3.7053825000003002");u2.setLocationX("42.4088432");
+        User u3 = new User("u3", "p3","b3@a.com", "USER");u3.setImage("\\images\\user_images\\user3.jpg");u3.setLocationY("-3.7053825000000022");u3.setLocationX("40.4088432");
+        User u4 = new User("u4", "p4","b4@a.com", "USER");u4.setImage("\\images\\user_images\\user4.jpg");u4.setLocationY("-3.7053825000003002");u4.setLocationX("40.4088432");
         User u5 = new User("u5", "p5","b5@a.com", "USER");
+
 
         Product p1 = new Product("pr1", "barata barata1", "fashion", 15);p1.setUser(u1);        
         Product p2 = new Product("pr2", "barata barata2", "videogames", 2);p2.setUser(u1);
