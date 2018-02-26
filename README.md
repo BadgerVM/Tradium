@@ -41,25 +41,19 @@ Ignacio Ruiz Ardisoni- i.ruiza@alumnos.urjc.es. @TaXiD
 ![alt text](https://github.com/RoberG/Tradium/blob/master/diagram.png)
 
 ## Development environment
-
-First of all, you need to install the proper software to compile and execute Tradium:
--Spring STS 3.9 https://spring.io/tools
--Mysql https://www.mysql.com/downloads/
--And of course Java 8 and Java SDK
-
 To open our application, on Spring Tool Suite, you have to: 
-Press File ->Open projects from file system... ->Directory... (And select the folder where the project is placed).
+Press File ->Import -> Existing Maven Projects -> Browse..(And select the folder where the project is placed).
 Then press Finish, and the project is already imported.
 
 To prepare the database with mysql. Open mysql workbench, create a new connection with the propierties:
-Name: Local Instance MySQL 57, Connection Method: Standard (TCP/IP), Hostname: localhost, Port:3306, username:root, and password:pass.
+Name: Local Instance MySQL 57, Connection Method: Standard (TCP/IP), Hostname: localhost, Port:3306, username:root, and passwod:pass.
 Then press close, and run the connection.
 In the connection, create a new schema, with the name: Test.
 
 After that, come back to the STS, and in the project that u have imported, go to the folder tradium, and run the application, as a 
 Spring boot app. 
 
-And that's all!
+And that is all!
 
 
 
