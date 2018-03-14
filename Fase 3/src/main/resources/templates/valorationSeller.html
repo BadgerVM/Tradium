@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Product Detail</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!--===============================================================================================-->
+<link rel="icon" type="image/png" href="/images/icons/favicon.png" />
+<!--===============================================================================================-->
+<link rel="stylesheet" type="text/css"
+	href="/vendor/bootstrap/css/bootstrap.min.css">
+<!--===============================================================================================-->
+<link rel="stylesheet" type="text/css"
+	href="/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+<!--===============================================================================================-->
+<link rel="stylesheet" type="text/css"
+	href="/fonts/themify/themify-icons.css">
+<!--===============================================================================================-->
+<link rel="stylesheet" type="text/css"
+	href="/fonts/Linearicons-Free-v1.0.0/icon-font.min.css">
+<!--===============================================================================================-->
+<link rel="stylesheet" type="text/css"
+	href="/fonts/elegant-font/html-css/style.css">
+<!--===============================================================================================-->
+<link rel="stylesheet" type="text/css"
+	href="/vendor/animate/animate.css">
+<!--===============================================================================================-->
+<link rel="stylesheet" type="text/css"
+	href="/vendor/css-hamburgers/hamburgers.min.css">
+<!--===============================================================================================-->
+<link rel="stylesheet" type="text/css"
+	href="/vendor/animsition/css/animsition.min.css">
+<!--===============================================================================================-->
+<link rel="stylesheet" type="text/css"
+	href="/vendor/select2/select2.min.css">
+<!--===============================================================================================-->
+<link rel="stylesheet" type="text/css" href="/vendor/slick/slick.css">
+<!--===============================================================================================-->
+<link rel="stylesheet" type="text/css" href="/css/util.css">
+<link rel="stylesheet" type="text/css" href="/css/main.css">
+<!--===============================================================================================-->
+</head>
+<body class="animsition">
+
+		<!-- Header -->
+	<header class="header1">
+		<!-- Header desktop -->
+		<div class="container-menu-header">
+			<div class="topbar">
+				<div class="topbar-social">
+					<a href="https://twitter.com/share?ref_src=twsrc%5Etfw"
+						class="twitter-share-button" data-show-count="false">Tweet</a>
+					<script async src="https://platform.twitter.com/widgets.js"
+						charset="utf-8"></script>
+				</div>
+
+
+				<div class="topbar-child2">
+					<span class="topbar-email"> {{#logged}}
+						<div style="position: absolute; top: 10px; right: 130px;">
+							{{name.name}}</div>
+
+						<form action="/logout" method="post">
+
+							<input type="hidden" name="_csrf" value="{{token}}" /> <input
+								class="size2 m-text2 trans-0-4"
+								style="background-color: rgba(0, 0, 0, 0);" type="submit"
+								value="     Sign Out" />
+
+						</form> {{/logged}} {{^logged}} <a href="/login"
+						class="size2 m-text2 trans-0-4"> Log in </a> {{/logged}}
+
+					</span>
+				</div>
+			</div>
+			<div class="wrap_header">
+				<!-- Logo -->
+				<a href="/index" class="logo"> <img src="/images/icons/logo.png"
+					alt="IMG-LOGO">
+				</a>
+
+				<!-- Menu -->
+				<div class="wrap_menu">
+					<nav class="menu">
+						<ul class="main_menu">
+
+
+							<li class="sale-noti"><a href="/index">Shop</a></li>
+
+
+							<li><a href="/about">About us</a></li>
+
+							<li>
+								<div class="rightbar">
+									<!-- Search -->
+									<div class="pos-relative bo11 of-hidden">
+										<form action="/consult">
+											<input type="hidden" name="_csrf" value="{{token}}" /> <input
+												class="s-text7 size16 p-l-23 p-r-50" type="text"
+												name="search" placeholder="Search" />
+											<!--
+                                                        <input id="sendMessage" type="image" alt="send"
+                                                        style="position: absolute; right: 3px; top: -1px; padding-bottom: 1px; margin-bottom: 1px; margin-top: 6px;"
+                                                        width="30" height="30" class="flex-c-m size5 ab-r-m color1 color0-hov trans-0-4" 
+                                                        src="/images/icons/magnifying_glass.svg" />
+            <input id="sendSearch" type="image" alt="send"
+                                                            style="position: absolute; right: 3px; top: -1px; padding-bottom: 1px; margin-bottom: 1px; margin-top: 6px;"
+                                                            width="30" height="30" src="/images/icons/magnifying-glass.svg" 
+                                                            />-->
+											<input id="sendSearch" type="image" alt="send"
+												style="position: absolute; right: 10px; top: 10px; padding-bottom: 1px; margin-bottom: 1px; margin-top: 6px;"
+												width="18" height="18"
+												src="/images/icons/magnifying-glass.svg" />
+										</form>
+									</div>
+
+								</div>
+
+							</li>
+
+						</ul>
+					</nav>
+				</div>
+
+				<!-- Header Icon -->
+				<div class="header-icons">
+					{{#logged}} <a href="/product/upload"
+						class="header-wrapicon1 dis-block" style="margin-right: 10px">
+						<img src="/images/icons/up-arrow.svg" class="header-icon1"
+						alt="Upload">
+					</a> <a href="/chat" class="header-wrapicon1 dis-block"
+						style="margin-right: 10px"> <img
+						src="/images/icons/chat-icon.png" class="header-icon1" alt="ICON">
+
+					</a> <br> <a href="/user/{{id}}"
+						class="header-wrapicon1 dis-block"> <img
+						src="/images/icons/icon-header-01.png" class="header-icon1"
+						alt="ICON">
+					</a> {{/logged}} {{^logged}} </a> <br> <a href="/login"
+						class="header-wrapicon1 dis-block"> <img
+						src="/images/icons/icon-header-01.png" class="header-icon1"
+						alt="ICON">
+					</a> {{/logged}}
+
+				</div>
+			</div>
+		</div>
+
+		<!-- Header Mobile -->
+		<div class="wrap_header_mobile">
+			<!-- Logo moblie -->
+			<a href="/index" class="logo-mobile"> <img
+				src="/images/icons/logo.png" alt="IMG-LOGO">
+			</a>
+
+			<!-- Button show menu -->
+			<div class="btn-show-menu">
+				<!-- Header Icon mobile -->
+				<div class="header-icons-mobile">
+					{{#logged}} <a href="user/{{id}}"
+						class="header-wrapicon1 dis-block"> <img
+						src="/images/icons/icon-header-01.png" class="header-icon1"
+						alt="ICON">
+					</a> {{/logged}} {{^logged}} <a href="/login"
+						class="header-wrapicon1 dis-block"> <img
+						src="/images/icons/icon-header-01.png" class="header-icon1"
+						alt="ICON">
+					</a> {{/logged}}
+
+				</div>
+
+				<div class="btn-show-menu-mobile hamburger hamburger--squeeze">
+					<span class="hamburger-box"> <span class="hamburger-inner"></span>
+					</span>
+				</div>
+			</div>
+		</div>
+
+		<!-- Menu Mobile -->
+		<div class="wrap-side-menu">
+			<nav class="side-menu">
+				<ul class="main-menu">
+
+					<li class="item-topbar-mobile p-l-20 p-t-8 p-b-8">
+						<div class="topbar-child2-mobile">
+
+							<form action="/consult">
+								<input type="hidden" name="_csrf" value="{{token}}" /> <input
+									class="s-text7 size16 p-l-23 p-r-50" type="text" name="search"
+									placeholder="Search" />
+								<!--
+                                                        <input id="sendMessage" type="image" alt="send"
+                                                        style="position: absolute; right: 3px; top: -1px; padding-bottom: 1px; margin-bottom: 1px; margin-top: 6px;"
+                                                        width="30" height="30" class="flex-c-m size5 ab-r-m color1 color0-hov trans-0-4" 
+                                                        src="/images/icons/magnifying_glass.svg" />
+            <input id="sendSearch" type="image" alt="send"
+                                                            style="position: absolute; right: 3px; top: -1px; padding-bottom: 1px; margin-bottom: 1px; margin-top: 6px;"
+                                                            width="30" height="30" src="/images/icons/magnifying-glass.svg" 
+                                                            />-->
+								<input id="sendSearch" type="image" alt="send"
+									style="position: absolute; right: 10px; top: 10px; padding-bottom: 1px; margin-bottom: 1px; margin-top: 6px;"
+									width="18" height="18" src="/images/icons/magnifying-glass.svg" />
+							</form>
+
+
+
+						</div>
+					</li>
+
+					<li class="item-topbar-mobile p-l-10">
+						<div class="topbar-social-mobile">
+							<br /> <a href="https://twitter.com/share?ref_src=twsrc%5Etfw"
+								class="twitter-share-button" data-show-count="false">Tweet</a>
+							<script async src="https://platform.twitter.com/widgets.js"
+								charset="utf-8"></script>
+						</div>
+
+					</li>
+
+					<li class="item-menu-mobile"><a href="/about">About us</a></li>
+
+					<li class="item-menu-mobile"><a href="/index">Shop</a></li>
+
+					{{#logged}}
+					<li class="item-menu-mobile"><a href="/chat">Chats</a></li>
+					<li class="item-menu-mobile"><a href="/product/upload">Upload</a></li>
+
+					<li class="item-menu-mobile"><form action="/logout"
+							method="post">
+							<input type="hidden" name="_csrf" value="{{token}}" /> <input
+								style="background-color: rgba(0, 0, 0, 0);" type="submit"
+								value="     Sign Out" />
+						</form> {{/logged}} <br>
+				</ul>
+			</nav>
+		</div>
+	</header>
+	<!-- Product Detail -->
+
+
+	<div style="margin-top: 5%; margin-bottom: 15%;" class="container">
+		<div class="row">
+			<div class="col col-md-auto">
+				<img style="max-width: 250px;" src="{{product.image}}"
+					alt="IMG-PRODUCT">
+			</div>
+			<div class="col ">
+				<h1>Congrats for selling {{product.name}}</h1>
+				<br>
+				<h4>Who is its actual owner?</h4>
+				<br>
+				<form action="sentRequest" enctype="multipart/form-data"
+					method="post">
+					<select style="margin-left: 15px;" id="id" name="id">
+						{{#listBuyers}}
+						<option value="{{id}}">{{name}}</option> {{/listBuyers}}
+
+					</select> <br> <br> <input type="hidden" name="_csrf"
+						value="{{token}}" /> <input type="submit" value="sold"
+						class="flex-c-m size2 bg4 bo-rad-23 hov1 m-text3 trans-0-4"
+						style="width: 250px" />
+
+				</form>
+			</div>
+		</div>
+	</div>
+
+
+	<!-- Footer -->
+	<footer class="bg6 p-t-45 p-b-43 p-l-45 p-r-45">
+		<div class="flex-w p-b-90">
+			<div class="w-size6 p-t-30 p-l-15 p-r-15 respon3">
+				<h4 class="s-text12 p-b-30">Contact</h4>
+
+				<div>
+					<p class="s-text7 w-size27">Any answer?, contact us on e-mail:
+						OurEmail@gmail.com</p>
+
+					<div class="flex-m p-t-30">
+
+						<a href="http://www.twitter.com/rapidasdaniel"
+							class="topbar-social-item fa fa-twitter"></a>
+					</div>
+				</div>
+			</div>
+
+		</div>
+
+	</footer>
+
+
+
+
+	<!-- Back to top -->
+	<div class="btn-back-to-top bg0-hov" id="myBtn">
+		<span class="symbol-btn-back-to-top"> <i
+			class="fa fa-angle-double-up" aria-hidden="true"></i>
+		</span>
+	</div>
+
+	<!-- Container Selection -->
+	<div id="dropDownSelect1"></div>
+	<div id="dropDownSelect2"></div>
+
+
+
+	<!--===============================================================================================-->
+	<script type="text/javascript" src="/vendor/jquery/jquery-3.2.1.min.js"></script>
+	<!--===============================================================================================-->
+	<script type="text/javascript"
+		src="/vendor/animsition/js/animsition.min.js"></script>
+	<!--===============================================================================================-->
+	<script type="text/javascript" src="/vendor/bootstrap/js/popper.js"></script>
+	<script type="text/javascript"
+		src="/vendor/bootstrap/js/bootstrap.min.js"></script>
+	<!--===============================================================================================-->
+	<script type="text/javascript" src="/vendor/select2/select2.min.js"></script>
+	<script type="text/javascript">
+		$(".selection-1").select2({
+			minimumResultsForSearch : 20,
+			dropdownParent : $('#dropDownSelect1')
+		});
+
+		$(".selection-2").select2({
+			minimumResultsForSearch : 20,
+			dropdownParent : $('#dropDownSelect2')
+		});
+	</script>
+	<!--===============================================================================================-->
+	<script type="text/javascript" src="/vendor/slick/slick.min.js"></script>
+	<script type="text/javascript" src="/js/slick-custom.js"></script>
+	<!--===============================================================================================-->
+	<script type="text/javascript"
+		src="/vendor/sweetalert/sweetalert.min.js"></script>
+	<script type="text/javascript">
+		$('.block2-btn-addcart').each(
+				function() {
+					var nameProduct = $(this).parent().parent().parent().find(
+							'.block2-name').html();
+					$(this).on('click', function() {
+						swal(nameProduct, "is added to cart !", "success");
+					});
+				});
+
+		$('.block2-btn-addwishlist').each(
+				function() {
+					var nameProduct = $(this).parent().parent().parent().find(
+							'.block2-name').html();
+					$(this).on('click', function() {
+						swal(nameProduct, "is added to wishlist !", "success");
+					});
+				});
+
+		$('.btn-addcart-product-detail').each(function() {
+			var nameProduct = $('.product-detail-name').html();
+			$(this).on('click', function() {
+				swal(nameProduct, "is added to wishlist !", "success");
+			});
+		});
+	</script>
+
+	<!--===============================================================================================-->
+	<script src="/js/main.js"></script>
+
+	<script
+		src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAKFWBqlKAGCeS1rMVoaNlwyayu0e0YRes"></script>
+
+	<script src="/js/map-custom.js"></script>
+
+
+
+</body>
+</html>
