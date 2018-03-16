@@ -249,6 +249,29 @@ public class ApiDashboard {
 		return new ResponseEntity <>(chatList, HttpStatus.OK);
 	}
 	
+	@JsonView(ProductAtt.class)
+	@RequestMapping(value="/search/{tag}", method=RequestMethod.GET)
+	public ResponseEntity<List<Product>> product (Model model, @PathVariable String tag) {
+	    List<Product>products = productRepository.findByTags(tag);
+	    if (!products.equals(null)) {
+	    	return new ResponseEntity<>(products,HttpStatus.OK);
+	    }
+	    
+	    return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+		
+	}
+	
+	@JsonView(ProductAtt.class)
+	@RequestMapping(value="/featured", method=RequestMethod.GET)
+	public ResponseEntity<List<Product>> product (Model model) {
+	    List<Product>products = productRepository.findByFeatured(true);
+	    if (!products.equals(null)) {
+	    	return new ResponseEntity<>(products,HttpStatus.OK);
+	    }
+	    
+	    return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+		
+	}
 	
 	
 

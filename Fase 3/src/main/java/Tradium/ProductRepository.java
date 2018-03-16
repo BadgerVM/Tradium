@@ -14,5 +14,6 @@ public interface ProductRepository extends JpaRepository<Product, Long> {
 	Product findTopByOrderByIdDesc();
 	Page<Product> findByTagsContaining(String s, Pageable page);
 	List <Product> findByFeatured(boolean featured);
+	List <Product> findByTags(String s);
 	
 }	
