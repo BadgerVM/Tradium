@@ -263,15 +263,128 @@ public class ApiDashboard {
 	
 	@JsonView(ProductAtt.class)
 	@RequestMapping(value="/featured", method=RequestMethod.GET)
-	public ResponseEntity<List<Product>> product (Model model) {
+	public ResponseEntity<List<Product>> featured (Model model) {
 	    List<Product>products = productRepository.findByFeatured(true);
 	    if (!products.equals(null)) {
 	    	return new ResponseEntity<>(products,HttpStatus.OK);
 	    }
 	    
+	    
 	    return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 		
 	}
+	
+	@JsonView(MessageAtt.class)
+	@RequestMapping(value="/product/{id}/offer/{pr}", method=RequestMethod.GET)
+	public ResponseEntity<Message> offer (Model model, @PathVariable long id,@PathVariable int pr) {
+		
+	    Product product = productRepository.findById(id);
+	    if (!product.equals(null)) {
+	    	User loggedUser = userComponent.getLoggedUser();
+			if(loggedUser.getId()!=product.getUser().getId()) {
+				
+				Chat c1 = new Chat(loggedUser, product.getUser());
+		  		Message m1 = new Message();
+				
+				if( pr > productRepository.findById(id).getMinPrice() ) {
+					m1 = new Message(product.getUser(), "Hi! i offer you "+ pr +"€"); 	
+				}else {
+					m1 = new Message(product.getUser(), "Hi! i offer you "+ pr +"€, may you get your price down a little bit?");
+				}
+				
+				m1.setChat(c1);
+				product.addListBuyers(loggedUser);	
+
+				chatRepository.save(c1);
+				messageRepository.save(m1);
+
+				c1.addMessage(m1);
+				chatRepository.save(c1);
+				productRepository.save(product);
+				return new ResponseEntity<>(m1,HttpStatus.OK);
+	    	
+			}
+	    }
+	    
+	    return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+		
+	}
+	
+	@JsonView(MessageAtt.class)
+	@RequestMapping(value="/product/{id}/buy", method=RequestMethod.GET)
+	public ResponseEntity<Message> buy (Model model, @PathVariable long id) {
+		
+	    Product product = productRepository.findById(id);
+	    if (!product.equals(null)) {
+	    	User loggedUser = userComponent.getLoggedUser();
+			if(loggedUser.getId()!=product.getUser().getId()) {
+
+
+			  	product.setBought(true);
+			  	product.addListBuyers(loggedUser);	
+			  	User seller = product.getUser();
+			  	
+			  	Chat c1 = new Chat(loggedUser, seller);
+			  	Message m1 =  new Message(seller, "Hi! I bought your " + product.getName()); m1.setChat(c1);
+			  	chatRepository.save(c1);
+				messageRepository.save(m1);
+			  	productRepository.save(product);
+			  	
+				return new ResponseEntity<>(m1,HttpStatus.OK);
+	    	
+			}
+	    }
+	    
+	    return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+		
+	}
+	
+	@JsonView(MessageAtt.class)
+	@RequestMapping(value="/product/{id}/sold", method=RequestMethod.GET)
+	public ResponseEntity<Message> sold (Model model, @PathVariable long id) {
+		
+	    Product product = productRepository.findById(id);
+	    if (!product.equals(null)) {
+	    	User loggedUser = userComponent.getLoggedUser();
+			if(loggedUser.getId()==product.getUser().getId() && product.getBought()) {
+
+				User seller = product.getUser();
+		  		Chat c1 = new Chat(loggedUser, seller);
+				Message m1 = new Message(seller, "Could you please valorate me in api/user/"+seller.getId()+"/valoration");m1.setChat(c1);
+		  		
+				chatRepository.save(c1);
+				messageRepository.save(m1);
+			  	
+			  	
+			  	
+				return new ResponseEntity<>(m1,HttpStatus.OK);
+	    	
+			}
+	    }
+	    
+	    return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+		
+	}
+	
+	@JsonView(ValorationAtt.class)
+	@RequestMapping(value="/user/{id}/valoration", method=RequestMethod.POST)
+	@ResponseStatus(HttpStatus.CREATED)
+	public ResponseEntity<Valoration> createValoration (Model model, @PathVariable long id, @RequestBody Valoration valoration, HttpServletRequest request) {
+		
+		User loggedUser = userComponent.getLoggedUser();
+		if(loggedUser.getId()!=id) {
+			User seller=userRepository.findByid(id);
+			Valoration v =new Valoration(seller, loggedUser, valoration.getValoration(), valoration.getDescription());
+			valorationRepository.save(v);
+			
+			return new ResponseEntity <>(v, HttpStatus.OK);
+		}
+		return new ResponseEntity <>(HttpStatus.UNAUTHORIZED);
+		
+	}
+	
+	
+	
 	
 	
 
