@@ -1,0 +1,22 @@
+version: '2'
+
+services:
+  mysql:
+    image: mysql:latest
+    container_name: mysql_server
+    environment:
+      - MYSQL_ROOT_PASSWORD=pass
+      - MYSQL_DATABASE=test
+      - MYSQL_ROOT_HOST=%
+    ports:
+      - 3306:3306
+
+  web:
+    image: dgarciaci/tradium:latest
+    container_name: web_server
+    depends_on:
+      - mysql
+    environment:
+      - DATABASE_HOST=mysql
+    ports:
+      - 8080:8080
