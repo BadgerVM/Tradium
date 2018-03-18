@@ -105,9 +105,10 @@ public class ApiDashboard {
 		}
 		if(user.getImage() ==null) {
 
-			user.setImage("RUTA POR DEFECTO IDKN");
+			user.setImage("\\images\\user_images\\user_default.jpg");
 		}
 		
+		user.setMedValoration(0);
 		user.setRoles(role);
 		userRepository.save(user);
 		
@@ -118,21 +119,23 @@ public class ApiDashboard {
 	@JsonView(ProductAtt.class)
 	@RequestMapping(value="/product/{id}/delete", method=RequestMethod.DELETE)
 	public ResponseEntity<Product>  deleteProduct (Model model, @PathVariable Integer id) {
+		
 		Product product = productRepository.findById(id);
 		User loggedUser = userComponent.getLoggedUser();
-		if (loggedUser.getId() != product.getUser().getId()) {
-			
-			if(!loggedUser.isUserInRole("ADMIN")){
-				return new ResponseEntity <>(product, HttpStatus.UNAUTHORIZED);
-			}
-			
-		}
 		
+			
+		if(!loggedUser.isUserInRole("ADMIN")){
+			
+				if (loggedUser.getId() != product.getUser().getId()) {
+					return new ResponseEntity <>(HttpStatus.UNAUTHORIZED);
+				}
+		}
 		
 		if (product != null) {
 			
 			productRepository.delete(product);
 			return new ResponseEntity <>(product, HttpStatus.OK);
+			
 		}
 		
 		return new ResponseEntity<>(HttpStatus.NOT_FOUND);
@@ -167,6 +170,7 @@ public class ApiDashboard {
 		productOur.setUser(loggedUser);
 		productRepository.save(productOur);
 		User u =userRepository.findByid(loggedUser.getId());
+		productOur.setFeatured(false);
         u.addProduct(productOur);
         userRepository.save(u);
 		return new ResponseEntity <>(productOur, HttpStatus.OK);
@@ -275,8 +279,8 @@ public class ApiDashboard {
 	}
 	
 	@JsonView(MessageAtt.class)
-	@RequestMapping(value="/product/{id}/offer/{pr}", method=RequestMethod.GET)
-	public ResponseEntity<Message> offer (Model model, @PathVariable long id,@PathVariable int pr) {
+	@RequestMapping(value="/product/{id}/offer", method=RequestMethod.POST)
+	public ResponseEntity<Message> offer (Model model, @PathVariable long id, @RequestBody int pr) {
 		
 	    Product product = productRepository.findById(id);
 	    if (!product.equals(null)) {
@@ -311,7 +315,7 @@ public class ApiDashboard {
 	}
 	
 	@JsonView(MessageAtt.class)
-	@RequestMapping(value="/product/{id}/buy", method=RequestMethod.GET)
+	@RequestMapping(value="/product/{id}/buy", method=RequestMethod.POST)
 	public ResponseEntity<Message> buy (Model model, @PathVariable long id) {
 		
 	    Product product = productRepository.findById(id);
@@ -340,7 +344,7 @@ public class ApiDashboard {
 	}
 	
 	@JsonView(MessageAtt.class)
-	@RequestMapping(value="/product/{id}/sold", method=RequestMethod.GET)
+	@RequestMapping(value="/product/{id}/sold", method=RequestMethod.POST)
 	public ResponseEntity<Message> sold (Model model, @PathVariable long id) {
 		
 	    Product product = productRepository.findById(id);

@@ -1,4 +1,4 @@
-version: '2'
+version: '3'
 
 services:
   mysql:
@@ -12,7 +12,7 @@ services:
       - 3306:3306
 
   web:
-    image: dgarciaci/tradium:latest
+    image: badgers95/tradium:latest
     container_name: web_server
     depends_on:
       - mysql

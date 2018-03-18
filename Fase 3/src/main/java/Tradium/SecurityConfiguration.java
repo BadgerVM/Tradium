@@ -35,8 +35,23 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
         // Private pages (all other pages)
         http.authorizeRequests().antMatchers("/product/*/buy").authenticated();
         http.authorizeRequests().antMatchers("/product/*/offer").authenticated();
+        
+        http.authorizeRequests().antMatchers("/api/product/*").permitAll();
+        http.authorizeRequests().antMatchers("/api/seller/*").permitAll();
+        http.authorizeRequests().antMatchers("/api/user/new").permitAll();
+        http.authorizeRequests().antMatchers("/api/seller/*/valorations").permitAll();
+        
+        
         http.authorizeRequests().antMatchers("/api/product/*/delete").authenticated();
+        http.authorizeRequests().antMatchers("/api/search/*").authenticated();
+        http.authorizeRequests().antMatchers("/featured").authenticated();
         http.authorizeRequests().antMatchers("/api/product/new").authenticated();
+        http.authorizeRequests().antMatchers("/api/chats").authenticated();
+        http.authorizeRequests().antMatchers("/api/chats/*").authenticated();
+        http.authorizeRequests().antMatchers("/api/chats/*/new").authenticated();
+        http.authorizeRequests().antMatchers("/api/product/*/offer/*").authenticated();
+        http.authorizeRequests().antMatchers("/api/product/*/buy").authenticated();
+        
         http.authorizeRequests().anyRequest().authenticated();
         
         // Login form
