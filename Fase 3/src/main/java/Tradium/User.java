@@ -124,6 +124,10 @@ public class User {
 	public void addProduct(Product e) {
 		this.products.add(e);
 	}
+	
+	public void deleteProduct(Product e) {
+        this.products.remove(e);
+    }
 
 
 

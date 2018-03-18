@@ -117,31 +117,33 @@ public class ApiDashboard {
 	}
 	
 	@JsonView(ProductAtt.class)
-	@RequestMapping(value="/product/{id}/delete", method=RequestMethod.DELETE)
-	public ResponseEntity<Product>  deleteProduct (Model model, @PathVariable Integer id) {
-		
-		Product product = productRepository.findById(id);
-		User loggedUser = userComponent.getLoggedUser();
-		
-			
-		if(!loggedUser.isUserInRole("ADMIN")){
-			
-				if (loggedUser.getId() != product.getUser().getId()) {
-					return new ResponseEntity <>(HttpStatus.UNAUTHORIZED);
-				}
-		}
-		
-		if (product != null) {
-			
-			productRepository.delete(product);
-			return new ResponseEntity <>(product, HttpStatus.OK);
-			
-		}
-		
-		return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-		
-	}
+    @RequestMapping(value="/product/{id}/delete", method=RequestMethod.DELETE)
+    public ResponseEntity<Product>  deleteProduct (Model model, @PathVariable Integer id) {
+        Product product = productRepository.findById(id);
 
+        User loggedUser = userComponent.getLoggedUser();
+        if (loggedUser.getId() != product.getUser().getId()) {
+
+            if(!loggedUser.isUserInRole("ADMIN")){
+                return new ResponseEntity <>(product, HttpStatus.UNAUTHORIZED);
+            }
+
+        }
+
+
+        if (product != null) {
+            User u = product.getUser();
+            u.deleteProduct(product);
+            userRepository.save(u);
+            productRepository.delete(product);
+            return new ResponseEntity <>(product, HttpStatus.OK);
+        }
+
+
+        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+
+    }
+	
 	interface ValorationDetail extends Valoration.ValorationAtt, User.UserAtt,  User.UserIdAtt{}
 	@JsonView(ValorationDetail.class)
 	@RequestMapping(value="/seller/{id}/valorations", method=RequestMethod.GET)
