@@ -66,10 +66,19 @@ And that's all!
 
 Document Api.md with information about the REST API.
 
-## How to use it with Docker
+## How to execute the app with Docker
 
-Docker is a very useful software that allows to use Tradium without installing anything less docker. 
-It is possible because the container technology what is capable of run the app in a VM that contains all the compilers, libraries and other software needed for run Tradium.
-If you want to try the 'Dockerized' version of Tradium, please read our [Docker Documentation](https://github.com/RoberG/Tradium/blob/master/Docker.md).
+To run the app, first, you need to have Docker installed, you can download docker here: https://docs.docker.com/install/#supported-platforms
+When you have Docker, you only need to open the powersell in the folder where the docker-compose.yml is, and execute "docker-compose up", and when the app is up, to access to the app you have to open your browser and go to https://localhost:8080.
+And there you have the app.
+
+## How to prepare the development environment
+
+First of all, we create a .jar, using maven, and STS. 
+
+To prepare the image of the app, we have a Dockerfile and our .jar, and we used the command docker build -t Badger95/tradium. To build the image of our app.
+To push the image to docker hub, we used the command docker push Badger95/tradium, and with that, the image of our app, was  pushed on our docker hub account.
+
+After that, we create a docker-compose-yml, and it uses an image of mysql, on the port 3306, and the image of our app.
 
 
