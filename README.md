@@ -61,3 +61,15 @@ And that's all!
 ## Database Relational Diagram
 
 ![alt text](https://github.com/RoberG/Tradium/blob/master/relational.png)
+
+## REST API documentation
+
+Document Api.md with information about the REST API.
+
+## How to use it with Docker
+
+Docker is a very useful software that allows to use Tradium without installing anything less docker. 
+It is possible because the container technology what is capable of run the app in a VM that contains all the compilers, libraries and other software needed for run Tradium.
+If you want to try the 'Dockerized' version of Tradium, please read our Docker Documentation.
+
+
