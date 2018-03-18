@@ -68,7 +68,7 @@ Document Api.md with information about the REST API.
 
 ## How to execute the app with Docker
 
-To run the app, first, you need to have Docker installed, you can download docker here: https://docs.docker.com/install/#supported-platforms
+To run the app, first, you need to have Docker installed, you can download docker [here](https://docs.docker.com/install/#supported-platforms)
 When you have Docker, you only need to open the powersell in the folder where the docker-compose.yml is, and execute "docker-compose up", and when the app is up, to access to the app you have to open your browser and go to https://localhost:8080.
 And there you have the app.
 
