@@ -36,6 +36,8 @@ Daniel García Cisneros- d.garciaci@alumnos.urjc.es. @dgarciaci
 
 Ignacio Ruiz Ardisoni- i.ruiza@alumnos.urjc.es. @TaXiD
 
+Jesús Ávila Martínez - j.avilam@alumnos.urjc.es. @SrJesusAM
+
 ## Navigation Diagram
 
 ![alt text](https://github.com/RoberG/Tradium/blob/master/THEDIAGRAM.PNG)
@@ -64,7 +66,7 @@ And that's all!
 
 ## REST API documentation
 
-Document Api.md with information about the REST API.
+Document [API.md](https://github.com/RoberG/Tradium/master/API.md) with information about the REST API.
 
 ## How to execute the app with Docker
 
