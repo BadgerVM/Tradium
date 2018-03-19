@@ -507,4 +507,152 @@ Search for all products that have the tag you are looking for
 * ##### Error Response:
 
 	**Code:** 404 NOT FOUND
+
+
+### OBTAIN FEATURED ITEMS
+
+Shows all the featured items.
+
+* ##### URL
+
+	< /featured >
+
+* ##### Method:
+
+	`GET`
+
+
+* ##### Success Response:
+      {
+
+	"id": 1,
+        "name": "pr1",
+        "description": "barata barata1",
+        "tags": "fashion",
+        "image": "\\images\\product_images\\product_default.png",
+        "price": 15,
+        "bought": false,
+        "featured": true
+    }
+    
+* ##### Error Response:
+
+	**Code:** 404 NOT FOUND
 	
+### MAKE AN OFFER
+Counter offer for a product.
+
+* ##### URL
+
+	< /product/{id}/offer>
+
+* ##### Method:
+
+	`GET`
+	
+	* URL
+	
+		/product/1/delete
+
+* ##### URL Params
+
+	* Required:
+
+		`id=[long]`
+		
+* ##### Data Params
+      
+      14
+		
+* ##### Success Response:
+          {
+	  
+			"id": 1,
+			"name": "pr1",
+			"description": "barata barata1",
+			tags": "fashion",
+			"image": "\\images\\product_images\\product_default.png",
+			"price": 15,
+			"bought": false,
+			"featured": true
+		  }
+* ##### Error Response:
+
+	**Code:** 404 NOT FOUND
+	**Code:** 401 NOT AUTHORIZED
+	
+		  
+### BUY A PRODUCT
+Buys a product
+
+* ##### URL
+
+	< /product/{id}/Buy>
+
+* ##### Method:
+
+	`POST`
+	
+	* URL
+	
+		/product/1/buy
+
+		
+		
+* ##### Success Response:
+          {
+	  
+			"id": 1,
+			"name": "pr1",
+			"description": "barata barata1",
+			tags": "fashion",
+			"image": "\\images\\product_images\\product_default.png",
+			"price": 15,
+			"bought": true,
+			"featured": true
+		  }
+* ##### Error Response:
+
+	**Code:** 404 NOT FOUND
+	**Code:** 401 NOT AUTHORIZED
+	
+### SEND A VALORATION
+Buys a product
+
+* ##### URL
+
+	< /user/{id}/valoration>
+
+* ##### Method:
+
+	`POST`
+	
+	* URL
+	
+		/user/{id}/valoration
+
+		
+* ##### Data Params
+{
+
+	"valoration": 5,
+        "description": "all ok",
+     
+}
+* ##### Success Response:
+          {
+			"id": 1,
+			"name": "pr1",
+			"description": "barata barata1",
+			tags": "fashion",
+			"image": "\\images\\product_images\\product_default.png",
+			"price": 15,
+			"bought": true,
+			"featured": true
+		  }
+* ##### Error Response:
+
+	**Code:** 404 NOT FOUND
+	**Code:** 401 NOT AUTHORIZED
+	
+		  
