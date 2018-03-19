@@ -101,24 +101,23 @@ Adds a user to the system.
 		"email": "b9@a.com",
 		"locationX": "0000",
 		"locationY": "0000",
-		"image": "\\images\\user_images\\user1.jpg"
+		"image": "\\images\\user_images\\user_default.jpg"
       }	
 		
 * ##### Success Response:
-    {
-        "id": 7,
-        "name": "u9",
-		"passwoHash": null,
-        "email": "b9@a.com",
+      {
+        "id": 9,
+		"name": "u9",
+		"email": "b9@a.com",
 		"locationX": "0000",
 		"locationY": "0000",
 		"medValoration": 0,
-		"image": "\\images\\user_images\\user1.jpg"
+		"image": "\\images\\user_images\\user1.jpg",
 		"roles": [
 			"USER"
-		]
-		"products":[]
-	}
+		],
+		"products": [] 
+      }
 	
 ### DELETE PRODUCT
 Deletes a product of the system.
@@ -142,16 +141,16 @@ Deletes a product of the system.
 		`id=[long]`
 		
 * ##### Success Response:
-    {
-    "id": 1,
-    "name": "pr1",
-    "description": "barata barata1",
-    "tags": "fashion",
-    "image": "\\images\\product_images\\product_default.png",
-    "price": 15,
-    "bought": false,
-    "featured": true
-	}
+          {
+			"id": 1,
+			"name": "pr1",
+			"description": "barata barata1",
+			tags": "fashion",
+			"image": "\\images\\product_images\\product_default.png",
+			"price": 15,
+			"bought": false,
+			"featured": true
+		  }
 
 ### VALORATIONS SELLER
 
@@ -175,9 +174,9 @@ Displays all the information from the valuations that other buyers have made to 
 			/seller/1/valorations
  
 * ##### Success Response:
-{
-			[
-    {
+[
+
+	{
         "buyer": {
             "id": 2,
             "name": "u2",
@@ -278,18 +277,17 @@ Displays all the information from the valuations that other buyers have made to 
         "date": "24-October-2017"
     }
 ]
-}
 		  
 * ##### Error Response:
 
 	**Code:** 404 NOT FOUND
 	
-### CREATE USER
-Adds a user to the system.
+### CREATE PRODUCT
+Create a new product to the system.
 
 * ##### URL
 
-	< /user/new >
+	< /product/new >
 
 * ##### Método:
 
@@ -297,7 +295,8 @@ Adds a user to the system.
 
 * ##### Data Params
       {
-        "name": "pr20",
+       
+       "name": "pr20",
 		"description": "Bueno, bonito y barato",
 		"tags": "fashion",
 		"image": "\\images\\product_images\\product_default.jpg",
@@ -307,7 +306,8 @@ Adds a user to the system.
 		
 * ##### Success Response:
     {
-		"id": 9,
+    
+  		"id": 9,
         "name": "pr20",
 		"description": "Bueno, bonito y barato",
 		"tags": "fashion",
@@ -316,7 +316,7 @@ Adds a user to the system.
      	"bought": false,
 		"featured": true
 	}
-
+	
 ### CHATS DETAILS
 
 Displays all the chats details
@@ -330,8 +330,8 @@ Displays all the chats details
 	`GET`
  
 * ##### Success Response:
-{
 [
+
     {
         "id": 1,
         "user2": {
@@ -350,8 +350,8 @@ Displays all the chats details
             "id": 5
         }
     }
-]
-}
+
+
 		  
 ### MESSAGES DETAILS
 
@@ -375,8 +375,8 @@ Displays all the details of the messages in a chat
 			/chats/1
  
 * ##### Success Response:
-{
 [
+
     {
         "transmitter": {
             "id": 1
@@ -419,18 +419,20 @@ Creating a new text message in a chat
 			/chats/1/new
 			
 * ##### Data Params
-    {
+   
+    	{
         "text": "Hello, I am interested in your product"
-    }	
-	  
+    	}
+	
 		
 * ##### Success Response:
-    {
+   
+    	{
 		"transmitter": {
             "id": 1
         },
         "text": "Hello, I am interested in your product"
-    }
+    
 	
 * ##### Error Response:
 
@@ -460,9 +462,8 @@ Search for all products that have the tag you are looking for
  
 * ##### Success Response:
 {
-[
-    {
-        "id": 1,
+
+	"id": 1,
         "name": "pr1",
         "description": "barata barata1",
         "tags": "fashion",
@@ -501,8 +502,8 @@ Search for all products that have the tag you are looking for
         "bought": false,
         "featured": false
     }
-]
-}
+
+
 * ##### Error Response:
 
 	**Code:** 404 NOT FOUND
