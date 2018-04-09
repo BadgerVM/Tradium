@@ -21,7 +21,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
         http.authorizeRequests().antMatchers("/logout").permitAll();
         http.authorizeRequests().antMatchers("/login").permitAll();
         http.authorizeRequests().antMatchers("/register").permitAll();
-
+        http.authorizeRequests().antMatchers("/api/search/**").permitAll();
         http.authorizeRequests().antMatchers("/about").permitAll();
         http.authorizeRequests().antMatchers("/user/**").permitAll();
         http.authorizeRequests().antMatchers("/consult").permitAll();

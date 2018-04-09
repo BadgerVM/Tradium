@@ -55,12 +55,12 @@ public class User {
 	@JsonView(UserAtt.class)
 	@ElementCollection(fetch = FetchType.EAGER)
 	 private List<String> roles;
-	
+	/*
 	@JsonView(UserAtt.class)
 	@Autowired
 	@OneToMany
 	private List<Product> products = new ArrayList<>();
-	
+	*/
 	public User() {}
 	
 	public User(String name, String password, String email, String... roles) {
@@ -112,7 +112,7 @@ public class User {
 	public void setMedValoration(int medValoration) {
 		this.medValoration = medValoration;
 	}
-
+/*
 	public List<Product> getProducts() {
 		return products;
 	}
@@ -128,7 +128,7 @@ public class User {
 	public void deleteProduct(Product e) {
         this.products.remove(e);
     }
-
+*/
 
 
 	public String getEmail() {

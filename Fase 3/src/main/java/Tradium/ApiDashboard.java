@@ -133,7 +133,7 @@ public class ApiDashboard {
 
         if (product != null) {
             User u = product.getUser();
-            u.deleteProduct(product);
+            //u.deleteProduct(product);
             userRepository.save(u);
             productRepository.delete(product);
             return new ResponseEntity <>(product, HttpStatus.OK);
@@ -173,7 +173,7 @@ public class ApiDashboard {
 		productRepository.save(productOur);
 		User u =userRepository.findByid(loggedUser.getId());
 		productOur.setFeatured(false);
-        u.addProduct(productOur);
+        //u.addProduct(productOur);
         userRepository.save(u);
 		return new ResponseEntity <>(productOur, HttpStatus.OK);
 		
@@ -255,10 +255,25 @@ public class ApiDashboard {
 		return new ResponseEntity <>(chatList, HttpStatus.OK);
 	}
 	
+	
+	@JsonView(ProductAtt.class)
+	@RequestMapping(value="/search/", method=RequestMethod.GET)
+	public ResponseEntity<List<Product>> product (Model model) {
+		List<Product>products = productRepository.findAll();
+	    if (!products.equals(null)) {
+	    	return new ResponseEntity<>(products,HttpStatus.OK);
+	    }
+	    
+	    return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+		
+	}
+	
+	
+	
 	@JsonView(ProductAtt.class)
 	@RequestMapping(value="/search/{tag}", method=RequestMethod.GET)
 	public ResponseEntity<List<Product>> product (Model model, @PathVariable String tag) {
-	    List<Product>products = productRepository.findByTags(tag);
+		List<Product> products = productRepository.findByTags(tag);
 	    if (!products.equals(null)) {
 	    	return new ResponseEntity<>(products,HttpStatus.OK);
 	    }

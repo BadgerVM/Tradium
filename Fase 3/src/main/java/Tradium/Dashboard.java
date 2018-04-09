@@ -67,7 +67,7 @@ public class Dashboard {
         Product p6 = new Product("pr6", "barata barata6", "books", 6);p6.setUser(u1);
         Product p7 = new Product("pr7", "barata barata7", "books", 7);p7.setUser(u1);
         Product p8 = new Product("pr8", "barata barata8", "books", 8);p8.setUser(u1);
-        Product p9 = new Product("pr9", "barata barata9", "electrionics", 9);p9.setUser(u1);
+        Product p9 = new Product("pr9", "barata barata9", "electronics", 9);p9.setUser(u1);
         Product p10 = new Product("pr10", "barata barata10", "fashion", 10);p10.setUser(u1);
         Product p11 = new Product("pr11", "barata barata11", "books", 11);p11.setUser(u1);
         Product p12 = new Product("pr12", "barata barata12", "books", 12);p12.setUser(u1);
@@ -76,7 +76,7 @@ public class Dashboard {
         Product p15 = new Product("pr15", "barata barata15", "fashion", 15);p15.setUser(u1);
         Product p16 = new Product("pr16", "barata barata16", "videogames", 16);p16.setUser(u1);
         Product p17 = new Product("pr17", "barata barata17", "sport", 17);p17.setUser(u2);
-        Product p18 = new Product("pr18", "barata barata18", "electrionics", 18);p18.setUser(u2);
+        Product p18 = new Product("pr18", "barata barata18", "electronics", 18);p18.setUser(u2);
         Product p19 = new Product("pr19", "barata barata19", "films", 19);p19.setUser(u2);
         Product p20 = new Product("pr20", "barata barata20", "fashion", 20);p20.setUser(u3);
         Product p21 = new Product("pr21", "barata barata21", "books", 21);p21.setUser(u1);
@@ -125,6 +125,7 @@ public class Dashboard {
         userRepository.save(u4);
         userRepository.save(u5);
         userRepository.save(u6);
+        
         p1.addListBuyers(u3);
         productRepository.save(p1);
         productRepository.save(p2);
@@ -174,7 +175,7 @@ public class Dashboard {
         messageRepository.save(m3);
         messageRepository.save(m4);
         messageRepository.save(m5);
-        
+        /*
         u1.addProduct(p1);
         u1.addProduct(p2);
         u1.addProduct(p3);
@@ -210,7 +211,7 @@ public class Dashboard {
         userRepository.save(u4);
         userRepository.save(u5);
         userRepository.save(u6);
-        
+        */
         c1.addMessage(m1);
         c1.addMessage(m2);
         c1.addMessage(m3);
