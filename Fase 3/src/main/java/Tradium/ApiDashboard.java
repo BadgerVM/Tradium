@@ -89,6 +89,22 @@ public class ApiDashboard {
 		
 	}
 	
+	@JsonView(UserDetail.class)
+	@RequestMapping(value="/seller/products/{id}", method=RequestMethod.GET)
+	public ResponseEntity<List<Product>> products (Model model, @PathVariable long id) {
+		
+	    User user = userRepository.findByid(id);
+	    if (!user.equals(null)) {
+	    	
+	    	List <Product> products = productRepository.findByUser_Id(id);
+	  
+	    	return new ResponseEntity<>(products,HttpStatus.OK);	
+	    }
+	    
+	    return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+		
+	}
+	
 	@RequestMapping(value="/user/new", method=RequestMethod.POST)
 	@ResponseStatus(HttpStatus.CREATED)
 	public User register (Model model, @RequestBody User user, HttpServletRequest request) {

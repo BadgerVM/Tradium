@@ -1,27 +1,17 @@
 <br>
 <br>
 <br>
-<br>
-<br>
-{{user.name}}
-{{user.id}}
-{{user.email}}
-{{user.locationX}}
-{{user.LocationY}}
-{{user.medValoration}}
-{{user.role}}
-{{user.image}}
-<br>
-<br>
+
 <!-- Maps -->
-<!--
+
 <section class="bg-title-page p-t-40 p-b-50 h-size3 flex-col-c-m">
 
-    <div class="contact-map size21" id="google_map" data-map-x={{user.locationX}}
-        data-map-y={{user.LocationY}} data-pin="images/icons/icon-position-map.png"
-        data-scrollwhell="0" data-draggable="1"></div>
+    <div id="googleMap" style="width:80%;height:400px;"></div>
 
 </section>
+
+
+
 <section class="bgwhite p-t-66 p-b-38">
     <div class="container">
         <div class="row">
@@ -44,12 +34,12 @@
             </div>
         </div>
     </div>
--->
+
     <!-- Tab01 -->
-<!--
+
         <div class="container">
         <div class="tab01">
-            <!-- Nav tabs --><!--
+            <!-- Nav tabs -->
             <ul class="nav nav-tabs" role="tablist">
                 <li class="nav-item"><a class="nav-link active"
                     data-toggle="tab" href="#productsForSale" role="tab">Products
@@ -57,26 +47,30 @@
                 <li class="nav-item"><a class="nav-link" data-toggle="tab"
                     href="#valorations" role="tab">Valorations</a></li>
             </ul>
-        -->
+            
+            <h1 *ngFor="let pr of products">{{pr.name}}</h1>
+            <h1 *ngFor="let pr of products">{{pr.price}}</h1>
+
+            <h1>{{valorations[0].description}}</h1>
+
             <!-- Tab panes--><!--
             <div class="tab-content p-t-35">
                 <div class="tab-pane fade show active" id="productsForSale"
                     role="tabpanel">
                     <div class="row">
-
-                        {{#products}}
-                        <div class="col-sm-6 col-md-4 col-lg-3 p-b-50">
+                        
+                        <div  *ngFor="let pr of products" class="col-sm-6 col-md-4 col-lg-3 p-b-50">
                             <div class="block2">
                                 <div class="block2-img wrap-pic-w of-hidden pos-relative ">
                                     <img style="width: 270px; height: 275px; overflow: hidden"
-                                        270 275 src="{{image}}" alt="/images/item-02.jpg">
+                                        270 275 src="" alt="/images/item-02.jpg">
 
                                 </div>
 
                                 <div class="block2-txt p-t-20">
-                                    <a href="../product/{{id}}"
-                                        class="block2-name dis-block s-text3 p-b-5"> {{name}} </a> <span
-                                        class="block2-price m-text6 p-r-5"> ${{price}} </span>
+                                    <a href="../product/"
+                                        class="block2-name dis-block s-text3 p-b-5"> {{pr.name}} </a> <span
+                                        class="block2-price m-text6 p-r-5"> ${{product.price}} </span>
                                 </div>
                             </div>
                         </div>
@@ -85,7 +79,7 @@
                             page</a> {{/showPrevProducts}} {{#showNextProducts}} <a
                             href="/user/{{id}}?products_page={{nextPageProducts}}">Next
                             page</a> {{/showNextProducts}}
-
+                    
                     </div>
                 </div>
 
@@ -93,6 +87,7 @@
 
 
                 <div class="tab-pane fade" id="valorations" role="tabpanel">
+                   
                     {{#valorations}}
                     <div class="row">
                         <div class="col-md-2 p-b-10 m-l-20">
@@ -124,11 +119,11 @@
                         page</a> {{/showPrevValorations}} {{#showNextValorations}} <a
                         href="/user/{{id}}?valorations_page={{nextPageValorations}}">Next
                         page</a> {{/showNextValorations}}
+                
                 </div>
 
 
-            </div>
+            </div>-->
         </div>
     </div>
 </section>
--->

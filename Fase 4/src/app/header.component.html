@@ -12,17 +12,16 @@
         <div class="topbar-child2">
             <span class="topbar-email">
                 <div style="position: absolute; top: 10px; right: 130px;">
-                    </div>
+                        {{loginService.user.name}}  </div>
 
-                <form action="/logout" method="post">
+                <form  *ngIf="loginService.isLogged">
 
-                        <input
-                        class="size2 m-text2 trans-0-4"
-                        style="background-color: rgba(0, 0, 0, 0);" type="submit"
-                        value="     Sign Out" />
+                    <input  [routerLink]="['']" (click)="logOut()" class="size2 m-text2 trans-0-4"
+                    style="background-color: rgba(0, 0, 0, 0);" 
+                    type="submit" value="     Sign Out" />
 
-                </form> <a href="/login"
-                class="size2 m-text2 trans-0-4"> Log in </a> 
+                </form> 
+                <a *ngIf="!loginService.isLogged" [routerLink]="['Login']" class="size2 m-text2 trans-0-4"> Log in </a> 
 
             </span>
         </div>
@@ -70,7 +69,7 @@
         </div>
 
         <!-- Header Icon -->
-        <div class="header-icons">
+        <div class="header-icons" *ngIf="loginService.isLogged">
             <a href="/product/upload"
                 class="header-wrapicon1 dis-block" style="margin-right: 10px">
                 <img src="../assets/images/icons/up-arrow.svg" class="header-icon1"
@@ -80,7 +79,7 @@
                 style="margin-right: 10px"> <img
                 src="../assets/images/icons/chat-icon.png" class="header-icon1" alt="ICON">
 
-            </a> <br> <a href="/user/"
+            </a> <br> <a  [routerLink]="['/Seller',loginService.user.id]"
                 class="header-wrapicon1 dis-block"> <img
                 src="../assets/images/icons/icon-header-01.png" class="header-icon1"
                 alt="ICON">

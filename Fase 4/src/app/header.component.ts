@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { RouterModule } from '@angular/router';
+import { LoginService } from './login.service';
 
 @Component({
   selector: 'header',
@@ -22,4 +23,8 @@ import { RouterModule } from '@angular/router';
 
 })
 
-export class HeaderComponent {}
+export class HeaderComponent {
+
+  constructor(private loginService: LoginService) { }
+  
+}

@@ -59,6 +59,8 @@ public class Dashboard {
         User u5 = new User("u5", "p5","b5@a.com", "USER");
         User u6 = new User("u6", "ROOT","b5@a.com", "USER", "ADMIN");
 
+        u1.setLocationX("40.4167754");
+        u1.setLocationY("-3.7037901999999576");
         Product p1 = new Product("pr1", "barata barata1", "fashion", 15);p1.setUser(u1);        
         Product p2 = new Product("pr2", "barata barata2", "videogames", 2);p2.setUser(u1);
         Product p3 = new Product("pr3", "barata barata3", "books", 3);p3.setUser(u1);
