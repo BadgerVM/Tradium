@@ -13,9 +13,14 @@ export class Product{
   public price: number, public  bought: boolean, public featured: boolean){}
 }*/
 
+export interface UserRegister{
+  name: string, passwordHash: string, email: string, locationX: string, locationY: string, image: string;
+}
+
 export interface User{
   id: number, name: string, email: string, locationX: string, locationY: string, medValoration: number, image: string,  roles: string[];
 }
+
 
 
 export interface Product{
