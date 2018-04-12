@@ -46,6 +46,8 @@ import { AgmCoreModule } from '@agm/core';
     ngOnInit() {
       this.user = {id: null, name: null, email: null,  locationX: null, locationY: null, medValoration: null, image: null, roles: null};
       this.valorations = {id: null, name: null, email: null,  locationX: null, locationY: null, medValoration: null, image: null, roles: null, valoration: null, description: null, date: null};
+      this.products=null;
+      
       this.service.getUser(this.id).subscribe(
         user => this.user = user,
         error => console.error("Error in seller.component.ts"),
@@ -56,6 +58,8 @@ import { AgmCoreModule } from '@agm/core';
         products => this.products = products,
         error => console.error("Error in seller2.component.ts"),
       );
+      
+      console.log(this.products);
 
       this.service.getValorations(this.id).subscribe(
         valorations => this.valorations = valorations,

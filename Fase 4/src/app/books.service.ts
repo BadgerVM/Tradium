@@ -19,7 +19,7 @@ export interface User{
 
 
 export interface Product{
-  id:number; name: string; description: string;  tags: string; image: string; price: number; bought: boolean; featured: boolean;
+  bought: boolean,  description : string, featured : boolean, id : number, image : string,  name : string,  price : number, tags : string;
 }
 export interface Valoration{
   id: number, name: string, email: string, locationX: string, locationY: string, medValoration: number, image: string,  roles: string[], valoration: number, description: string, date, Date;

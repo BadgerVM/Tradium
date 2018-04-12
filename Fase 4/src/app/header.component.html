@@ -12,7 +12,7 @@
         <div class="topbar-child2">
             <span class="topbar-email">
                 <div style="position: absolute; top: 10px; right: 130px;">
-                        {{loginService.user.name}}  </div>
+                        {{loginService.user?.name}}  </div>
 
                 <form  *ngIf="loginService.isLogged">
 
@@ -88,25 +88,30 @@
         </div>
     </div>
 </div>
-
 <!-- Header Mobile -->
 <div class="wrap_header_mobile">
     <!-- Logo moblie -->
     <a href="/index" class="logo-mobile"> <img
-        src="./assets//images/icons/logo.png" alt="IMG-LOGO">
+        src="../assets/images/icons/logo.png" alt="IMG-LOGO">
     </a>
 
     <!-- Button show menu -->
     <div class="btn-show-menu">
         <!-- Header Icon mobile -->
         <div class="header-icons-mobile">
-            <a href="user/"
+           <a *ngIf="loginService.isLogged"  [routerLink]="['/Seller',loginService.user.id]"
                 class="header-wrapicon1 dis-block"> <img
-                src="./assets//images/icons/icon-header-01.png" class="header-icon1"
+                src="../assets/images/icons/icon-header-01.png" class="header-icon1"
+                alt="ICON">
+            </a>  
+            <a *ngIf="!loginService.isLogged" [routerLink]="['/Login']"
+                class="header-wrapicon1 dis-block"> <img
+                src="../assets/images/icons/icon-header-01.png" class="header-icon1"
                 alt="ICON">
             </a> 
-        </div>
 
+        </div>
+        
         <div class="btn-show-menu-mobile hamburger hamburger--squeeze">
             <span class="hamburger-box"> <span class="hamburger-inner"></span>
             </span>
@@ -118,23 +123,24 @@
 <div class="wrap-side-menu">
     <nav class="side-menu">
         <ul class="main-menu">
+
             <li class="item-topbar-mobile p-l-20 p-t-8 p-b-8">
                 <div class="topbar-child2-mobile">
-                    <form action="/product">
-                        <input
-                            class="s-text7 size16 p-l-23 p-r-50" type="text" name="search"
+
+                    <form action="/consult">
+                       <input  class="s-text7 size16 p-l-23 p-r-50" type="text" name="search"
                             placeholder="Search" />
+                        
                         <input id="sendSearch" type="image" alt="send"
                             style="position: absolute; right: 10px; top: 10px; padding-bottom: 1px; margin-bottom: 1px; margin-top: 6px;"
-                            width="18" height="18" src="./assets/images/icons/magnifying-glass.svg" />
+                            width="18" height="18" src="/images/icons/magnifying-glass.svg" />
                     </form>
                 </div>
             </li>
 
             <li class="item-topbar-mobile p-l-10">
                 <div class="topbar-social-mobile">
-                    <br />
-                        <a href="https://twitter.com/share?ref_src=twsrc%5Etfw"
+                    <br /> <a href="https://twitter.com/share?ref_src=twsrc%5Etfw"
                         class="twitter-share-button" data-show-count="false">Tweet</a>
                     <script async src="https://platform.twitter.com/widgets.js"
                         charset="utf-8"></script>
@@ -143,15 +149,18 @@
             </li>
 
             <li class="item-menu-mobile"><a href="/about">About us</a></li>
+
             <li class="item-menu-mobile"><a href="/index">Shop</a></li>
+
+ 
             <li class="item-menu-mobile"><a href="/chat">Chats</a></li>
             <li class="item-menu-mobile"><a href="/product/upload">Upload</a></li>
+
             <li class="item-menu-mobile"><form action="/logout"
                     method="post">
-                    <input
-                        style="background-color: rgba(0, 0, 0, 0);" type="submit"
+                    <input style="background-color: rgba(0, 0, 0, 0);" type="submit"
                         value="     Sign Out" />
-                        </form></li> <br>
+                </form> <br>
         </ul>
     </nav>
-</div>    
+</div>
