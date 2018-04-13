@@ -48,8 +48,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
         http.authorizeRequests().antMatchers("/api/search/*").authenticated();
         http.authorizeRequests().antMatchers("/featured").authenticated();
         http.authorizeRequests().antMatchers("/api/product/new").authenticated();
-        http.authorizeRequests().antMatchers("/api/chats").authenticated();
-        http.authorizeRequests().antMatchers("/api/chats/*").authenticated();
+        http.authorizeRequests().antMatchers("/api/chats").permitAll();
+        http.authorizeRequests().antMatchers("/api/chats/*").permitAll();
         http.authorizeRequests().antMatchers("/api/chats/*/new").authenticated();
         http.authorizeRequests().antMatchers("/api/product/*/offer/*").authenticated();
         http.authorizeRequests().antMatchers("/api/product/*/buy").authenticated();

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild, ElementRef } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { LoginService } from './login.service';
 
@@ -24,6 +24,8 @@ import { LoginService } from './login.service';
 })
 
 export class HeaderComponent {
+
+  @ViewChild('searchInput') password: ElementRef;
 
   constructor(private loginService: LoginService) { }
   

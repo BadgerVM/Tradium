@@ -7,6 +7,7 @@ import { AgmCoreModule } from '@agm/core';
 
 import { AppComponent } from './app.component';
 import { BooksService } from './books.service';
+import { ChatService } from './chat.service';
 
 import { HeaderComponent } from './header.component';
 import { FooterComponent } from './footer.component';
@@ -19,18 +20,20 @@ import { LoginComponent } from './login.component';
 import { LoginService } from './login.service';
 import { RegisterComponent } from './register.component';
 import { HttpClientModule } from '@angular/common/http';
+import { ChatComponent } from './chat.component';
+import { ChatMenuComponent } from './chatMenu.component';
 
 
 
 @NgModule({
   declarations: [AppComponent, FooterComponent, HeaderComponent,FeaturedComponent, AboutUsComponent, SearchComponent, SellerComponent, 
-    ProductComponent, LoginComponent, RegisterComponent],
+    ProductComponent, LoginComponent, RegisterComponent, ChatComponent, ChatMenuComponent],
   imports: [BrowserModule, FormsModule, HttpClientModule, HttpModule, 
     JsonpModule, routing,
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyDj_yF9UUmmmmpW1rc7cM_w6oNb_pidrto'
     })],
   bootstrap: [AppComponent],
-  providers: [BooksService, LoginService]
+  providers: [BooksService, LoginService, ChatService]
 })
 export class AppModule { }

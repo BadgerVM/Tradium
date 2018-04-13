@@ -24,7 +24,7 @@
                             class="s-text13"> Films </a></li>
                         <li class="p-t-4"><a  [routerLink]="['/Search','fashion']"  routerLinkActive="active"
                             class="s-text13"> Fashion </a></li>
-                        <li class="p-t-4"><a  [routerLink]="['/Search','others  ']"  routerLinkActive="active"
+                        <li class="p-t-4"><a  [routerLink]="['/Search','others']"  routerLinkActive="active"
                             class="s-text13"> Others </a></li>
                     </ul>
                 </div>
@@ -45,9 +45,9 @@
                         -->
 
                             <div class="block2-txt p-t-20">
-                                <a href="product/{{id}}.html"
-                                    class="block2-name dis-block s-text3 p-b-5"> {{product}} </a>
-                                    <!--<span class="block2-price m-text6 p-r-5"> $ {{price}}</span>-->
+                                <a [routerLink]="['/Product',product.id]"
+                                    class="block2-name dis-block s-text3 p-b-5"> {{product.name}} </a>
+                                    <span class="block2-price m-text6 p-r-5"> $ {{product.price}}</span>
                             </div>
                         </div>
                     </div>

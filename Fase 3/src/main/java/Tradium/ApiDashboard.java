@@ -202,18 +202,18 @@ public class ApiDashboard {
 	@ResponseStatus(HttpStatus.CREATED)
 	public ResponseEntity<List<Chat>> chats (Model model, HttpServletRequest request) {
 		
+		//Hardcodeado para pruebas
 		
-		
-		User loggedUser = userComponent.getLoggedUser();
-		Long id  = loggedUser.getId();
-		List<Chat> chatList = chatRepository.getChats(userRepository.findByid(id));
+		//User loggedUser = userComponent.getLoggedUser();
+		//Long id  = loggedUser.getId();
+		List<Chat> chatList = chatRepository.getChats(userRepository.findByid(/*id*/1));
 		
 		List <Chat> finalChatList = new ArrayList <>();
 		Chat chat2 = new Chat();
 		
 		for (Chat chat : chatList) {
 			
-			if (chat.getUser1().getId() != id) {
+			if (chat.getUser1().getId() != /*id*/1) {
 				chat2.setUser1(chat.getUser2());
 				chat2.setUser2(chat.getUser1());
 				finalChatList.add(chat2);
@@ -234,7 +234,7 @@ public class ApiDashboard {
 		
 		List<Message> chatList = messageRepository.getMessages(chatRepository.findById(id));
 		
-		User loggedUser = userComponent.getLoggedUser();
+		//User loggedUser = userComponent.getLoggedUser();
 		
 		if (chatList == null) {
 			return new ResponseEntity <>(chatList, HttpStatus.NOT_FOUND);
