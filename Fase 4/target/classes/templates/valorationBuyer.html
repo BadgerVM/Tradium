@@ -1,0 +1,37 @@
+{{>header}}
+	<!-- Product Detail -->
+
+
+	<div style="margin-top: 5%; margin-bottom: 15%;" class="container">
+		<div class="row">
+			<div class="col col-md-auto">
+				<img style="max-width: 250px;" src="{{product.image}}"
+					alt="IMG-PRODUCT">
+			</div>
+			<div class="col ">
+				<h1>Congrats for buying {{product.name}}</h1>
+				<br>
+				<h3>From one to five how good was the process?</h3>
+				<br>
+				<form action="sent" enctype="multipart/form-data" method="post">
+					<input id="description" name="description" type="text"
+						placeholder="Description" class="form-control input-md"> <br>
+					<select style="margin-left: 15px;" id="valoration"
+						name="valoration">
+						<option value="5">5</option>
+						<option value="4">4</option>
+						<option value="3">3</option>
+						<option value="2">2</option>
+						<option value="1">1</option>
+					</select> <br> <br> <input type="hidden" name="_csrf"
+						value="{{token}}" /> <input type="submit" value="send request"
+						class="flex-c-m size2 bg4 bo-rad-23 hov1 m-text3 trans-0-4"
+						style="width: 250px; margin-top: 10px;" />
+
+				</form>
+			</div>
+		</div>
+	</div>
+
+
+	{{>footer}}

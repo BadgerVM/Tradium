@@ -1,8 +1,28 @@
 {{>header}}
-	<form action="/login" method="post">
-		<label>User Name:</label><input type="text" name="username" /><br />
-		<label>Password:</label><input type="password" name="password" /><br />
-		<input type="submit" value="Sign In" /><br />				
-		<input type="hidden" name="_csrf" value="{{token}}"/>
-	</form>
+
+	<!-- Title Page -->
+	<div style="margin-top: 15%; margin-bottom: 15%">
+		<section class="bg-title-page p-t-40 p-b-50 flex-col-c-m"
+			style="background-image: url(images/background%20slim.jpg);">
+
+			<!-- Text input-->
+			<form action="/login" method="post">
+
+				<label>User Name:</label><br /> <input type="text" name="username" />
+				<br /> <br /> <label>Password:</label><br /> <input
+					type="password" name="password" /><br /> <br /> <input
+					type="hidden" name="_csrf" value="{{token}}" /> <input
+					type="submit" value="Sign in"
+					class="flex-c-m size2 bg4 bo-rad-23 hov1 m-text3 trans-0-4" />
+			</form>
+			<a href="/user/register"> Create an account</a>
+		</section>
+
+	</div>
+
+	<!-- content page -->
+
+
+
+
 {{>footer}}

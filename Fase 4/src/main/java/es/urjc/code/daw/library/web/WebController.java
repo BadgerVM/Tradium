@@ -1,5 +1,7 @@
 package es.urjc.code.daw.library.web;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -8,8 +10,12 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+
 import es.urjc.code.daw.library.book.Book;
 import es.urjc.code.daw.library.book.BookService;
+import es.urjc.code.daw.library.product.Product;
+import es.urjc.code.daw.library.product.ProductRepository;
+import es.urjc.code.daw.library.user.User;
 import es.urjc.code.daw.library.user.UserComponent;
 
 @Controller
@@ -20,6 +26,9 @@ public class WebController {
 	
 	@Autowired
 	private UserComponent userComponent;
+	
+	@Autowired
+	private ProductRepository productRepository;
 
 	@ModelAttribute
 	public void addAttributes(Model model) {
@@ -37,12 +46,12 @@ public class WebController {
 	
 	
 	@RequestMapping("/")
-	public String showBooks(Model model) {
-
-		model.addAttribute("books", service.findAll());
-		
-		return "books";
+    public String home(Model model) {
+		return "redirect:/index";
 	}
+	
+	
+
 	
 	@RequestMapping("/books/{id}")
 	public String showBook(Model model, @PathVariable long id) {

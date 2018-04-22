@@ -5,6 +5,8 @@ import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
+import es.urjc.code.daw.library.user.User;
+
 
 
 public interface ChatRepository extends JpaRepository<Chat, Long> {
@@ -12,6 +14,7 @@ public interface ChatRepository extends JpaRepository<Chat, Long> {
 	
 	@Query(value = "select * from chat where user1_id=?1 or user2_id=?1", nativeQuery = true)
 	List<Chat> getChats(long u);
+
 	
 	
 }	

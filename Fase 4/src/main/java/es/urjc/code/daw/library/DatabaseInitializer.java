@@ -43,18 +43,6 @@ public class DatabaseInitializer {
 	@PostConstruct
 	public void init() {
 
-		// Sample books
-
-		bookRepository.save(new Book("SUEÑOS DE ACERO Y NEON",
-				"Los personajes que protagonizan este relato sobreviven en una sociedad en decadencia a la que, no obstante, lograrán devolver la posibilidad de un futuro. Año 2484. En un mundo dominado por las grandes corporaciones, solo un hombre, Jordi Thompson, detective privado deslenguado y vividor, pero de gran talento y sentido d..."));
-		bookRepository.save(new Book("LA VIDA SECRETA DE LA MENTE",
-				"La vida secreta de la mentees un viaje especular que recorre el cerebro y el pensamiento: se trata de descubrir nuestra mente para entendernos hasta en los más pequeños rincones que componen lo que somos, cómo forjamos las ideas en los primeros días de vida, cómo damos forma a las decisiones que nos constituyen, cómo soñamos y cómo imaginamos, por qué sentimos ciertas emociones hacia los demás, cómo los demás influyen en nosotros, y cómo el cerebro se transforma y, con él, lo que somos."));
-		bookRepository.save(new Book("CASI SIN QUERER",
-				"El amor algunas veces es tan complicado como impredecible. Pero al final lo que más valoramos son los detalles más simples, los más bonitos, los que llegan sin avisar. Y a la hora de escribir sobre sentimientos, no hay nada más limpio que hacerlo desde el corazón. Y eso hace Defreds en este libro."));
-		bookRepository.save(new Book("TERMINAMOS Y OTROS POEMAS SIN TERMINAR",
-				"Recopilación de nuevos poemas, textos en prosa y pensamientos del autor. Un sabio dijo una vez: «Pocas cosas hipnotizan tanto en este mundo como una llama y como la luna, será porque no podemos cogerlas o porque nos iluminan en la penumbra». Realmente no sé si alguien dijo esta cita o me la acabo de inventar pero deberían de haberla escrito porque el poder hipnótico que ejercen esa mujer de rojo y esa dama blanca sobre el ser humano es digna de estudio."));
-		bookRepository.save(new Book("LA LEGIÓN PERDIDA",
-				"En el año 53 a. C. el cónsul Craso cruzó el Éufrates para conquistar Oriente, pero su ejército fue destrozado en Carrhae. Una legión entera cayó prisionera de los partos. Nadie sabe a ciencia cierta qué pasó con aquella legión perdida.150 años después, Trajano está a punto de volver a cruzar el Éufrates. ..."));
 
 		// Sample users
 
@@ -69,36 +57,36 @@ public class DatabaseInitializer {
 
         u1.setLocationX("40.4167754");
         u1.setLocationY("-3.7037901999999576");
-        Product p1 = new Product("pr1", "barata barata1", "fashion", 15);p1.setUser(u1);        
-        Product p2 = new Product("pr2", "barata barata2", "videogames", 2);p2.setUser(u1);
-        Product p3 = new Product("pr3", "barata barata3", "books", 3);p3.setUser(u1);
-        Product p4 = new Product("pr4", "barata barata4", "books", 4);p4.setUser(u1);
-        Product p5 = new Product("pr5", "barata barata5", "books", 5);p5.setUser(u1);
-        Product p6 = new Product("pr6", "barata barata6", "books", 6);p6.setUser(u1);
-        Product p7 = new Product("pr7", "barata barata7", "books", 7);p7.setUser(u1);
-        Product p8 = new Product("pr8", "barata barata8", "books", 8);p8.setUser(u1);
-        Product p9 = new Product("pr9", "barata barata9", "electronics", 9);p9.setUser(u1);
-        Product p10 = new Product("pr10", "barata barata10", "fashion", 10);p10.setUser(u1);
-        Product p11 = new Product("pr11", "barata barata11", "books", 11);p11.setUser(u1);
-        Product p12 = new Product("pr12", "barata barata12", "books", 12);p12.setUser(u1);
-        Product p13 = new Product("pr13", "barata barata13", "books", 13);p13.setUser(u1);
-        Product p14 = new Product("pr14", "barata barata14", "books", 14);p14.setUser(u1);
-        Product p15 = new Product("pr15", "barata barata15", "fashion", 15);p15.setUser(u1);
-        Product p16 = new Product("pr16", "barata barata16", "videogames", 16);p16.setUser(u1);
-        Product p17 = new Product("pr17", "barata barata17", "sport", 17);p17.setUser(u2);
-        Product p18 = new Product("pr18", "barata barata18", "electronics", 18);p18.setUser(u2);
-        Product p19 = new Product("pr19", "barata barata19", "films", 19);p19.setUser(u2);
-        Product p20 = new Product("pr20", "barata barata20", "fashion", 20);p20.setUser(u3);
-        Product p21 = new Product("pr21", "barata barata21", "books", 21);p21.setUser(u1);
-        Product p22 = new Product("pr22", "barata barata22", "books", 22);p22.setUser(u1);
-        Product p23 = new Product("pr23", "barata barata23", "others", 23);p23.setUser(u1);
-        Product p24 = new Product("pr24", "barata barata24", "others", 24);p24.setUser(u1);
-        Product p25 = new Product("pr25", "barata barata25", "books", 25);p25.setUser(u1);
-        Product p26 = new Product("pr26", "barata barata26", "books", 26);p26.setUser(u1);
-        Product p27 = new Product("pr27", "barata barata27", "books", 27);p27.setUser(u1);
-        Product p28 = new Product("pr28", "barata barata28", "books", 28);p28.setUser(u1);
-        Product p29 = new Product("pr29", "barata barata29", "books", 29);p29.setUser(u1);
-        //u1.setProducts(productRepository.findByUser_Id(u1.getId() ) );
+        Product p1 = new Product("Grey dress", "As new", "fashion", 30,"\\images\\product_images\\Dress2-1.jpg" );p1.setUser(u1);        
+        Product p2 = new Product("Crash", "A fantastic game for PS4", "videogames", 15,"\\images\\product_images\\Game2-1.jpg");p2.setUser(u1);
+        Product p3 = new Product("Metro 2033", "A porst-apocalyptic game", "videogames", 15,"\\images\\product_images\\Game3-1.jpg");p3.setUser(u1);
+        Product p4 = new Product("PS4 PRO", "Very little used", "electronics", 100, "\\images\\product_images\\PS2-3.jpg");p4.setUser(u1);
+        Product p5 = new Product("Huntress", "Black huntress", "fashion", 20, "\\images\\product_images\\Huntress1-1.jpg");p5.setUser(u1);
+        Product p6 = new Product("Dress", "Vintage dress", "fashion", 16, "\\images\\product_images\\Dress1-1.jpg");p6.setUser(u1);
+        Product p7 = new Product("Shoes", "Running shoes, as new", "fashion", 7, "\\images\\product_images\\shoes1-2.jpg");p7.setUser(u1);
+        Product p8 = new Product("Handwash", "Beautiful and cheap", "others", 70, "\\images\\product_images\\Furniture1-1.jpg");p8.setUser(u1);
+        Product p9 = new Product("PC", "Fujitsu PC", "electrionics", 100, "\\images\\product_images\\PC1-1.jpg");p9.setUser(u1);
+        Product p10 = new Product("Climate Changue", "Anice book", "books", 160,"\\images\\product_images\\ClimateChangue.jpg");p10.setUser(u1);
+        Product p11 = new Product("Table", "Beautiful", "others", 80, "\\images\\product_images\\Table1-1.jpg");p11.setUser(u1);
+        Product p12 = new Product("Sofa", "New sofa", "books", 120, "\\images\\product_images\\Sofa2-1.jpg");p12.setUser(u1);
+        Product p13 = new Product("Resident Evil 6", "A new game for PS4", "videogames", 13, "\\images\\product_images\\Game1-1.jpg");p13.setUser(u1);
+        Product p14 = new Product("Stationary bike", "As new and cheap", "sport", 50, "\\images\\product_images\\Bike1-1.jpg");p14.setUser(u1);
+        Product p15 = new Product("Bike Suit", "As new", "fashion", 150,"\\images\\product_images\\BikeSuit.jpg");p15.setUser(u1);
+        Product p16 = new Product("Shoes", "New shoes", "fashion", 16, "\\images\\product_images\\Shoes2.jpg");p16.setUser(u1);
+        Product p17 = new Product("Gibson", "Gibson guitar", "music", 350, "\\images\\product_images\\Gibson.jpg");p17.setUser(u2);
+        Product p18 = new Product("Learn Germany", "Germany for dummies", "books", 30, "\\images\\product_images\\Germany.jpg");p18.setUser(u2);
+        Product p19 = new Product("Guitar", "Electric guitar", "music", 200, "\\images\\product_images\\Guitar.jpg");p19.setUser(u2);
+        Product p20 = new Product("Turntable", "Not used", "music", 20, "\\images\\product_images\\Turntable.jpg");p20.setUser(u3);
+        Product p21 = new Product("Poetic anthology", "Book about the G. of 27", "books", 40,"\\images\\product_images\\Poetic.jpg");p21.setUser(u1);
+        Product p22 = new Product("Grey car", "volkswagen car", "others", 3000, "\\images\\product_images\\Car1-1.jpg");p22.setUser(u1);
+        Product p23 = new Product("Belt", "Security belt", "fashion", 40, "\\images\\product_images\\Belt.jpg");p23.setUser(u1);
+        Product p24 = new Product("Cap", "New cap", "fashion", 23, "\\images\\product_images\\Cap.jpg");p24.setUser(u1);
+        Product p25 = new Product("XBOX 360", "As new XBOX, 100% dnctional", "videogames", 60, "\\images\\product_images\\XBOX1-2.jpg");p25.setUser(u1);
+        Product p26 = new Product("T-Shirt", "White T-Shit from Mango", "fashion", 20, "\\images\\product_images\\tshirt.jpg");p26.setUser(u1);
+        Product p27 = new Product("Black Shoes", "Not used", "fashion", 27, "\\images\\product_images\\BlackShoes.jpg");p27.setUser(u1);
+        Product p28 = new Product("Skateboard", "Electric skateboards", "sport", 65, "\\images\\product_images\\Skateboard.jpg");p28.setUser(u1);
+        Product p29 = new Product("Juventus T-Shirt", "barata barata29", "fashion", 29, "\\images\\product_images\\Juventus.jpg");p29.setUser(u1);
+             //u1.setProducts(productRepository.findByUser_Id(u1.getId() ) );
         //u1.addProduct(p1);
         
         p1.setFeatured(true);

@@ -66,6 +66,16 @@ public class Product {
 	
 
 	public Product() {}
+	
+	public Product(String name, String desc, String tags, double price, String image) {
+        super();
+        this.name = name;
+        this.description = desc;
+        this.tags = tags;
+        this.image = image;
+        this.price = price;
+        this.bought = false;
+    }
 
 	public Product(String name, String desc, String tags, double price) {
 		super();
