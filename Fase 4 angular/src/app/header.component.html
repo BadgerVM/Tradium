@@ -1,0 +1,163 @@
+<!-- Header desktop -->
+<div class="container-menu-header">
+    <div class="topbar">
+        <div class="topbar-social">
+            <a href="https://twitter.com/share?ref_src=twsrc%5Etfw"
+                class="twitter-share-button" data-show-count="false">Tweet</a>
+            <script async src="https://platform.twitter.com/widgets.js"
+                charset="utf-8"></script>
+        </div>
+
+
+        <div class="topbar-child2">
+            <span class="topbar-email">
+                <div *ngIf="loginService.isLogged" style="position: absolute; top: 10px; right: 130px;">
+                    {{loginService.user?.name}} 
+
+                    <button  *ngIf="loginService.isLogged" (click)="loginService.logOut()" class="size2 m-text2 trans-0-4"  style="background-color: rgba(0, 0, 0, 0);  position: absolute; top: -12px; width: 125px"  >Log Out </button> 
+                </div>
+
+                <a *ngIf="!loginService.isLogged" [routerLink]="['Login']" class="size2 m-text2 trans-0-4"> Login </a> 
+
+            </span>
+        </div>
+    </div>
+    <div class="wrap_header">
+        <!-- Logo -->
+        <a [routerLink]="['']"  routerLinkActive="active" class="logo"> <img src="../assets/images/icons/logo.png"
+            alt="IMG-LOGO">
+        </a>
+
+        <!-- Menu -->
+        <div class="wrap_menu">
+            <nav class="menu">
+                <ul class="main_menu">
+
+
+                    <li class="sale-noti"><a [routerLink]="['']"  routerLinkActive="active">Shop</a></li>
+
+
+                    <li><a [routerLink]="['AboutUs']"  routerLinkActive="active" >About us</a></li>
+
+                    <li>
+                        <div class="rightbar">
+                            <!-- Search -->
+                            <div class="pos-relative bo11 of-hidden">
+                                <form action="/product">
+                                    <input #search
+                                        class="s-text7 size16 p-l-23 p-r-50" type="text"
+                                        name="searchInput" placeholder="Search" />
+                                    
+                                    <input id="sendSearch" type="image" alt="send"
+                                        style="position: absolute; right: 10px; top: 10px; padding-bottom: 1px; margin-bottom: 1px; margin-top: 6px;"
+                                        width="18" height="18"
+                                        src="../assets/images/icons/magnifying-glass.svg" 
+                                        (click)="newSearch()"
+                                       />
+                                </form>
+                            </div>
+
+                        </div>
+
+                    </li>
+
+                </ul>
+            </nav>
+        </div>
+
+        <!-- Header Icon -->
+        <div class="header-icons" *ngIf="loginService.isLogged">
+            <a [routerLink]="['/UploadProduct']" routerLinkActive="active"
+                class="header-wrapicon1 dis-block" style="margin-right: 10px">
+                <img src="../assets/images/icons/up-arrow.svg" class="header-icon1"
+                alt="Upload">
+
+            </a> <a [routerLink]="['/Chat']" class="header-wrapicon1 dis-block"
+                style="margin-right: 10px"> <img
+                src="../assets/images/icons/chat-icon.png" class="header-icon1" alt="ICON">
+
+            </a> <br> <a  [routerLink]="['/Seller',loginService.user.id]"
+                class="header-wrapicon1 dis-block"> <img
+                src="../assets/images/icons/icon-header-01.png" class="header-icon1"
+                alt="ICON">
+            </a>             
+
+        </div>
+    </div>
+</div>
+<!-- Header Mobile -->
+<div class="wrap_header_mobile">
+    <!-- Logo moblie -->
+    <a href="/index" class="logo-mobile"> <img
+        src="../assets/images/icons/logo.png" alt="IMG-LOGO">
+    </a>
+
+    <!-- Button show menu -->
+    <div class="btn-show-menu">
+        <!-- Header Icon mobile -->
+        <div class="header-icons-mobile">
+           <a *ngIf="loginService.isLogged"  [routerLink]="['/Seller',loginService.user.id]"
+                class="header-wrapicon1 dis-block"> <img
+                src="../assets/images/icons/icon-header-01.png" class="header-icon1"
+                alt="ICON">
+            </a>  
+            <a *ngIf="!loginService.isLogged" [routerLink]="['/Login']"
+                class="header-wrapicon1 dis-block"> <img
+                src="../assets/images/icons/icon-header-01.png" class="header-icon1"
+                alt="ICON">
+            </a> 
+
+        </div>
+        
+        <div class="btn-show-menu-mobile hamburger hamburger--squeeze">
+            <span class="hamburger-box"> <span class="hamburger-inner"></span>
+            </span>
+        </div>
+    </div>
+</div>
+
+<!-- Menu Mobile -->
+<div class="wrap-side-menu">
+    <nav class="side-menu">
+        <ul class="main-menu">
+
+            <li class="item-topbar-mobile p-l-20 p-t-8 p-b-8">
+                <div class="topbar-child2-mobile">
+
+                    <form action="/consult">
+                       <input  class="s-text7 size16 p-l-23 p-r-50" type="text" name="search"
+                            placeholder="Search" />
+                        
+                        <input id="sendSearch" type="image" alt="send"
+                            style="position: absolute; right: 10px; top: 10px; padding-bottom: 1px; margin-bottom: 1px; margin-top: 6px;"
+                            width="18" height="18" src="/images/icons/magnifying-glass.svg" />
+                    </form>
+                </div>
+            </li>
+
+            <li class="item-topbar-mobile p-l-10">
+                <div class="topbar-social-mobile">
+                    <br /> <a href="https://twitter.com/share?ref_src=twsrc%5Etfw"
+                        class="twitter-share-button" data-show-count="false">Tweet</a>
+                    <script async src="https://platform.twitter.com/widgets.js"
+                        charset="utf-8"></script>
+                </div>
+
+            </li>
+
+            <li class="item-menu-mobile"><a href="/about">About us</a></li>
+
+            <li class="item-menu-mobile"><a href="/index">Shop</a></li>
+
+ 
+            <li class="item-menu-mobile"><a href="/chat">Chats</a></li>
+            <li class="item-menu-mobile"><a href="/product/upload">Upload</a></li>
+
+            <li class="item-menu-mobile"><form action="/logout"
+                    method="post">
+                    <input style="background-color: rgba(0, 0, 0, 0);" type="submit"
+                        value="     Sign Out" />
+                </form> <br>
+        </ul>
+    </nav>
+</div>

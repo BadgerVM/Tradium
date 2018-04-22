@@ -1,0 +1,42 @@
+
+	<!-- Title Page -->
+	<div style="margin-top: 15%; margin-bottom: 15%" *ngIf="!loginService.isLogged" >
+		<section class="bg-title-page p-t-40 p-b-50 flex-col-c-m"
+			style="background-image: url(images/background%20slim.jpg);">
+
+			<!-- Text input-->
+			<form  role="search" >
+
+				<label>User Name:</label><br /> 
+				<input #user type="text" name="username" placeholder="User" /><br /> <br />
+				<label>Password:</label><br /> 
+				<input #pass type="password" name="password" placeholder="Password"><br /> <br /> 	
+
+				<input	type="submit" (click)="logIn($event, user.value, pass.value)"  value="Sign in" class="flex-c-m size2 bg4 bo-rad-23 hov1 m-text3 trans-0-4" />
+			</form>
+			<a href="/user/register"> Create an account</a>
+		</section>
+
+	</div>
+
+
+<div style="margin-top: 15%; margin-bottom: 15%" *ngIf="loginService.isLogged" >
+	<section class="bg-title-page p-t-40 p-b-50 flex-col-c-m"
+		style="background-image: url(images/background%20slim.jpg);">
+		<form  role="search" >
+		<ul class="nav navbar-nav">
+			<li>
+				<a href="#">{{loginService.user.name}}</a>
+			</li>
+			<li>
+				
+				<input	[routerLink]="['']"  type="submit" (click)="logOut()"  value=" &nbsp;&nbsp;&nbsp;&nbsp;Log Out &nbsp;&nbsp;&nbsp;&nbsp;" class="flex-c-m size2 bg4 bo-rad-23 hov1 m-text3 trans-0-4" />
+
+			</li>
+		</ul>	
+		</form>		
+	</section>
+</div>
+
+<br>
+<br>
