@@ -84,3 +84,6 @@ To push the image to docker hub, we used the command docker push Badger95/tradiu
 After that, we create a docker-compose-yml, and it uses an image of mysql, on the port 3306, and the image of our app.
 
 
+## Angular class and templates diagram 
+
+![alt text](https://raw.githubusercontent.com/RoberG/Tradium/master/AngularDiagram.JPG)
