@@ -61,18 +61,18 @@ public class DatabaseInitializer {
         Product p2 = new Product("Crash", "A fantastic game for PS4", "videogames", 15,"\\images\\product_images\\Game2-1.jpg");p2.setUser(u1);
         Product p3 = new Product("Metro 2033", "A porst-apocalyptic game", "videogames", 15,"\\images\\product_images\\Game3-1.jpg");p3.setUser(u1);
         Product p4 = new Product("PS4 PRO", "Very little used", "electronics", 100, "\\images\\product_images\\PS2-3.jpg");p4.setUser(u1);
-        Product p5 = new Product("Huntress", "Black huntress", "fashion", 20, "\\images\\product_images\\Huntress1-1.jpg");p5.setUser(u1);
+        Product p5 = new Product("Jacket", "Black huntress", "fashion", 20, "\\images\\product_images\\Huntress1-1.jpg");p5.setUser(u1);
         Product p6 = new Product("Dress", "Vintage dress", "fashion", 16, "\\images\\product_images\\Dress1-1.jpg");p6.setUser(u1);
-        Product p7 = new Product("Shoes", "Running shoes, as new", "fashion", 7, "\\images\\product_images\\shoes1-2.jpg");p7.setUser(u1);
-        Product p8 = new Product("Handwash", "Beautiful and cheap", "others", 70, "\\images\\product_images\\Furniture1-1.jpg");p8.setUser(u1);
+        Product p7 = new Product("Shoes", "Running shoes, as new", "fashion", 7, "\\images\\product_images\\shoes2.jpg");p7.setUser(u1);
+        Product p8 = new Product("Sink", "Beautiful and cheap", "others", 70, "\\images\\product_images\\Furniture1-1.jpg");p8.setUser(u1);
         Product p9 = new Product("PC", "Fujitsu PC", "electrionics", 100, "\\images\\product_images\\PC1-1.jpg");p9.setUser(u1);
-        Product p10 = new Product("Climate Changue", "Anice book", "books", 160,"\\images\\product_images\\ClimateChangue.jpg");p10.setUser(u1);
+        Product p10 = new Product("Climate change", "Anice book", "books", 160,"\\images\\product_images\\ClimateChangue.jpg");p10.setUser(u1);
         Product p11 = new Product("Table", "Beautiful", "others", 80, "\\images\\product_images\\Table1-1.jpg");p11.setUser(u1);
         Product p12 = new Product("Sofa", "New sofa", "books", 120, "\\images\\product_images\\Sofa2-1.jpg");p12.setUser(u1);
         Product p13 = new Product("Resident Evil 6", "A new game for PS4", "videogames", 13, "\\images\\product_images\\Game1-1.jpg");p13.setUser(u1);
         Product p14 = new Product("Stationary bike", "As new and cheap", "sport", 50, "\\images\\product_images\\Bike1-1.jpg");p14.setUser(u1);
         Product p15 = new Product("Bike Suit", "As new", "fashion", 150,"\\images\\product_images\\BikeSuit.jpg");p15.setUser(u1);
-        Product p16 = new Product("Shoes", "New shoes", "fashion", 16, "\\images\\product_images\\Shoes2.jpg");p16.setUser(u1);
+        Product p16 = new Product("Shoes", "New shoes", "fashion", 16, "\\images\\product_images\\Shoes1-2.jpg");p16.setUser(u1);
         Product p17 = new Product("Gibson", "Gibson guitar", "music", 350, "\\images\\product_images\\Gibson.jpg");p17.setUser(u2);
         Product p18 = new Product("Learn Germany", "Germany for dummies", "books", 30, "\\images\\product_images\\Germany.jpg");p18.setUser(u2);
         Product p19 = new Product("Guitar", "Electric guitar", "music", 200, "\\images\\product_images\\Guitar.jpg");p19.setUser(u2);
@@ -112,7 +112,7 @@ public class DatabaseInitializer {
 		Message m2 = new Message(u1, "how are u?");m2.setChat(c1);
 		Message m3 = new Message(u2, "fine thanks");m3.setChat(c1);
 		Message m4 = new Message(u3, "SHUT UP");m4.setChat(c2);
-		Message m5 = new Message(u1, "are u retarded?");m5.setChat(c2);
+		Message m5 = new Message(u1, "Are you ready?");m5.setChat(c2);
 		Message m6 = new Message(u3, "asddsa");m6.setChat(c3);
 		
 		u1.setMedValoration(4);
