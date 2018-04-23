@@ -72,16 +72,20 @@ Document [API.md](https://github.com/RoberG/Tradium/master/API.md) with informat
 
 To run the app, first, you need to have Docker installed, you can download docker [here](https://docs.docker.com/install/#supported-platforms)
 When you have Docker, you only need to open the powersell in the folder where the docker-compose.yml is, and execute "docker-compose up", and when the app is up, to access to the app you have to open your browser and go to https://localhost:8080.
-And there you have the app.
+And there you have the spring app.
+And if you open your browser and go to http://localhost:4200, you can access to the SPA app.
 
-## How to prepare the development environment
+## How to prepare the development enviroment for the SPA app
 
-First of all, we create a .jar, using maven, and STS. 
+First of all, we create a .jar of our spring app, using maven and STS.
 
-To prepare the image of the app, we have a Dockerfile and our .jar, and we used the command docker build -t Badger95/tradium. To build the image of our app.
-To push the image to docker hub, we used the command docker push Badger95/tradium, and with that, the image of our app, was  pushed on our docker hub account.
+To prepare the image of the spring app, we have a Dockerfile and our .jar, and we used the command docker build -t Badger95/tradium. To build the image of our spring app.
+To push the image to docker hub, we used the command docker push Badger95/tradium, and with that, the image of our spring app was pushed on our docker hub account. 
 
-After that, we create a docker-compose-yml, and it uses an image of mysql, on the port 3306, and the image of our app.
+After that, we prepare the image of our SPA app, we have a Dockerfile, and our angular files, and we used the command docker build -t Badger95/tradium. To build the image of our SPA app.
+To push the image to docker hub, we used the command docker push Badger95/tradium.
+
+Finally, we create a docker-compose-yml, and it uses an image of mysql on the port 3306, an image of our SPA app on the port 4200, and an image of our spring app on the port 8443.
 
 
 ## Angular class and templates diagram 
