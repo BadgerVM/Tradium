@@ -82,10 +82,10 @@ First of all, we create a .jar of our spring app, using maven and STS.
 To prepare the image of the spring app, we have a Dockerfile and our .jar, and we used the command docker build -t Badger95/tradium. To build the image of our spring app.
 To push the image to docker hub, we used the command docker push Badger95/tradium, and with that, the image of our spring app was pushed on our docker hub account. 
 
-After that, we prepare the image of our SPA app, we have a Dockerfile, and our angular files, and we used the command docker build -t Badger95/tradium. To build the image of our SPA app.
-To push the image to docker hub, we used the command docker push Badger95/tradium.
+After that, we prepare the image of our SPA app using the Dockerfile, and our Augular files, then we use this command in order of build it up -t Badger95/tradium. To build the image of our SPA app.
+To push the image to docker hub, we have used the command docker push Badger95/tradium.
 
-Finally, we create a docker-compose-yml, and it uses an image of mysql on the port 3306, an image of our SPA app on the port 4200, and an image of our spring app on the port 8443.
+Finally, we create a docker-compose-yml, which uses an image of mysql on the port 3306, an image of our SPA app on the port 4200, and an image of our spring app on 8443.
 
 
 ## Angular class and templates diagram 
