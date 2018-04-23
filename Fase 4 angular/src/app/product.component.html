@@ -32,7 +32,7 @@
             <!--  -->
             <div class="p-t-33 p-b-60">
                 <div class="btn-addcart-product-detail size9 trans-0-4 m-t-10 m-b-10">
-                    <div *ngIf="(loginService.isLogged && (loginService.user.id != product.user.id))">
+                    <div *ngIf="(loginService.isLogged && (loginService?.user.id != product?.user.id))">
                         <button (click)="buy()"  class="flex-c-m size2 bg4 bo-rad-23 hov1 m-text3 trans-0-4">Buy </button>                       
                     </div>
 

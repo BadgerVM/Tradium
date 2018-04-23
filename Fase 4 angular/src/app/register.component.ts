@@ -29,27 +29,31 @@ import { NgForm } from '@angular/forms';
 
   export class RegisterComponent implements OnInit { 
    
-
+    user1 = {name: null, email: null,  passwordHash: null, locationX: "", locationY: "", image: null};
     @ViewChild('name') name: ElementRef;
     @ViewChild('password') password: ElementRef;
     @ViewChild('email') email: ElementRef;
-    @ViewChild('image') image: ElementRef;
 
     constructor(private renderer: Renderer2, private http:HttpClient) { 
     }
     
     public lat : string = "";
     public lon : string = "";
-    
+
+    loadImageData(file){
+      var reader = new FileReader();
+      reader.readAsDataURL(file);
+      reader.onload = ()=>{
+        this.user1.image = reader.result;
+      }
+    }
     registerUser() {
         var user1 : UserRegister;
 
-        user1 = {name: null, email: null,  passwordHash: null, locationX: "", locationY: "", image: null};
 
         user1.name = this.name.nativeElement.value;
         user1.passwordHash = this.password.nativeElement.value;
         user1.email = this.email.nativeElement.value;
-        user1.image = this.image.nativeElement.value;
         user1.locationX = this.lat;
         user1.locationY = this.lon;
       
