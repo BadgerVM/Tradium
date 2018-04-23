@@ -93,5 +93,5 @@ Finally, we create a docker-compose-yml, which uses an image of mysql on the por
 ![alt text](https://raw.githubusercontent.com/RoberG/Tradium/master/AngularDiagram.JPG)
 
 ## Explicative video
+[![Tradium](http://img.youtube.com/vi/qzF-Sc5yz4E/0.jpg)](http://www.youtube.com/watch?v=qzF-Sc5yz4E "Tradium")
 
-https://www.youtube.com/watch?v=qzF-Sc5yz4E
