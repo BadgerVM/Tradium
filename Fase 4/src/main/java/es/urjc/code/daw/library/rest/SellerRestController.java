@@ -9,7 +9,12 @@ import es.urjc.code.daw.library.valorations.Valoration.ValorationAtt;
 import es.urjc.code.daw.library.product.*;
 import es.urjc.code.daw.library.valorations.*;
 
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.OutputStream;
 import java.util.ArrayList;
+import java.util.Base64;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -77,10 +82,21 @@ public class SellerRestController {
 
 	@RequestMapping(value="/user/new", method=RequestMethod.POST)
 	@ResponseStatus(HttpStatus.CREATED)
-	public User register (Model model, @RequestBody User user, HttpServletRequest request) {
+	public User register (Model model, @RequestBody User user, HttpServletRequest request) throws FileNotFoundException, IOException {
 		String s ="USER";
 		List <String> role = new ArrayList();
 		role.add(s);
+		String[] parts = user.getImage().split(",");
+		
+		byte[] data = Base64.getDecoder().decode(parts[1]);
+		
+		
+		String r = "src/main/resources/static/images/user_images/"+user.getName()+".jpg";
+		try (OutputStream stream = new FileOutputStream(r)) {
+		    stream.write(data);
+		}
+		
+		
 		if(user.getLocationX()=="") {
 
 			user.setLocationX("0000");
@@ -92,6 +108,9 @@ public class SellerRestController {
 		if(user.getImage() =="") {
 
 			user.setImage("\\images\\user_images\\user_default.jpg");
+		}
+		else {
+			user.setImage("\\images\\user_images\\"+user.getName()+".jpg");
 		}
 		
 		user.setMedValoration(0);

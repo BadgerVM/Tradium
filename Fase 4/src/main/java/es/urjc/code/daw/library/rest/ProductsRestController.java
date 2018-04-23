@@ -114,12 +114,15 @@ public class ProductsRestController {
 		
 		byte[] data = Base64.getDecoder().decode(parts[1]);
 		
-		try (OutputStream stream = new FileOutputStream("src/main/resources/static/image.png")) {
+		
+		String r = "src/main/resources/static/images/product_images/"+product.getName()+"-1.jpg";
+		try (OutputStream stream = new FileOutputStream(r)) {
 		    stream.write(data);
 		}
 		
 		Product productOur = new Product(product.getName(), product.getDescription(), product.getTags(), product.getPrice());
 		productOur.setUser(loggedUser);
+		productOur.setImage("\\images\\product_images\\"+product.getName()+"-1.jpg");
 		productRepository.save(productOur);
 		User u =userRepository.findByid(loggedUser.getId());
 		productOur.setFeatured(false);
