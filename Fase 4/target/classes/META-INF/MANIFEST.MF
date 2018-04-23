@@ -1,9 +1,9 @@
 Manifest-Version: 1.0
 Implementation-Title: security_ejem7
 Implementation-Version: 0.1.0
-Built-By: Roberto Gallardo
+Built-By: Manuel
 Implementation-Vendor-Id: es.urjc.code
-Build-Jdk: 1.8.0_161
+Build-Jdk: 1.8.0_151
 Implementation-URL: http://projects.spring.io/spring-boot/security_eje
  m7/
 Created-By: Maven Integration for Eclipse

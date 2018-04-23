@@ -105,7 +105,7 @@ public class SellerRestController {
 
 			user.setLocationY("0000");
 		}
-		if(user.getImage() =="") {
+		if(user.getImage() == null) {
 
 			user.setImage("\\images\\user_images\\user_default.jpg");
 		}
