@@ -191,7 +191,7 @@ public class ProductsRestController {
 				  	product.addListBuyers(b);	
 				  	User seller = product.getUser();
 				  	
-				  	Chat c1 = new Chat(loggedUser, seller);
+				  	Chat c1 = new Chat(seller, loggedUser);
 				  	Message m1 =  new Message(seller, "Hi! I bought your " + product.getName()); m1.setChat(c1);
 				  	
 				  	buyerRepository.save(b);
