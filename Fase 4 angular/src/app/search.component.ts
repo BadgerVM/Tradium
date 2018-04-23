@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
 import { Http } from '@angular/http';
 import {Router, ActivatedRoute, Params} from '@angular/router';
-import { BooksService } from './books.service';
+import { BooksService, Product } from './books.service';
 import { TagContentType } from '@angular/compiler/src/ml_parser/tags';
+import { environment } from '../environments/environment';
 
 @Component({
     selector: 'search',
@@ -27,13 +28,16 @@ import { TagContentType } from '@angular/compiler/src/ml_parser/tags';
   
   export class SearchComponent {
 
+    private baseUrl:string;
     
-    private products: string[] = [];
+    private products: Product[] = [];
     private tag: string;
     constructor(private http: Http, private service: BooksService,private activatedRoute: ActivatedRoute) { 
         // subscribe to router event
+        this.baseUrl = environment.baseURL;
         this.tag = activatedRoute.snapshot.params['tag'];
         console.log(this.tag);
+
         this.service.getSearch(this.tag).subscribe(
           products => this.products = products,
           error => console.error(error),

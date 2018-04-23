@@ -19,4 +19,4 @@ services:
     environment:
       - DATABASE_HOST=mysql
     ports:
-      - 8080:8080
+      - 8443:8443

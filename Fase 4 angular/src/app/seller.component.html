@@ -17,7 +17,7 @@
         <div class="row">
             <div class="col-md-2 p-b-10">
                 <div class="wrap-pic-w">
-                    <img src="{{user.image}}" alt="IMG-ABOUT">
+                    <img src="{{baseUrl}}{{user.image}}" alt="IMG-ABOUT">
                 </div>
             </div>
 
@@ -58,12 +58,12 @@
                            
                             <div class="block2"  >
                                 <div class="block2-img wrap-pic-w of-hidden pos-relative " >
-                                    <img style="width: 270px; height: 275px; overflow: hidden"  src="../assets/images/product_images/product22.jpg" alt="/images/item-02.jpg">
+                                    <img style="width: 270px; height: 275px; overflow: hidden"  src="{{baseUrl}}{{pr.image}}" alt="/images/item-02.jpg">
                                 
                                 </div>
 
                                 <div class="block2-txt p-t-20">
-                                    <a href="../product/"
+                                    <a [routerLink]="['/Product/', pr.id]"
                                         class="block2-name dis-block s-text3 p-b-5"></a>{{pr?.name}}<span
                                         class="block2-price m-text6 p-r-5"> ${{pr?.price}}</span>
                                 </div>
@@ -82,18 +82,18 @@
                         <div class="col-md-2 p-b-10 m-l-20">
                             <div class="wrap-pic-w">
                                 <img style="width: 170px; height: 110px; overflow: hidden"
-                                    src="" alt="IMG-ABOUT">
+                                    src="{{baseUrl}}{{vl.buyer.image}}" alt="IMG-ABOUT">
                             </div>
                         </div>
 
                         <div class="col-md-9 p-b-30">
                             <span class="card-review-date"></span>
                             <h3 class="m-text10 p-t-7 p-b-12">
-                                <a href="/user/{{vl.buyer.id}}">{{vl.buyer.name}}</a>
+                                <a [routerLink]="['/Seller/', vl.buyer.id]" >{{vl.buyer.name}}</a>
                             </h3>
 
                             <div class="card-profile-rating">
-                                <input class="ratingUser" type="hidden" value="{{vl.valoration}}">
+                                <h3 class="m-text27 p-t-10 p-b-10" >{{vl.valoration}}</h3>
 
                                 <div class="star"></div>
 
@@ -124,15 +124,15 @@
     var howmany = document.getElementsByClassName("ratingUser");
 		console.log("funciona")
     for (i = 0; i < paragraph.length; i++) {
-
+        alert("ey");
         for (var k = 0; k < howmany[i].value; k++) {
-            paragraph[i].innerHTML += "<img src='../assets/images/icons/star_full.svg'>";
+            paragraph[i].innerHTML += "<img src='https://localhost:8443/images/icons/star_full.svg'>";
         }
 
         var restantes = 5 - howmany[i].value;
 
         for (var k = 0; k < 5 - howmany[i].value; k++) {
-            paragraph[i].innerHTML += "<img src='../assets/images/icons/star_empty.svg'>";
+            paragraph[i].innerHTML += "<img src='https://localhost:8443/images/icons/star_full.svg'>";
         }
 
 		}

@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Http } from '@angular/http';
 import { BooksService } from './books.service';
+import { environment } from '../environments/environment';
 
 @Component({
   selector: 'aboutUs',
@@ -22,4 +23,11 @@ import { BooksService } from './books.service';
   ]
 })
 
-export class AboutUsComponent {}
+
+export class AboutUsComponent {
+  private baseUrl:string;
+  constructor(private http: Http, private service: BooksService) {
+    this.baseUrl = environment.baseURL;
+   }
+  
+}

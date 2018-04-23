@@ -5,6 +5,7 @@ import { User, BooksService, Product } from './books.service';
 import { TagContentType } from '@angular/compiler/src/ml_parser/tags';
 import { BrowserModule } from '@angular/platform-browser';
 import { AgmCoreModule } from '@agm/core';
+import { environment } from '../environments/environment';
 
 @Component({
     selector: 'seller',
@@ -36,10 +37,11 @@ import { AgmCoreModule } from '@agm/core';
     private user: User;
     private products;
     private valorations;
+    private baseUrl:string;
 
     constructor(private route: ActivatedRoute, private service: BooksService) {
         this.id = route.snapshot.params['id'];
-        
+        this.baseUrl = environment.baseURL;     
 
     }
 
@@ -61,6 +63,7 @@ import { AgmCoreModule } from '@agm/core';
       
       console.log(this.products);
 
+      
       this.service.getValorations(this.id).subscribe(
         valorations => this.valorations = valorations,
         error => console.error("Error in seller2.component.ts"),
@@ -70,7 +73,6 @@ import { AgmCoreModule } from '@agm/core';
       //let locY = parseFloat(this.user.locationY);
       let locX = 40.4167754;
       let locY =-3.7037901999999576;
-      
       let mapProp = {
         center: new google.maps.LatLng(locX, locY),
         zoom: 13,

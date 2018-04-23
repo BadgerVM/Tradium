@@ -38,9 +38,8 @@ import { NgForm } from '@angular/forms';
     constructor(private renderer: Renderer2, private http:HttpClient) { 
     }
     
-    public user : UserRegister;
-    public lat : string = "asda";
-    lon;
+    public lat : string = "";
+    public lon : string = "";
     
     registerUser() {
         var user1 : UserRegister;
@@ -48,16 +47,15 @@ import { NgForm } from '@angular/forms';
         user1 = {name: null, email: null,  passwordHash: null, locationX: "", locationY: "", image: null};
 
         user1.name = this.name.nativeElement.value;
-        console.log(this.password.nativeElement.value);
         user1.passwordHash = this.password.nativeElement.value;
         user1.email = this.email.nativeElement.value;
         user1.image = this.image.nativeElement.value;
-        this.user.locationX = this.lat;
-        this.user.locationY = this.lon;
+        user1.locationX = this.lat;
+        user1.locationY = this.lon;
       
         let headers = new HttpHeaders().set('Content-Type','application/json');
-        
-        this.http.post('http://localhost:4200/api/user/new', JSON.stringify(user1), {headers: headers})
+        console.log( JSON.stringify(user1));
+        this.http.post('https://localhost:8443/api/user/new', JSON.stringify(user1), {headers: headers})
         .subscribe(
             res => {
               console.log(res);

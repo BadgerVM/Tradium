@@ -40,7 +40,8 @@
                         <button  [routerLink]="['/Product',product.id,'Sold']" class="flex-c-m size2 bg4 bo-rad-23 hov1 m-text3 trans-0-4" > Mark as sold  </button>
                     </div>
                     <!--FALTA PONER CONSEGUIR USER  -->
-                    <div *ngIf="(loginService.isLogged && (loginService.user.id == product.user.id)  )"> 
+
+                    <div *ngIf="((loginService.isLogged && (loginService.user.id == product.user.id)) || (loginService.user.roles=='ADMIN'))"> 
                         <br>
                         <button  (click)="delete()" class="flex-c-m size2 bg4 bo-rad-23 hov1 m-text3 trans-0-4" >Delete </button>
                     </div>

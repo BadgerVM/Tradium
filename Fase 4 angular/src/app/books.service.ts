@@ -148,7 +148,7 @@ export class BooksService {
   getSearch(search: String){
     let url = "https://localhost:8443/api/search/"+search;
     return this.http.get(url)
-    .map(response => this.extractNames(response))
+    .map(response => response.json())
     .catch(error => Observable.throw('Error in getSearch book.service'));
   }
 
