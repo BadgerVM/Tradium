@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { LoginService } from './login.service';
+import { environment } from '../environments/environment';
 
 @Component({
   selector: 'login',
@@ -22,8 +23,8 @@ import { LoginService } from './login.service';
   ]
 })
 export class LoginComponent {
-
-  constructor(private loginService: LoginService) { }
+  private baseUrl:string;
+  constructor(private loginService: LoginService) { this.baseUrl = environment.baseURL;}
 
   logIn(event: any, user: string, pass: string) {
 

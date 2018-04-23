@@ -6,8 +6,7 @@
 <div class="card" class="col-lg-6"
 		style="width: 70%; margin: auto; text-align: center; margin-top: 20px; margin-bottom: 100px;">
 
-		<div class="card"
-			style="background-image: url(/images/intersection.png); background-repeat: repeat;">
+		<div class="card" [ngStyle]="{'background':  'url(https://localhost:8443/images/intersection.png) '}">
 		
 			<form >
 					<br>
@@ -65,7 +64,7 @@
 				</div>
 
 				<input	type='submit' (click)="uploadProduct()" value="Subir Producto"
-					class=" bg1 bo-rad-23 hov1 s-text1"
+					class=" bg1 bo-rad-23 hov1 s-text1" [routerLink]="['']"
 					style="padding: 10px; margin-bottom: 20px; max-width: 250px;" />
 
 			</form>

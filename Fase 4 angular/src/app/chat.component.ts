@@ -62,6 +62,6 @@ import { Message } from '@angular/compiler/src/i18n/i18n_ast';
       this.service.setNewMessage(this.id, this.message).subscribe(
         error => console.error('Error creating new message: ' + error)
     );
-      console.log(this.message.text+","+this.id);
+    location.reload()
     }
 }

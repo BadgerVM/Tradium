@@ -61,9 +61,10 @@ import { RequestOptions ,Http, Headers} from '@angular/http';
         
        
        this.service.newProduct(this.product).subscribe(
-          product => { },
+          product => alert("Successful upload"),
           error => console.error('Error uploading product: ' + error)
        );
+       
         
     }
       

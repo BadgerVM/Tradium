@@ -30,7 +30,7 @@ import { NgForm } from '@angular/forms';
   export class RegisterComponent implements OnInit { 
    
     user1 = {name: null, email: null,  passwordHash: null, locationX: "", locationY: "", image: null};
-    @ViewChild('name') name: ElementRef;
+    @ViewChild('username') username: ElementRef;
     @ViewChild('password') password: ElementRef;
     @ViewChild('email') email: ElementRef;
 
@@ -39,7 +39,7 @@ import { NgForm } from '@angular/forms';
     
     public lat : string = "";
     public lon : string = "";
-
+   
     loadImageData(file){
       var reader = new FileReader();
       reader.readAsDataURL(file);
@@ -47,19 +47,17 @@ import { NgForm } from '@angular/forms';
         this.user1.image = reader.result;
       }
     }
+
     registerUser() {
-        var user1 : UserRegister;
-
-
-        user1.name = this.name.nativeElement.value;
-        user1.passwordHash = this.password.nativeElement.value;
-        user1.email = this.email.nativeElement.value;
-        user1.locationX = this.lat;
-        user1.locationY = this.lon;
+        this.user1.name = this.username.nativeElement.value;
+        this.user1.passwordHash = this.password.nativeElement.value;
+        this.user1.email = this.email.nativeElement.value;
+        this.user1.locationX = this.lat;
+        this.user1.locationY = this.lon;
       
         let headers = new HttpHeaders().set('Content-Type','application/json');
-        console.log( JSON.stringify(user1));
-        this.http.post('https://localhost:8443/api/user/new', JSON.stringify(user1), {headers: headers})
+        console.log( JSON.stringify(this.user1));
+        this.http.post('https://localhost:8443/api/user/new', JSON.stringify(this.user1), {headers: headers})
         .subscribe(
             res => {
               console.log(res);

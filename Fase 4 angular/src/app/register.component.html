@@ -1,14 +1,13 @@
 <div onload="getLocation()" style="margin-top: 15%; margin-bottom: 15%">
     <section class="bg-title-page p-t-40 p-b-50 flex-col-c-m"
-        style="background-image: url(images/background%20slim.jpg);">
+    [ngStyle]="{'background':  'url(https://localhost:8443/images/backgroundSlim.jpg)'}">
        
         <form >
 
             <div class="form-group">
                 <label class="form-control-label" for="name">User</label>
                 <div>
-                    <input #name type="text" name="name" id="name" placeholder="name" value="">
-                    
+                    <input #username type="text" name="name" id="name" placeholder="name" placeholder="Name" class="form-control input-md">                    
                 </div>
             </div>
 

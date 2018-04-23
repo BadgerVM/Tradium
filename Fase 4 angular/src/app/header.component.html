@@ -14,7 +14,7 @@
                 <div *ngIf="loginService.isLogged" style="position: absolute; top: 10px; right: 130px;">
                     {{loginService.user?.name}} 
 
-                    <button  *ngIf="loginService.isLogged" (click)="loginService.logOut()" class="size2 m-text2 trans-0-4"  style="background-color: rgba(0, 0, 0, 0);  position: absolute; top: -12px; width: 125px"  >Log Out </button> 
+                    <button  *ngIf="loginService.isLogged" [routerLink]="['/']" (click)="loginService.logOut()" class="size2 m-text2 trans-0-4"  style="background-color: rgba(0, 0, 0, 0);  position: absolute; top: -12px; width: 125px"  >Log Out </button> 
                 </div>
 
                 <a *ngIf="!loginService.isLogged" [routerLink]="['Login']" class="size2 m-text2 trans-0-4"> Login </a> 
@@ -24,7 +24,7 @@
     </div>
     <div class="wrap_header">
         <!-- Logo -->
-        <a [routerLink]="['']"  routerLinkActive="active" class="logo"> <img src="../assets/images/icons/logo.png"
+        <a [routerLink]="['/']"  routerLinkActive="active" class="logo"> <img src="../assets/images/icons/logo.png"
             alt="IMG-LOGO">
         </a>
 

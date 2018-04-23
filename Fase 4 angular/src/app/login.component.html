@@ -1,8 +1,7 @@
 
 	<!-- Title Page -->
 	<div style="margin-top: 15%; margin-bottom: 15%" *ngIf="!loginService.isLogged" >
-		<section class="bg-title-page p-t-40 p-b-50 flex-col-c-m"
-			style="background-image: url(images/background%20slim.jpg);">
+		<section class="bg-title-page p-t-40 p-b-50 flex-col-c-m" [ngStyle]="{'background':  'url(https://localhost:8443/images/backgroundSlim.jpg)'}">
 
 			<!-- Text input-->
 			<form  role="search" >
@@ -21,12 +20,11 @@
 
 
 <div style="margin-top: 15%; margin-bottom: 15%" *ngIf="loginService.isLogged" >
-	<section class="bg-title-page p-t-40 p-b-50 flex-col-c-m"
-		style="background-image: url(images/background%20slim.jpg);">
+	<section class="bg-title-page p-t-40 p-b-50 flex-col-c-m"[ngStyle]="{'background':  'url(https://localhost:8443/images/backgroundSlim.jpg)'}">
 		<form  role="search" >
 		<ul class="nav navbar-nav">
 			<li>
-				<a href="#">{{loginService.user.name}}</a>
+				<h1><a href="#">{{loginService.user.name}}</a></h1>
 			</li>
 			<li>
 				
