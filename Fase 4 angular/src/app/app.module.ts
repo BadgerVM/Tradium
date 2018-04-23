@@ -25,12 +25,13 @@ import { ChatComponent } from './chat.component';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { ChatMenuComponent } from './chatMenu.component';
 import { SoldComponent } from './sold.component';
+import { ValorationComponent } from './valoration.component';
 
 
 
 @NgModule({
   declarations: [AppComponent, FooterComponent, HeaderComponent,UploadProComponent, FeaturedComponent, AboutUsComponent, SearchComponent, SellerComponent, 
-    ProductComponent, LoginComponent, RegisterComponent, ChatComponent, ChatMenuComponent, SoldComponent],
+    ProductComponent, LoginComponent, RegisterComponent, ChatComponent, ChatMenuComponent, ValorationComponent, SoldComponent],
   imports: [BrowserModule, FormsModule, HttpClientModule, NgbModule.forRoot(), HttpModule, 
     JsonpModule, routing,
     AgmCoreModule.forRoot({

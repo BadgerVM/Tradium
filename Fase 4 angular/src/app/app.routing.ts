@@ -13,6 +13,7 @@ import { UploadProComponent } from './uploadPro.component';
 import { ChatMenuComponent } from './chatMenu.component';
 import { ChatComponent } from './chat.component';
 import { SoldComponent } from './sold.component';
+import {ValorationComponent} from './valoration.component';
 const appRoutes = [
     { path: 'Featured', component: FeaturedComponent,  },
     { path: 'AboutUs', component: AboutUsComponent,  },
@@ -25,6 +26,7 @@ const appRoutes = [
     { path: 'Chat', component: ChatMenuComponent, },
     { path: 'Chat/:id', component: ChatComponent, },
     { path: 'Product/:id/Sold', component: SoldComponent, },
+    { path: 'User/:id/Valoration', component: ValorationComponent, },
     { path: '', redirectTo: 'Featured', pathMatch: 'full' }
 
 

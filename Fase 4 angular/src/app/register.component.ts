@@ -54,7 +54,7 @@ import { NgForm } from '@angular/forms';
         this.user1.email = this.email.nativeElement.value;
         this.user1.locationX = this.lat;
         this.user1.locationY = this.lon;
-      
+      console.log(this.user1);
         let headers = new HttpHeaders().set('Content-Type','application/json');
         console.log( JSON.stringify(this.user1));
         this.http.post('https://localhost:8443/api/user/new', JSON.stringify(this.user1), {headers: headers})

@@ -205,7 +205,7 @@ export class BooksService {
     });
     const options = new RequestOptions({ withCredentials: true, headers });
    
-      return this.http.post('https://localhost:8443/api/user/'+id+'/new', body, options)
+      return this.http.post('https://localhost:8443/api/seller/'+id+'/valoration', body, options)
         .map(response => response.json())
         .catch(error => this.handleError(error));    
  

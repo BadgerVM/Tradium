@@ -86,16 +86,17 @@ public class SellerRestController {
 		String s ="USER";
 		List <String> role = new ArrayList();
 		role.add(s);
-		String[] parts = user.getImage().split(",");
+		if (user.getImage() != ""){
+			String[] parts = user.getImage().split(",");
 		
-		byte[] data = Base64.getDecoder().decode(parts[1]);
-		
-		
-		String r = "src/main/resources/static/images/user_images/"+user.getName()+".jpg";
-		try (OutputStream stream = new FileOutputStream(r)) {
-		    stream.write(data);
+			byte[] data = Base64.getDecoder().decode(parts[1]);
+			String r = "src/main/resources/static/images/user_images/"+user.getName()+".jpg";
+			try (OutputStream stream = new FileOutputStream(r)) {
+			    stream.write(data);
+			}
+		}else {
+			user.setImage("\\images\\user_images\\user_default.jpg");
 		}
-		
 		
 		if(user.getLocationX()=="") {
 
@@ -105,10 +106,7 @@ public class SellerRestController {
 
 			user.setLocationY("0000");
 		}
-		if(user.getImage() == null) {
-
-			user.setImage("\\images\\user_images\\user_default.jpg");
-		}
+		
 		else {
 			user.setImage("\\images\\user_images\\"+user.getName()+".jpg");
 		}
