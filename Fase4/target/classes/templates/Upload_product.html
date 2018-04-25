@@ -1,0 +1,78 @@
+{{>header}}
+	<!-- Title Page -->
+	<div class="card" class="col-lg-6"
+		style="width: 70%; margin: auto; text-align: center; margin-top: 20px; margin-bottom: 100px;">
+
+		<div class="card"
+			style="background-image: url(/images/intersection.png); background-repeat: repeat;">
+
+			<form action="new" method="post" enctype="multipart/form-data">
+				<!-- Text input-->
+				<div class="form-group">
+					<label class="form-control-label" for="name">Name of the
+						product</label>
+					<div>
+						<input id="name" name="name" type="text" placeholder="Name"
+							class="form-control input-md">
+					</div>
+				</div>
+				<!-- Text input-->
+				<div class="form-group">
+					<label class="form-control-label" for="name">Description</label>
+					<div>
+						<input id="description" name="description" type="text"
+							placeholder="New, i just bought it" class="form-control input-md">
+					</div>
+				</div>
+				<!-- Text input-->
+				<div class="form-group">
+					<label class="form-control-label" for="name">Tags</label>
+					<div>
+						<input id="tags" name="tags" type="text"
+							placeholder="Car, Honda, New,..." class="form-control input-md">
+					</div>
+				</div>
+
+				<div class="form-group">
+					<label class="col-lg-5 form-control-label" for="Price">Minimun
+						price you could accept</label>
+					<div class="col-lg-2" style="margin: auto;">
+						<input id="minPrice" name="minPrice" type="text" placeholder="25€"
+							class="form-control input-md" required>
+					</div>
+				</div>
+
+
+				<!-- Text input-->
+				<div class="form-group">
+					<label class="col-lg-5 form-control-label" for="Price">price</label>
+					<div class="col-lg-2" style="margin: auto;">
+						<input id="Price" name="Price" type="text" placeholder=""
+							class="form-control input-md" required>
+					</div>
+				</div>
+				<!-- File Button -->
+				<div class="form-group">
+					<label class="form-control-label" for="Profile picture">Product
+						image</label>
+					<div>
+						<input type="file" name="file" value="Send">
+					</div>
+				</div>
+
+				<input type="hidden" name="_csrf" value="{{token}}" /> <input
+					type='submit' value='Upload Product'
+					class=" bg1 bo-rad-23 hov1 s-text1"
+					style="padding: 10px; margin-bottom: 20px; max-width: 250px;" />
+
+			</form>
+		</div>
+
+	</div>
+
+	<!-- content page -->
+
+
+
+
+	{{>footer}}

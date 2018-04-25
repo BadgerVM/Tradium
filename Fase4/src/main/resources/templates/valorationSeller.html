@@ -1,0 +1,33 @@
+{{>header}}
+	<!-- Product Detail -->
+
+
+	<div style="margin-top: 5%; margin-bottom: 15%;" class="container">
+		<div class="row">
+			<div class="col col-md-auto">
+				<img style="max-width: 250px;" src="{{product.image}}"
+					alt="IMG-PRODUCT">
+			</div>
+			<div class="col ">
+				<h1>Congrats for selling {{product.name}}</h1>
+				<br>
+				<h4>Who is its actual owner?</h4>
+				<br>
+				<form action="sentRequest" enctype="multipart/form-data"
+					method="post">
+					<select style="margin-left: 15px;" id="id" name="id">
+						{{#listBuyers}}
+						<option value="{{id}}">{{name}}</option> {{/listBuyers}}
+
+					</select> <br> <br> <input type="hidden" name="_csrf"
+						value="{{token}}" /> <input type="submit" value="sold"
+						class="flex-c-m size2 bg4 bo-rad-23 hov1 m-text3 trans-0-4"
+						style="width: 250px" />
+
+				</form>
+			</div>
+		</div>
+	</div>
+
+
+{{>footer}}

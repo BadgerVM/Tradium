@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Home</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!--===============================================================================================-->
+<link rel="icon" type="image/png" href="/images/icons/favicon.png" />
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<!--===============================================================================================-->
+<link rel="stylesheet" type="text/css"
+	href="/vendor/bootstrap/css/bootstrap.min.css">
+<!--===============================================================================================-->
+<link rel="stylesheet" type="text/css"
+	href="/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+<!--===============================================================================================-->
+<link rel="stylesheet" type="text/css"
+	href="/fonts/themify/themify-icons.css">
+<!--===============================================================================================-->
+<link rel="stylesheet" type="text/css"
+	href="/fonts/Linearicons-Free-v1.0.0/icon-font.min.css">
+<!--===============================================================================================-->
+<link rel="stylesheet" type="text/css"
+	href="/fonts/elegant-font/html-css/style.css">
+<!--===============================================================================================-->
+<link rel="stylesheet" type="text/css" href="/vendor/animate/animate.css">
+<!--===============================================================================================-->
+<link rel="stylesheet" type="text/css"
+	href="/vendor/css-hamburgers/hamburgers.min.css">
+<!--===============================================================================================-->
+<link rel="stylesheet" type="text/css"
+	href="/vendor/animsition/css/animsition.min.css">
+<!--===============================================================================================-->
+<link rel="stylesheet" type="text/css"
+	href="/vendor/select2/select2.min.css">
+<!--===============================================================================================-->
+<link rel="stylesheet" type="text/css" href="/vendor/slick/slick.css">
+<!--===============================================================================================-->
+<link rel="stylesheet" type="text/css" href="/css/util.css">
+<link rel="stylesheet" type="text/css" href="/css/main.css">
+<!--===============================================================================================-->
+</head>
+<body class="animsition">
+
+		<!-- Header -->
+	<header class="header1">
+		<!-- Header desktop -->
+		<div class="container-menu-header">
+			<div class="topbar">
+				<div class="topbar-social">
+					<a href="https://twitter.com/share?ref_src=twsrc%5Etfw"
+						class="twitter-share-button" data-show-count="false">Tweet</a>
+					<script async src="https://platform.twitter.com/widgets.js"
+						charset="utf-8"></script>
+				</div>
+
+
+				<div class="topbar-child2">
+					<span class="topbar-email"> {{#logged}}
+						<div style="position: absolute; top: 10px; right: 130px;">
+							{{name.name}}</div>
+
+						<form action="/logout" method="post">
+
+							<input type="hidden" name="_csrf" value="{{token}}" /> <input
+								class="size2 m-text2 trans-0-4"
+								style="background-color: rgba(0, 0, 0, 0);" type="submit"
+								value="     Sign Out" />
+
+						</form> {{/logged}} {{^logged}} <a href="/login"
+						class="size2 m-text2 trans-0-4"> Log in </a> {{/logged}}
+
+					</span>
+				</div>
+			</div>
+			<div class="wrap_header">
+				<!-- Logo -->
+				<a href="/index" class="logo"> <img src="/images/icons/logo.png"
+					alt="IMG-LOGO">
+				</a>
+
+				<!-- Menu -->
+				<div class="wrap_menu">
+					<nav class="menu">
+						<ul class="main_menu">
+
+
+							<li class="sale-noti"><a href="/index">Shop</a></li>
+
+
+							<li><a href="/about">About us</a></li>
+
+							<li>
+								<div class="rightbar">
+									<!-- Search -->
+									<div class="pos-relative bo11 of-hidden">
+										<form action="/consult">
+											<input type="hidden" name="_csrf" value="{{token}}" /> <input
+												class="s-text7 size16 p-l-23 p-r-50" type="text"
+												name="search" placeholder="Search" />
+											<!--
+                                                        <input id="sendMessage" type="image" alt="send"
+                                                        style="position: absolute; right: 3px; top: -1px; padding-bottom: 1px; margin-bottom: 1px; margin-top: 6px;"
+                                                        width="30" height="30" class="flex-c-m size5 ab-r-m color1 color0-hov trans-0-4" 
+                                                        src="/images/icons/magnifying_glass.svg" />
+            <input id="sendSearch" type="image" alt="send"
+                                                            style="position: absolute; right: 3px; top: -1px; padding-bottom: 1px; margin-bottom: 1px; margin-top: 6px;"
+                                                            width="30" height="30" src="/images/icons/magnifying-glass.svg" 
+                                                            />-->
+											<input id="sendSearch" type="image" alt="send"
+												style="position: absolute; right: 10px; top: 10px; padding-bottom: 1px; margin-bottom: 1px; margin-top: 6px;"
+												width="18" height="18"
+												src="/images/icons/magnifying-glass.svg" />
+										</form>
+									</div>
+
+								</div>
+
+							</li>
+
+						</ul>
+					</nav>
+				</div>
+
+				<!-- Header Icon -->
+				<div class="header-icons">
+					{{#logged}} <a href="/product/upload"
+						class="header-wrapicon1 dis-block" style="margin-right: 10px">
+						<img src="/images/icons/up-arrow.svg" class="header-icon1"
+						alt="Upload">
+					</a> <a href="/chat" class="header-wrapicon1 dis-block"
+						style="margin-right: 10px"> <img
+						src="/images/icons/chat-icon.png" class="header-icon1" alt="ICON">
+
+					</a> <br> <a href="/user/{{id}}"
+						class="header-wrapicon1 dis-block"> <img
+						src="/images/icons/icon-header-01.png" class="header-icon1"
+						alt="ICON">
+					</a> {{/logged}} {{^logged}} </a> <br> <a href="/login"
+						class="header-wrapicon1 dis-block"> <img
+						src="/images/icons/icon-header-01.png" class="header-icon1"
+						alt="ICON">
+					</a> {{/logged}}
+
+				</div>
+			</div>
+		</div>
+
+		<!-- Header Mobile -->
+		<div class="wrap_header_mobile">
+			<!-- Logo moblie -->
+			<a href="/index" class="logo-mobile"> <img
+				src="/images/icons/logo.png" alt="IMG-LOGO">
+			</a>
+
+			<!-- Button show menu -->
+			<div class="btn-show-menu">
+				<!-- Header Icon mobile -->
+				<div class="header-icons-mobile">
+					{{#logged}} <a href="user/{{id}}"
+						class="header-wrapicon1 dis-block"> <img
+						src="/images/icons/icon-header-01.png" class="header-icon1"
+						alt="ICON">
+					</a> {{/logged}} {{^logged}} <a href="/login"
+						class="header-wrapicon1 dis-block"> <img
+						src="/images/icons/icon-header-01.png" class="header-icon1"
+						alt="ICON">
+					</a> {{/logged}}
+
+				</div>
+
+				<div class="btn-show-menu-mobile hamburger hamburger--squeeze">
+					<span class="hamburger-box"> <span class="hamburger-inner"></span>
+					</span>
+				</div>
+			</div>
+		</div>
+
+		<!-- Menu Mobile -->
+		<div class="wrap-side-menu">
+			<nav class="side-menu">
+				<ul class="main-menu">
+
+					<li class="item-topbar-mobile p-l-20 p-t-8 p-b-8">
+						<div class="topbar-child2-mobile">
+
+							<form action="/consult">
+								<input type="hidden" name="_csrf" value="{{token}}" /> <input
+									class="s-text7 size16 p-l-23 p-r-50" type="text" name="search"
+									placeholder="Search" />
+								<!--
+                                                        <input id="sendMessage" type="image" alt="send"
+                                                        style="position: absolute; right: 3px; top: -1px; padding-bottom: 1px; margin-bottom: 1px; margin-top: 6px;"
+                                                        width="30" height="30" class="flex-c-m size5 ab-r-m color1 color0-hov trans-0-4" 
+                                                        src="/images/icons/magnifying_glass.svg" />
+            <input id="sendSearch" type="image" alt="send"
+                                                            style="position: absolute; right: 3px; top: -1px; padding-bottom: 1px; margin-bottom: 1px; margin-top: 6px;"
+                                                            width="30" height="30" src="/images/icons/magnifying-glass.svg" 
+                                                            />-->
+								<input id="sendSearch1" type="image" alt="send"
+									style="position: absolute; right: 10px; top: 10px; padding-bottom: 1px; margin-bottom: 1px; margin-top: 6px;"
+									width="18" height="18" src="/images/icons/magnifying-glass.svg" />
+							</form>
+
+
+
+						</div>
+					</li>
+
+					<li class="item-topbar-mobile p-l-10">
+						<div class="topbar-social-mobile">
+							<br /> <a href="https://twitter.com/share?ref_src=twsrc%5Etfw"
+								class="twitter-share-button" data-show-count="false">Tweet</a>
+							<script async src="https://platform.twitter.com/widgets.js"
+								charset="utf-8"></script>
+						</div>
+
+					</li>
+
+					<li class="item-menu-mobile"><a href="/about">About us</a></li>
+
+					<li class="item-menu-mobile"><a href="/index">Shop</a></li>
+
+					{{#logged}}
+					<li class="item-menu-mobile"><a href="/chat">Chats</a></li>
+					<li class="item-menu-mobile"><a href="/product/upload">Upload</a></li>
+
+					<li class="item-menu-mobile"><form action="/logout"
+							method="post">
+							<input type="hidden" name="_csrf" value="{{token}}" /> <input
+								style="background-color: rgba(0, 0, 0, 0);" type="submit"
+								value="     Sign Out" />
+						</form> {{/logged}} <br>
+				</ul>
+			</nav>
+		</div>
+	</header>
