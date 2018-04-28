@@ -62,7 +62,7 @@ import { environment } from '../../environments/environment';
       let price = this.price.nativeElement.value;
 
       this.service.counterProduct(this.id, price ).subscribe(
-        product => { },
+        product => alert("Succesful counteroffer"),
         error => console.error('Error making a counter offer ' + error)
      );
     }

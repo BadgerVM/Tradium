@@ -64,7 +64,7 @@ export class ProductService {
      'X-Requested-With': 'XMLHttpRequest'
    });
    const body = JSON.stringify(user);
-
+   console.log(user);
    const options = new RequestOptions({ withCredentials: true, headers });
    
      return this.http.post('https://localhost:8443/api/product/'+id+"/sold", body, options)

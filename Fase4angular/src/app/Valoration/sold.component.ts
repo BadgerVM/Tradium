@@ -54,7 +54,8 @@ import { AgmCoreModule } from '@agm/core';
     }
     sendSeller(){
 
-      alert("Sucesful sale")
+      alert(this.id);
+      alert(this.selectedUser.name);
       this.service.soldConfirmation(this.id, this.selectedUser).subscribe(
         buyers => this.buyers = buyers,
         error => console.error(error)

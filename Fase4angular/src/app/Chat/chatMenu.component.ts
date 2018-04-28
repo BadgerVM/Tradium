@@ -7,6 +7,7 @@ import { ChatList, ChatService } from './chat.service';
 import { TagContentType } from '@angular/compiler/src/ml_parser/tags';
 import { BrowserModule } from '@angular/platform-browser';
 import { AgmCoreModule } from '@agm/core';
+import { environment } from './../../environments/environment';
 
 @Component({
     selector: 'chatMenu',
@@ -34,12 +35,13 @@ import { AgmCoreModule } from '@agm/core';
   })
 
   export class ChatMenuComponent {
+    private baseUrl:string;
     public id: string;
     private user: User;
     private chatList: ChatList;
 
     constructor(private route: ActivatedRoute, private service: ChatService) {
-      this.chatList=null;
+      this.chatList=null;  this.baseUrl = environment.baseURL;
     }
 
     ngOnInit() {

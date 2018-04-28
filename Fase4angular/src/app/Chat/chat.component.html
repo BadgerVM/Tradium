@@ -15,15 +15,21 @@
 
 						<div id="home" class="container tab-pane active"
 							style="width: inherit;">
-							<div class="card" *ngFor="let c of chat" 
-								style="padding: 4px; margin: 5px; max-width: 100%; background-color: #EFFBF5;">
+
+							<div class="card" *ngFor="let c of chat" style="padding: 4px; margin: 5px; max-width: 100%; background-color: white " >
+								<div *ngIf="c?.text != 'Could you please valorate me?'">
 								<p>
-									<b>{{c?.transmitter.name}}</b>
+									<b>{{c?.transmitter.name}} {{c.readu1}}</b> 
 								</p>
 								<p>
 									<b>{{c?.text}}</b>
 								</p>
+								</div>
+								<button  *ngIf="c?.text == 'Could you please valorate me?'" [routerLink]="['/User/', c?.transmitter.id , 'Valoration']"   class="flex-c-m size2 bg4 bo-rad-23 hov1 m-text3 trans-0-4">Could you please valorate me? </button>
 							</div>
+
+							
+
 						</div>
 					</div>
 

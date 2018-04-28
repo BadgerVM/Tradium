@@ -74,6 +74,7 @@ interface chatDetail extends User.UserIdAtt, Chat.ChatAtt {}
 				chat2.setUser2(chat.getUser1());
 				chat2.setReadu(chat.getUser1().getId(), chat.getReadu1());
 				chat2.setReadu(chat.getUser2().getId(), chat.getReadu2());
+				chat2.setSystem(chat.getSystem());
 				finalChatList.add(chat2);
 				
 				chat2 = new Chat();

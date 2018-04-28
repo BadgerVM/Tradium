@@ -28,7 +28,7 @@
 
 
             <!--  -->
-            <div *ngIf="!product?.bought">
+            <div *ngIf="!product?.bought || (loginService?.isLogged && (loginService?.user.id == product?.user.id))" >
             <div class="p-t-33 p-b-60">
                 <div class="btn-addcart-product-detail size9 trans-0-4 m-t-10 m-b-10">
                     <div *ngIf="(loginService?.isLogged && (loginService?.user.id != product?.user.id))">
@@ -65,7 +65,7 @@
             </div>
             
             </div>
-            <span class="product-detail-name m-text16 p-b-13" *ngIf="product?.bought">You were too slow :( </span>
+            <span class="product-detail-name m-text16 p-b-13" *ngIf="product?.bought && !(loginService?.isLogged && (loginService?.user.id == product?.user.id))" >You were too slow :( </span>
             <br>
             <div *ngIf="(loginService?.isLogged  )">   
                 <br>

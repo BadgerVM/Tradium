@@ -24,14 +24,14 @@ import { environment } from './../../environments/environment';
 })
 export class LoginComponent {
   private baseUrl:string;
-  constructor(private loginService: LoginService) { this.baseUrl = environment.baseURL;}
+  constructor(private loginService: LoginService, private router: Router) { this.baseUrl = environment.baseURL;}
 
   logIn(event: any, user: string, pass: string) {
 
     event.preventDefault();
 
     this.loginService.logIn(user, pass).subscribe(
-      u => console.log(u),
+      u => this.router.navigate(['']),
       error => alert('Invalid user or password')
     );
     

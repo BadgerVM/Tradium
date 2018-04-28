@@ -144,14 +144,17 @@ public class ProductsRestController {
 				}
 				
 				m1.setChat(c1);
-				//product.addListBuyers(loggedUser);	
+				Buyer b = new Buyer(loggedUser);
+				product.addListBuyers(b);	
 
 				c1.setReadu(loggedUser.getId(), true);
                 c1.setReadu(product.getUser().getId(), false);
 				
+                buyerRepository.save(b);
 				chatRepository.save(c1);
 				messageRepository.save(m1);
-
+				userRepository.save(product.getUser());
+				userRepository.save(loggedUser);
 				c1.addMessage(m1);
 				chatRepository.save(c1);
 				productRepository.save(product);
@@ -185,15 +188,11 @@ public class ProductsRestController {
 				  	
 				  
 				  	Chat c1 = new Chat(loggedUser, seller);
-				  	log.info(String.valueOf(c1.getReadu1()));
-			  		log.info(String.valueOf(c1.getReadu2()));
-				  	
+				 
 				  	c1.setSystem(false);
 			  		c1.setReadu(loggedUser.getId(), true);
 			  		c1.setReadu(seller.getId(), false);
-			  		
-			  		log.info(String.valueOf(c1.getReadu1()));
-			  		log.info(String.valueOf(c1.getReadu2()));
+			  	
 				  	Message m1 =  new Message(seller, "Hi! I bought your " + product.getName()); m1.setChat(c1);
 				  	
 				  	buyerRepository.save(b);
@@ -236,28 +235,37 @@ public class ProductsRestController {
 	@JsonView(MessageAtt.class)
 	@RequestMapping(value="/product/{id}/sold", method=RequestMethod.POST)
 	public ResponseEntity<Message> sold (Model model, @PathVariable long id, @RequestBody User user) {
-		
+		log.info(Long.toString(id));
 	    Product product = productRepository.findById(id);
 	    if (!product.equals(null)) {
-	    	User loggedUser = userComponent.getLoggedUser();
-	    	
-			if(loggedUser.getId()==product.getUser().getId() && product.getBought()) {
-
-				User seller = loggedUser;
-
-				
-		  		Chat c1 = new Chat(user, seller);
-				Message m1 = new Message(seller, "Could you please valorate me in <a href=\"api/user/"+seller.getId()+"/valoration\">this link!</a>");
-				m1.setChat(c1);
-		  		
-				chatRepository.save(c1);
-				messageRepository.save(m1);
-				
-				c1.addMessage(m1);
-				chatRepository.save(c1);
-			  	
-				return new ResponseEntity<>(m1,HttpStatus.OK);
-	    	
+	    	if(userComponent.getLoggedUser()!= null) {
+	    		
+		    	User loggedUser = userComponent.getLoggedUser();
+		    	
+				if(loggedUser.getId()==product.getUser().getId() && (product.getListBuyers().size() > 0)  ) {
+	
+					User seller = loggedUser;
+	
+					product.setBought(true);
+			  		Chat c1 = new Chat(user, seller);
+			  		c1.setSystem(true);
+					Message m1 = new Message(seller, "Could you please valorate me?");
+					m1.setChat(c1);
+			  		productRepository.save(product);
+			  		
+			  		
+					chatRepository.save(c1);
+					messageRepository.save(m1);
+					
+					c1.addMessage(m1);
+					
+					chatRepository.save(c1);
+				  	
+					return new ResponseEntity<>(m1,HttpStatus.OK);
+		    	
+				}
+			}else{
+				return new ResponseEntity<>(HttpStatus.FORBIDDEN );		
 			}
 	    }
 	    

@@ -46,7 +46,7 @@ import { Message } from '@angular/compiler/src/i18n/i18n_ast';
 
 
     constructor(private route: ActivatedRoute, private service: ChatService) {
-      this.chat={trasmitter:null, text:null};
+      this.chat=null;
       this.id = route.snapshot.params['id'];
       this.message={text:null};
     }

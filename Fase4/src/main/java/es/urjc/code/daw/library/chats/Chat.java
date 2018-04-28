@@ -120,6 +120,7 @@ public class Chat {
 	
 	public void setSystem(boolean b) {
 		this.system = b;
+		log.info(" SYSTEM siendo modificado con:" +String.valueOf(b));
 	}
 	
 	public boolean getSystem() {
