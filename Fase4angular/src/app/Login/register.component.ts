@@ -35,7 +35,7 @@ import { NgForm } from '@angular/forms';
     @ViewChild('password') password: ElementRef;
     @ViewChild('email') email: ElementRef;
 
-    constructor(private renderer: Renderer2, private http:HttpClient) { 
+    constructor(private renderer: Renderer2, private http:HttpClient, private router : Router) { 
     }
     
     public lat : string = "";
@@ -61,7 +61,7 @@ import { NgForm } from '@angular/forms';
         this.http.post('https://localhost:8443/api/user/new', JSON.stringify(this.user1), {headers: headers})
         .subscribe(
             res => {
-              console.log(res);
+              this.router.navigate(['/Login']);
             },
             err => {
               console.log("Error occured");

@@ -39,7 +39,7 @@ import { RequestOptions ,Http, Headers} from '@angular/http';
     @ViewChild('minPrice') minPrice: ElementRef;
     @ViewChild('pic') image: ElementRef;
     
-    constructor(private http: Http, private service: ProductService) { }
+    constructor(private http: Http, private service: ProductService, private router: Router) { }
 
     product : UploadProduct = {name : "", description : "", price : null, minPrice : null, tags:"", image : ""};
     
@@ -62,7 +62,11 @@ import { RequestOptions ,Http, Headers} from '@angular/http';
         
        
        this.service.newProduct(this.product).subscribe(
-          product => alert("Successful upload"),
+          product => {
+
+            alert("Successful upload");
+            this.router.navigate(['/Product', product.id ]);
+          },
           error => console.error('Error uploading product: ' + error)
        );
        
