@@ -9,8 +9,6 @@ import es.urjc.code.daw.library.chats.Chat;
 import es.urjc.code.daw.library.chats.ChatRepository;
 import es.urjc.code.daw.library.chats.Message;
 import es.urjc.code.daw.library.chats.MessageRepository;
-import es.urjc.code.daw.library.book.Book;
-import es.urjc.code.daw.library.book.BookRepository;
 import es.urjc.code.daw.library.user.User;
 import es.urjc.code.daw.library.user.UserRepository;
 import es.urjc.code.daw.library.valorations.Valoration;
@@ -21,9 +19,6 @@ import es.urjc.code.daw.library.product.ProductRepository;
 
 @Component
 public class DatabaseInitializer {
-
-	@Autowired
-	private BookRepository bookRepository;
 
 	@Autowired
 	private UserRepository userRepository;

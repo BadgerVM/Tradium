@@ -60,9 +60,9 @@ import { Message } from '@angular/compiler/src/i18n/i18n_ast';
     }
     setNewMessage(){
       this.message.text = this.text.nativeElement.value;
+      this.text.nativeElement.value="";
       this.service.setNewMessage(this.id, this.message).subscribe(
-        error => console.error('Error creating new message: ' + error)
+        chat=>this.chat=chat
     );
-    location.reload()
     }
 }

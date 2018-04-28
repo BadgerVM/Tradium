@@ -34,9 +34,10 @@
 
 
                 <!-- Product -->
+                
                 <div class="row">
-                    <div class="col-sm-12 col-md-6 col-lg-4 p-b-50" *ngFor="let product of products">
-                        <!-- Block2 -->
+                    <div class="col-sm-12 col-md-6 col-lg-4 p-b-50" *ngFor="let product of products| slice:0:displayNum">
+                        
                         
                         <div class="block2">
                             <div class="block2-img wrap-pic-w of-hidden pos-relative" style=" width: 250px; height: 250px; overflow: hidden;">
@@ -52,18 +53,10 @@
                         </div>
                     </div>
                 </div>
-                <!--
-                <div>
-                    {{#search}} {{#showPrevProducts}} <a
-                        href="/consult?search={{search}}&products_page={{prevPageProducts}}">Prev
-                        page</a> {{/showPrevProducts}} {{#showNextProducts}} <a
-                        href="/consult?search={{search}}&products_page={{nextPageProducts}}">Next
-                        page</a> {{/showNextProducts}} {{/search}}
-
-                </div>
-
-            -->
+                <button  *ngIf="notAll" class="flex-c-m size2 bg4 bo-rad-23 hov1 m-text3 trans-0-4"
+                    style="width: 250px" (click)="increaseShowProducts()" > Show more </button>
             </div>
         </div>
+                
     </div>
 </section>

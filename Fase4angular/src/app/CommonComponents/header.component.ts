@@ -1,6 +1,7 @@
 import { Component, ViewChild,Renderer2, ElementRef } from '@angular/core';
 import { RouterModule, Router } from '@angular/router';
 import { LoginService } from './../Login/login.service';
+import { environment } from './../../environments/environment';
 
 @Component({
   selector: 'header',
@@ -26,10 +27,13 @@ import { LoginService } from './../Login/login.service';
 export class HeaderComponent {
 
   @ViewChild('search') text: ElementRef;
+  private baseUrl:string;
 
   private search: string;
 
-  constructor(public router: Router, private loginService: LoginService) { }
+  constructor(public router: Router, private loginService: LoginService) { 
+    this.baseUrl = environment.baseURL;
+  }
 
   newSearch(){
 

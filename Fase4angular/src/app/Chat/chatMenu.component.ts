@@ -39,7 +39,7 @@ import { AgmCoreModule } from '@agm/core';
     private chatList: ChatList;
 
     constructor(private route: ActivatedRoute, private service: ChatService) {
-      this.chatList={id:null, user2:null};
+      this.chatList=null;
     }
 
     ngOnInit() {

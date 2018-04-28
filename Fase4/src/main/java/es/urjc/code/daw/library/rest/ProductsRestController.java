@@ -92,7 +92,6 @@ public class ProductsRestController {
 
         if (product != null) {
             User u = product.getUser();
-            //u.deleteProduct(product);
             userRepository.save(u);
             productRepository.delete(product);
             return new ResponseEntity <>(product, HttpStatus.OK);
@@ -147,6 +146,9 @@ public class ProductsRestController {
 				m1.setChat(c1);
 				//product.addListBuyers(loggedUser);	
 
+				c1.setReadu(loggedUser.getId(), true);
+                c1.setReadu(product.getUser().getId(), false);
+				
 				chatRepository.save(c1);
 				messageRepository.save(m1);
 
@@ -164,7 +166,7 @@ public class ProductsRestController {
 	
 	@JsonView(MessageAtt.class)
 	@RequestMapping(value="/product/{id}/buy", method=RequestMethod.GET)
-	public ResponseEntity<Message> buy (Model model, @PathVariable long id) {
+	public ResponseEntity<Chat> buy (Model model, @PathVariable long id) {
 		
 	    Product product = productRepository.findById(id);
 	    if (!product.equals(null)) {
@@ -172,9 +174,7 @@ public class ProductsRestController {
 	    	if (loggedUser == null) {
 				return new ResponseEntity <>(HttpStatus.UNAUTHORIZED);
 			}
-		    	log.info(product.getUser().getId().toString());
-		    	log.info(loggedUser.getId().toString());
-		    	
+		    			    	
 				if(loggedUser.getId()!=product.getUser().getId()) {
 	
 	
@@ -183,7 +183,17 @@ public class ProductsRestController {
 				  	product.addListBuyers(b);	
 				  	User seller = product.getUser();
 				  	
-				  	Chat c1 = new Chat(seller, loggedUser);
+				  
+				  	Chat c1 = new Chat(loggedUser, seller);
+				  	log.info(String.valueOf(c1.getReadu1()));
+			  		log.info(String.valueOf(c1.getReadu2()));
+				  	
+				  	c1.setSystem(false);
+			  		c1.setReadu(loggedUser.getId(), true);
+			  		c1.setReadu(seller.getId(), false);
+			  		
+			  		log.info(String.valueOf(c1.getReadu1()));
+			  		log.info(String.valueOf(c1.getReadu2()));
 				  	Message m1 =  new Message(seller, "Hi! I bought your " + product.getName()); m1.setChat(c1);
 				  	
 				  	buyerRepository.save(b);
@@ -193,7 +203,7 @@ public class ProductsRestController {
 					userRepository.save(seller);
 				  	productRepository.save(product);
 				  	
-					return new ResponseEntity<>(/*m1*/null,HttpStatus.OK);
+					return new ResponseEntity<>(c1,HttpStatus.OK);
 		    	
 				}
 	    	

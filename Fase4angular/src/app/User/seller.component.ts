@@ -39,6 +39,8 @@ import { environment } from './../../environments/environment';
     private products;
     private valorations;
     private baseUrl:string;
+    public displayNum: number;
+    public notAll: boolean;
 
     constructor(private route: ActivatedRoute, private service: UserService) {
         this.id = route.snapshot.params['id'];
@@ -50,6 +52,8 @@ import { environment } from './../../environments/environment';
       this.user = {id: null, name: null, email: null,  locationX: null, locationY: null, medValoration: null, image: null, roles: null};
       this.valorations = {id: null, name: null, email: null,  locationX: null, locationY: null, medValoration: null, image: null, roles: null, valoration: null, description: null, date: null};
       this.products=null;
+      this.displayNum=12;
+      this.notAll=true;
       
       this.service.getUser(this.id).subscribe(
         user => this.user = user,
@@ -83,7 +87,12 @@ import { environment } from './../../environments/environment';
       let map = new google.maps.Map(document.getElementById("googleMap"), mapProp);
 
     }
-
+    increaseShowProducts(){
+      this.displayNum=this.displayNum+12;
+      if(this.displayNum>=this.products.length){
+        this.notAll=false;
+      }
+    }
 
   }
 

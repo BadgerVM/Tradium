@@ -3,7 +3,7 @@ import { Headers, Http, Response, RequestOptions } from '@angular/http';
 import { Observable} from 'rxjs/Rx';
 
 export interface ChatList{
-    id: number, user2: User2;
+    id: number, user2: User2; read1: boolean, read2: boolean, system: boolean; 
   }
 export interface User2{
     id: number;

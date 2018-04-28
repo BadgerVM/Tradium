@@ -50,7 +50,7 @@ public class VarietyRestController {
 	
 	
 
-	interface chatDetail extends User.UserIdAtt, Chat.ChatAtt {}
+interface chatDetail extends User.UserIdAtt, Chat.ChatAtt {}
 	
 	@JsonView(chatDetail.class)
 	@RequestMapping(value="/chats", method=RequestMethod.GET)
@@ -72,9 +72,14 @@ public class VarietyRestController {
 				chat2.setId(chat.getId());
 				chat2.setUser1(chat.getUser2());
 				chat2.setUser2(chat.getUser1());
+				chat2.setReadu(chat.getUser1().getId(), chat.getReadu1());
+				chat2.setReadu(chat.getUser2().getId(), chat.getReadu2());
 				finalChatList.add(chat2);
+				
 				chat2 = new Chat();
+				
 			}else {
+				
 				finalChatList.add(chat);
 			}		
 		}
@@ -88,9 +93,14 @@ public class VarietyRestController {
 	@ResponseStatus(HttpStatus.CREATED)
 	public ResponseEntity<List<Message>> chats (Model model, @PathVariable long id,  HttpServletRequest request) {
 		
-		List<Message> chatList = messageRepository.getMessages(chatRepository.findById(id));
+		Chat c1 = chatRepository.findById(id);
+		List<Message> chatList = messageRepository.getMessages(c1);
 		
 		User loggedUser = userComponent.getLoggedUser();
+		
+		c1.setReadu(loggedUser.getId(), true);
+		
+		chatRepository.save(c1);
 		
 		if (chatList == null) {
 			return new ResponseEntity <>(chatList, HttpStatus.NOT_FOUND);
@@ -99,23 +109,31 @@ public class VarietyRestController {
 		return new ResponseEntity <>(chatList, HttpStatus.OK);
 	}
 	
-	
-	@JsonView(MessageAtt.class)
+	@JsonView(MessageDetail.class)
 	@RequestMapping(value="/chats/{id}/new", method=RequestMethod.POST)
 	@ResponseStatus(HttpStatus.CREATED)
 	public ResponseEntity<List<Message>> chatNew (Model model, @PathVariable long id,  @RequestBody Message m,  HttpServletRequest request) {
 		
-		
-		List<Message> chatList = messageRepository.getMessages(chatRepository.findById(id));
+		User loggedUser = userComponent.getLoggedUser();
+		Chat c1 = chatRepository.findById(id);
+		List<Message> chatList = messageRepository.getMessages(c1);
 		Chat chat = chatRepository.findById(id);
 
 		Message m1= new Message();
 		m1.setText(m.getText());
-		m1.setTransmitter(userRepository.findByid(userComponent.getLoggedUser().getId()));
+		m1.setTransmitter(userRepository.findByid(loggedUser.getId()));
 		m1.setChat(chatRepository.findById(id));
 		messageRepository.save(m1);
 		
-		User loggedUser = userComponent.getLoggedUser();
+		if (c1.getUser1() == loggedUser) {
+			c1.setReadu(c1.getUser2().getId(), false);			
+		}else {
+			c1.setReadu(c1.getUser1().getId(), false);
+		}
+		
+		c1.setReadu(loggedUser.getId(), true);
+		chatRepository.save(c1);
+		
 		
 		if (chatList == null) {
 			return new ResponseEntity <>(chatList, HttpStatus.NOT_FOUND);

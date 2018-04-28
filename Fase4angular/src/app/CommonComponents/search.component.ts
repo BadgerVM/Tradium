@@ -29,14 +29,16 @@ import { environment } from './../../environments/environment';
   export class SearchComponent {
 
     private baseUrl:string;
+    public displayNum: number;
+    public notAll: boolean;
     
     private products: Product[] = [];
     private tag: string;
     constructor(private http: Http, private service: ProductService,private activatedRoute: ActivatedRoute) { 
         // subscribe to router event
         this.baseUrl = environment.baseURL;
+        this.notAll=true;
         this.tag = activatedRoute.snapshot.params['tag'];
-        console.log(this.tag);
 
         this.service.getSearch(this.tag).subscribe(
           products => this.products = products,
@@ -46,10 +48,18 @@ import { environment } from './../../environments/environment';
     }
 
     ngOnInit(){
+      this.displayNum=12;
       this.activatedRoute.params
       .map(params => params['tag'])
       .switchMap(tag =>this.service.getSearch(tag))
       .subscribe(products =>this.products =products);
+    }
+
+    increaseShowProducts(){
+      this.displayNum=this.displayNum+12;
+      if(this.displayNum>=this.products.length){
+        this.notAll=false;
+      }
     }
 
   

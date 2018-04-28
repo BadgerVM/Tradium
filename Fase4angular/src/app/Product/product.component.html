@@ -1,17 +1,15 @@
 <div class="container bgwhite p-t-35 p-b-80">
     <div class="flex-w flex-sb">
-        <div class="w-size13 p-t-30 respon5">
-            <div class="wrap-slick3 flex-sb flex-w">
-                <div class="wrap-slick3-dots"></div>
+        <div style="float: right; margin-top:25px; position: relative; left:15% ">
+           
 
-                <div class="item-slick3" data-thumb="images/thumb-item-01.jpg">
                     <div class="wrap-pic-w">
-                        <img style="width: 370px; height: 480px; overflow: hidden"
+                        <img style="width: 370px; height: 480px; overflow: hidden; float: right; " [ngStyle]="{'filter': (product.bought ? 'grayscale(100%)' : 'grayscale(0%)')}"
                             src="{{baseUrl}}{{product?.image}}" alt="IMG-PRODUCT">
+                            <div  *ngIf="product?.bought" class="product-detail-name m-text16 p-b-13"  style="background-color:honeydew; float: right; padding: 10px; top: 25%; padding-left: 42.9%; padding-right: 42.9%; text-align: center; position: absolute; z-index: 1;   "> Sold</div>
                     </div>
-                </div>
+                
 
-            </div>
         </div>
 
         <div class="w-size14 p-t-30 respon5">
@@ -30,14 +28,15 @@
 
 
             <!--  -->
+            <div *ngIf="!product?.bought">
             <div class="p-t-33 p-b-60">
                 <div class="btn-addcart-product-detail size9 trans-0-4 m-t-10 m-b-10">
                     <div *ngIf="(loginService?.isLogged && (loginService?.user.id != product?.user.id))">
-                        <button (click)="buy()"  class="flex-c-m size2 bg4 bo-rad-23 hov1 m-text3 trans-0-4">Buy </button>                       
+                        <button (click)="buy()"   class="flex-c-m size2 bg4 bo-rad-23 hov1 m-text3 trans-0-4">Buy </button>                       
                     </div>
 
                     <div *ngIf="(!loginService?.isLogged)">
-                        <button [routerLink]="['Login']" class="flex-c-m size2 bg4 bo-rad-23 hov1 m-text3 trans-0-4">Buy </button>                       
+                        <button [routerLink]="['/Login']" class="flex-c-m size2 bg4 bo-rad-23 hov1 m-text3 trans-0-4">Buy </button>                       
                     </div>
 
                     <div *ngIf="(loginService?.isLogged && (loginService?.user.id == product?.user.id))">
@@ -64,8 +63,21 @@
                 </div>
    
             </div>
+            
+            </div>
+            <span class="product-detail-name m-text16 p-b-13" *ngIf="product?.bought">You were too slow :( </span>
+            <br>
+            <div *ngIf="(loginService?.isLogged  )">   
+                <br>
+                <br>
+                <br>
+            </div>
 
-
+            <div *ngIf="(loginService?.isLogged && (loginService?.user.id != product?.user.id)  )">                    
+                <br>
+                <br>
+                <br>
+            </div>
 
             <div
                 class="wrap-dropdown-content bo6 p-t-15 p-b-14 active-dropdown-content">
@@ -103,28 +115,7 @@
                 </div>
             </div>
 
-            
-            
-             
 
-            <!--  
-            <div class="wrap-dropdown-content bo7 p-t-15 p-b-14">
-                <h5
-                    class="js-toggle-dropdown-content flex-sb-m cs-pointer m-text19 color0-hov trans-0-4">
-                    Product localization <i
-                        class="down-mark fs-12 color1 fa fa-minus dis-none"
-                        aria-hidden="true"></i> <i
-                        class="up-mark fs-12 color1 fa fa-plus" aria-hidden="true"></i>
-                </h5>
-
-                <div class="dropdown-content dis-none p-t-15 p-b-23">
-                    <div class="contact-map size21" id="google_map"
-                        data-map-x="{{user.locationX}}" data-map-y="{{user.locationY}}"
-                        data-pin="/images/icons/icon-position-map.png"
-                        data-scrollwhell="0" data-draggable="1"></div>
-
-             </div>
-             -->
         </div>
     </div>
 </div>

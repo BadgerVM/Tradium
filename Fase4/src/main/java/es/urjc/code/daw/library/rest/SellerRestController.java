@@ -56,8 +56,6 @@ public class SellerRestController {
 	    User user = userRepository.findByid(id);
 	    if (!user.equals(null)) {
 	    	
-	    	//List <Product> products = productRepository.findByUser_Id(id);
-	  
 	    	return new ResponseEntity<>(user,HttpStatus.OK);
 	    }
 	    
