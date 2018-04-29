@@ -6,13 +6,11 @@
 /usr/src/mymaven/src/main/java/es/urjc/code/daw/library/product/Offer.java
 /usr/src/mymaven/src/main/java/es/urjc/code/daw/library/chats/MessageRepository.java
 /usr/src/mymaven/src/main/java/es/urjc/code/daw/library/web/SearchWebController.java
-/usr/src/mymaven/src/main/java/es/urjc/code/daw/library/book/Book.java
 /usr/src/mymaven/src/main/java/es/urjc/code/daw/library/valorations/Valoration.java
 /usr/src/mymaven/src/main/java/es/urjc/code/daw/library/product/Buyer.java
 /usr/src/mymaven/src/main/java/es/urjc/code/daw/library/Application.java
 /usr/src/mymaven/src/main/java/es/urjc/code/daw/library/product/BuyerRepository.java
 /usr/src/mymaven/src/main/java/es/urjc/code/daw/library/security/LoginController.java
-/usr/src/mymaven/src/main/java/es/urjc/code/daw/library/rest/BookRestController.java
 /usr/src/mymaven/src/main/java/es/urjc/code/daw/library/product/ProductRepository.java
 /usr/src/mymaven/src/main/java/es/urjc/code/daw/library/chats/Message.java
 /usr/src/mymaven/src/main/java/es/urjc/code/daw/library/valorations/ValorationRepository.java
@@ -20,12 +18,9 @@
 /usr/src/mymaven/src/main/java/es/urjc/code/daw/library/web/UserWebController.java
 /usr/src/mymaven/src/main/java/es/urjc/code/daw/library/web/ChatsWebController.java
 /usr/src/mymaven/src/main/java/es/urjc/code/daw/library/rest/ProductsRestController.java
-/usr/src/mymaven/src/main/java/es/urjc/code/daw/library/book/BookRepository.java
 /usr/src/mymaven/src/main/java/es/urjc/code/daw/library/chats/ChatRepository.java
 /usr/src/mymaven/src/main/java/es/urjc/code/daw/library/rest/SellerRestController.java
-/usr/src/mymaven/src/main/java/es/urjc/code/daw/library/book/BookService.java
 /usr/src/mymaven/src/main/java/es/urjc/code/daw/library/chats/Chat.java
-/usr/src/mymaven/src/main/java/es/urjc/code/daw/library/web/WebController.java
 /usr/src/mymaven/src/main/java/es/urjc/code/daw/library/web/AboutWebController.java
 /usr/src/mymaven/src/main/java/es/urjc/code/daw/library/DatabaseInitializer.java
 /usr/src/mymaven/src/main/java/es/urjc/code/daw/library/user/User.java
