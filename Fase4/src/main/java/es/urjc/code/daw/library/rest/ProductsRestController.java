@@ -1,5 +1,6 @@
 package es.urjc.code.daw.library.rest;
 
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -109,11 +110,24 @@ public class ProductsRestController {
 		if (loggedUser == null) {
 			return new ResponseEntity <>(HttpStatus.UNAUTHORIZED);
 		}
-
-		
 		Product productOur = new Product(product.getName(), product.getDescription(), product.getTags(), product.getPrice());
 		productOur.setUser(loggedUser);
-		productOur.setImage("\\images\\product_images\\"+product.getName()+"-1.jpg");
+		
+		if (product.getImage()!= "") {
+			String[] parts = product.getImage().split(",");
+
+	        byte[] data = Base64.getDecoder().decode(parts[1]);
+	        
+	        String r = new File("src\\main\\resources\\static\\images\\product_images").getAbsolutePath() + "\\" +  product.getName()+"1.jpg";
+	        
+	        productOur.setImage("\\images\\product_images\\" + product.getName()+"1.jpg");
+	        try (FileOutputStream stream = new FileOutputStream(r)) {
+	            stream.write(data);
+	        }
+	    }else {
+	    	productOur.setImage("\\images\\product_images\\product_default.png");	
+	    }
+		
 		productRepository.save(productOur);
 		User u =userRepository.findByid(loggedUser.getId());
 		productOur.setFeatured(false);

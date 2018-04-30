@@ -20,6 +20,7 @@ import es.urjc.code.daw.library.product.ProductRepository;
 @Component
 public class DatabaseInitializer {
 
+
 	@Autowired
 	private UserRepository userRepository;
 	
@@ -58,7 +59,7 @@ public class DatabaseInitializer {
         Product p4 = new Product("PS4 PRO", "Very little used", "electronics", 100, "\\images\\product_images\\PS2-3.jpg");p4.setUser(u1);
         Product p5 = new Product("Jacket", "Black huntress", "fashion", 20, "\\images\\product_images\\Huntress1-1.jpg");p5.setUser(u1);
         Product p6 = new Product("Dress", "Vintage dress", "fashion", 16, "\\images\\product_images\\Dress1-1.jpg");p6.setUser(u1);
-        Product p7 = new Product("Shoes", "Running shoes, as new", "fashion", 7, "\\images\\product_images\\shoes2.jpg");p7.setUser(u1);
+        Product p7 = new Product("Shoes", "Running shoes, as new", "fashion", 7, "\\images\\product_images\\Shoes1-2.jpg");p7.setUser(u1);
         Product p8 = new Product("Sink", "Beautiful and cheap", "others", 70, "\\images\\product_images\\Furniture1-1.jpg");p8.setUser(u1);
         Product p9 = new Product("PC", "Fujitsu PC", "electrionics", 100, "\\images\\product_images\\PC1-1.jpg");p9.setUser(u1);
         Product p10 = new Product("Climate change", "Anice book", "books", 160,"\\images\\product_images\\ClimateChangue.jpg");p10.setUser(u1);
@@ -77,7 +78,7 @@ public class DatabaseInitializer {
         Product p23 = new Product("Belt", "Security belt", "fashion", 40, "\\images\\product_images\\Belt.jpg");p23.setUser(u1);
         Product p24 = new Product("Cap", "New cap", "fashion", 23, "\\images\\product_images\\Cap.jpg");p24.setUser(u1);
         Product p25 = new Product("XBOX 360", "As new XBOX, 100% dnctional", "videogames", 60, "\\images\\product_images\\XBOX1-2.jpg");p25.setUser(u1);
-        Product p26 = new Product("T-Shirt", "White T-Shit from Mango", "fashion", 20, "\\images\\product_images\\tshirt.jpg");p26.setUser(u1);
+        Product p26 = new Product("T-Shirt", "White T-Shit from Mango", "fashion", 20, "\\images\\product_images\\TShirt.jpg");p26.setUser(u1);
         Product p27 = new Product("Black Shoes", "Not used", "fashion", 27, "\\images\\product_images\\BlackShoes.jpg");p27.setUser(u1);
         Product p28 = new Product("Skateboard", "Electric skateboards", "sport", 65, "\\images\\product_images\\Skateboard.jpg");p28.setUser(u1);
         Product p29 = new Product("Juventus T-Shirt", "barata barata29", "fashion", 29, "\\images\\product_images\\Juventus.jpg");p29.setUser(u1);

@@ -151,7 +151,7 @@ module.exports = "/* Slider */\r\n.slick-slider\r\n{\r\n    position: relative;\
 /***/ "./src/app/Chat/chat.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<br>\r\n<br>\r\n\r\n<div class=\"card\"\r\n\t\tstyle=\"margin-left: 20%; margin-right: 20%; margin-top: 30px; margin-bottom: 20%\">\r\n\r\n\r\n\r\n\t\t<table width=\"100%\" height=\"700px\" style=\"overflow: scroll\">\r\n\t\t\t<tr>\r\n\t\t\t\t\r\n\t\t\t\t<td style=\"background-color: grey;\">\r\n\t\t\t\t\t<div class=\"tab-content\"\r\n\t\t\t\t\t\tstyle=\"position: relative; height: 100%; width: inherit; overflow-y: scroll; padding-top: 6px\">\r\n\r\n\t\t\t\t\t\t<div id=\"home\" class=\"container tab-pane active\"\r\n\t\t\t\t\t\t\tstyle=\"width: inherit;\">\r\n\r\n\t\t\t\t\t\t\t<div class=\"card\" *ngFor=\"let c of chat\" style=\"padding: 4px; margin: 5px; max-width: 100%; background-color: white \" >\r\n\t\t\t\t\t\t\t\t<div *ngIf=\"c?.text != 'Could you please valorate me?'\">\r\n\t\t\t\t\t\t\t\t<p>\r\n\t\t\t\t\t\t\t\t\t<b>{{c?.transmitter.name}} {{c.readu1}}</b> \r\n\t\t\t\t\t\t\t\t</p>\r\n\t\t\t\t\t\t\t\t<p>\r\n\t\t\t\t\t\t\t\t\t<b>{{c?.text}}</b>\r\n\t\t\t\t\t\t\t\t</p>\r\n\t\t\t\t\t\t\t\t</div>\r\n\t\t\t\t\t\t\t\t<button  *ngIf=\"c?.text == 'Could you please valorate me?'\" [routerLink]=\"['/User/', c?.transmitter.id , 'Valoration']\"   class=\"flex-c-m size2 bg4 bo-rad-23 hov1 m-text3 trans-0-4\">Could you please valorate me? </button>\r\n\t\t\t\t\t\t\t</div>\r\n\r\n\t\t\t\t\t\t\t\r\n\r\n\t\t\t\t\t\t</div>\r\n\t\t\t\t\t</div>\r\n\r\n\r\n\t\t\t\t\t<div class=\"card\"\r\n\t\t\t\t\t\tstyle=\"padding: 2px; margin: 2px; width: 99%; position: absolute; bottom: 3px; right: 2px;\">\r\n\r\n\t\t\t\t\t<input id=\"text\" #text name=\"text\" type=\"text\" class=\"form-control input-md\" required>\r\n\t\t\t\t\t<!--<input\r\n\t\t\t\t\t\t\t\ttype=\"text\"  #text class=\"form-control\" id=\"text\" name=\"text\" /> -->\r\n\t\t\t\t\t<input (click)=\"setNewMessage()\"\r\n\t\t\t\t\t\t\t\tid=\"sendMessage\" type=\"image\" alt=\"send\"\r\n\t\t\t\t\t\t\t\tstyle=\"position: absolute; right: 3px; top: -1px; padding-bottom: 1px; margin-bottom: 1px; margin-top: 6px;\"\r\n\t\t\t\t\t\t\t\twidth=\"30\" height=\"30\"\r\n\t\t\t\t\t\t\t\tsrc=\"assets/images/icons/arrow-alt-from-left.svg\" />\r\n\t\t\t\t\t</div>\r\n\t\t\t\t</td>\r\n\t\t\t</tr>\r\n\r\n\t\t</table>\r\n    </div>"
+module.exports = "<br>\r\n<br>\r\n\r\n<div class=\"card\"\r\n\t\tstyle=\"margin-left: 20%; margin-right: 20%; margin-top: 30px; margin-bottom: 20%\">\r\n\r\n\r\n\r\n\t\t<table width=\"100%\" height=\"700px\" style=\"overflow: scroll\">\r\n\t\t\t<tr>\r\n\t\t\t\t\r\n\t\t\t\t<td style=\"background-color: grey;\">\r\n\t\t\t\t\t<div class=\"tab-content\"\r\n\t\t\t\t\t\tstyle=\"position: relative; height: 100%; width: inherit; overflow-y: scroll; padding-top: 6px\">\r\n\r\n\t\t\t\t\t\t<div id=\"home\" class=\"container tab-pane active\"\r\n\t\t\t\t\t\t\tstyle=\"width: inherit;\">\r\n\r\n\t\t\t\t\t\t\t<div class=\"card\" *ngFor=\"let c of chat\" style=\"padding: 4px; margin: 5px; max-width: 100%; background-color: white \" >\r\n\t\t\t\t\t\t\t\t<div *ngIf=\"c?.text != 'Could you please valorate me?'\">\r\n\t\t\t\t\t\t\t\t<p>\r\n\t\t\t\t\t\t\t\t\t<b>{{c?.transmitter.name}} {{c.readu1}}</b> \r\n\t\t\t\t\t\t\t\t</p>\r\n\t\t\t\t\t\t\t\t<p>\r\n\t\t\t\t\t\t\t\t\t<b>{{c?.text}}</b>\r\n\t\t\t\t\t\t\t\t</p>\r\n\t\t\t\t\t\t\t\t</div>\r\n\t\t\t\t\t\t\t\t<button  *ngIf=\"c?.text == 'Could you please valorate me?'\" [routerLink]=\"['/User/', c?.transmitter.id , 'Valoration']\"   class=\"flex-c-m size2 bg4 bo-rad-23 hov1 m-text3 trans-0-4\">Could you please valorate me? </button>\r\n\t\t\t\t\t\t\t</div>\r\n\r\n\t\t\t\t\t\t\t\r\n\r\n\t\t\t\t\t\t</div>\r\n\t\t\t\t\t</div>\r\n\r\n\r\n\t\t\t\t\t<div class=\"card\"\r\n\t\t\t\t\t\tstyle=\"padding: 2px; margin: 2px; width: 99%; position: absolute; bottom: 3px; right: 2px;\">\r\n\r\n\t\t\t\t\t<input id=\"text\" #text name=\"text\" type=\"text\" class=\"form-control input-md\" required>\r\n\t\t\t\t\t<!--<input\r\n\t\t\t\t\t\t\t\ttype=\"text\"  #text class=\"form-control\" id=\"text\" name=\"text\" /> -->\r\n\t\t\t\t\t<input (click)=\"setNewMessage()\"\r\n\t\t\t\t\t\t\t\tid=\"sendMessage\" type=\"image\" alt=\"send\"\r\n\t\t\t\t\t\t\t\tstyle=\"position: absolute; right: 3px; top: -1px; padding-bottom: 1px; margin-bottom: 1px; margin-top: 6px;\"\r\n\t\t\t\t\t\t\t\twidth=\"30\" height=\"30\"\r\n\t\t\t\t\t\t\t\tsrc=\"{{baseUrl}}/images/icons/arrow-alt-from-left.svg\" />\r\n\t\t\t\t\t</div>\r\n\t\t\t\t</td>\r\n\t\t\t</tr>\r\n\r\n\t\t</table>\r\n    </div>"
 
 /***/ }),
 
@@ -163,6 +163,7 @@ module.exports = "<br>\r\n<br>\r\n\r\n<div class=\"card\"\r\n\t\tstyle=\"margin-
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/esm5/core.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_router__ = __webpack_require__("./node_modules/@angular/router/esm5/router.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__chat_service__ = __webpack_require__("./src/app/Chat/chat.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__environments_environment__ = __webpack_require__("./src/environments/environment.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -175,6 +176,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+
 var ChatComponent = /** @class */ (function () {
     function ChatComponent(route, service) {
         this.route = route;
@@ -182,6 +184,7 @@ var ChatComponent = /** @class */ (function () {
         this.chat = null;
         this.id = route.snapshot.params['id'];
         this.message = { text: null };
+        this.baseUrl = __WEBPACK_IMPORTED_MODULE_3__environments_environment__["a" /* environment */].baseURL;
     }
     ChatComponent.prototype.ngOnInit = function () {
         var _this = this;

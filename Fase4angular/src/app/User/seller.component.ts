@@ -67,6 +67,7 @@ import { environment } from './../../environments/environment';
       );
       
       console.log(this.products);
+      
 
       
       this.service.getValorations(this.id).subscribe(

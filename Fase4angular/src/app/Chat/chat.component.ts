@@ -8,6 +8,7 @@ import { TagContentType } from '@angular/compiler/src/ml_parser/tags';
 import { BrowserModule } from '@angular/platform-browser';
 import { AgmCoreModule } from '@agm/core';
 import { Message } from '@angular/compiler/src/i18n/i18n_ast';
+import { environment } from './../../environments/environment';
 
 @Component({
     selector: 'chat',
@@ -43,12 +44,14 @@ import { Message } from '@angular/compiler/src/i18n/i18n_ast';
     private user: User;
     private chat: Chat;
     private message: PostNewMessage;
+    private baseUrl:string;
 
 
     constructor(private route: ActivatedRoute, private service: ChatService) {
       this.chat=null;
       this.id = route.snapshot.params['id'];
       this.message={text:null};
+      this.baseUrl = environment.baseURL;
     }
 
     ngOnInit() {
